@@ -10,11 +10,12 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Pretendard', -apple-system, sans-serif;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 16px;
-    color: #1a1a1a;
+    color: #111;
     background: #fff;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
 
   .page { max-width: 780px; margin: 0 auto; }
@@ -22,139 +23,165 @@
   /* ── 이미지 플레이스홀더 ── */
   .img-box {
     width: 100%;
-    background: #e8e8e8;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 40px 20px;
+    padding: 40px 24px;
     text-align: center;
+    background: #e8e8e8;
   }
   .img-box .img-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: #888;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  .img-box .img-desc {
-    font-size: 13px;
-    color: #999;
-    line-height: 1.5;
-    max-width: 460px;
-  }
-  .img-box.tall { min-height: 400px; }
-  .img-box.mid  { min-height: 280px; }
-  .img-box.short{ min-height: 180px; }
-  .img-box.dark { background: #222; }
-  .img-box.dark .img-label { color: #888; }
-  .img-box.dark .img-desc  { color: #666; }
-
-  .thumb-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-
-  /* ── PASBRO 단계 구조 ── */
-  .step {
-    padding: 52px 44px;
-    border-bottom: 1px solid #f0f0f0;
-  }
-  .step-tag {
-    display: inline-block;
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 100px;
-    margin-bottom: 14px;
+    color: rgba(0,0,0,0.28);
   }
-  /* 단계별 색 */
-  .step-p .step-tag  { background: #1a56db; color: #fff; }
-  .step-a .step-tag  { background: #fee2e2; color: #b91c1c; }
-  .step-s .step-tag  { background: #fef3c7; color: #b45309; }
-  .step-b .step-tag  { background: #dbeafe; color: #1d4ed8; }
-  .step-r .step-tag  { background: #d1fae5; color: #065f46; }
-  .step-o .step-tag  { background: #e0e7ff; color: #3730a3; }
-  .step-offer .step-tag { background: #1a56db; color: #fff; }
-  .step-offer { background: #f8faff; }
+  .img-box .img-desc {
+    font-size: 13px;
+    color: rgba(0,0,0,0.38);
+    line-height: 1.6;
+    max-width: 460px;
+  }
+  .img-box.tall  { min-height: 420px; }
+  .img-box.mid   { min-height: 280px; }
+  .img-box.short { min-height: 160px; }
 
-  .step-p  { border-left: 4px solid #1a56db; }
-  .step-a  { border-left: 4px solid #ef4444; }
-  .step-s  { border-left: 4px solid #f59e0b; }
-  .step-b  { border-left: 4px solid #3b82f6; }
-  .step-r  { border-left: 4px solid #10b981; }
-  .step-o  { border-left: 4px solid #6366f1; }
-  .step-offer { border-left: 4px solid #1a56db; }
+  /* 단계 배경 톤 그대로 img-box에 */
+  .img-box.tone-p { background: #bfd9f7; }
+  .img-box.tone-a { background: #ffc8c8; }
+  .img-box.tone-s { background: #fef08a; }
+  .img-box.tone-b { background: #b9d6f9; }
+  .img-box.tone-r { background: #a7f3d0; }
+  .img-box.tone-o { background: #d8c4ff; }
+  .img-box.tone-dark { background: #06001a; }
+  .img-box.tone-dark .img-label { color: rgba(255,255,255,0.25); }
+  .img-box.tone-dark .img-desc  { color: rgba(255,255,255,0.25); }
 
-  h2 {
-    font-size: 24px;
+  .thumb-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+
+  /* ══════════════════════════════════
+     PASBRO 단계 — Magic Spoon 배경 블록
+  ══════════════════════════════════ */
+  .step { padding: 64px 52px; }
+
+  /* 배경색 (좌측 보더 제거 → 풀 배경으로) */
+  .step-p     { background: #dbeeff; }
+  .step-a     { background: #ffe0e0; }
+  .step-s     { background: #fef9c3; }
+  .step-b     { background: #ddeeff; }
+  .step-r     { background: #d1fae5; }
+  .step-o     { background: #ede9fe; }
+  .step-offer { background: #0a0a1a; color: #fff; }
+  .step-faq   { background: #f9f9f9; }
+
+  /* ── step-tag ── */
+  .step-tag {
+    display: inline-block;
+    font-size: 11px;
     font-weight: 800;
-    line-height: 1.35;
-    margin-bottom: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+  }
+  .step-p .step-tag     { background: #1a56db; color: #fff; }
+  .step-a .step-tag     { background: #dc2626; color: #fff; }
+  .step-s .step-tag     { background: #d97706; color: #fff; }
+  .step-b .step-tag     { background: #2563eb; color: #fff; }
+  .step-r .step-tag     { background: #059669; color: #fff; }
+  .step-o .step-tag     { background: #6d28d9; color: #fff; }
+  .step-offer .step-tag { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+  .step-faq .step-tag   { background: #e4e4e7; color: #52525b; }
+
+  /* ══════════════════════════════════
+     헤드라인 — Apple 타이포그래피
+  ══════════════════════════════════ */
+  h2 {
+    font-size: 46px;
+    font-weight: 900;
+    line-height: 1.16;
+    letter-spacing: -0.04em;
+    margin-bottom: 18px;
     word-break: keep-all;
   }
-  .step-p h2  { color: #1a56db; }
-  .step-a h2  { color: #b91c1c; }
-  .step-s h2  { color: #b45309; }
-  .step-b h2  { color: #1d4ed8; }
-  .step-r h2  { color: #065f46; }
-  .step-o h2  { color: #3730a3; }
-  .step-offer h2 { color: #1a56db; }
+  .step-p h2     { color: #1141a8; }
+  .step-a h2     { color: #9b1c1c; }
+  .step-s h2     { color: #78350f; }
+  .step-b h2     { color: #1e40af; }
+  .step-r h2     { color: #064e3b; }
+  .step-o h2     { color: #4c1d95; }
+  .step-offer h2 { color: #fff; font-size: 42px; }
+  .step-faq h2   { color: #111; font-size: 28px; letter-spacing: -0.03em; }
 
   .step-sub {
-    font-size: 15px;
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 20px;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.78;
+    margin-bottom: 26px;
     word-break: keep-all;
+    max-width: 560px;
   }
+  .step-p .step-sub     { color: #1e3a8a99; color: rgba(21,48,150,0.65); }
+  .step-a .step-sub     { color: rgba(120,30,30,0.65); }
+  .step-s .step-sub     { color: rgba(100,50,0,0.65); }
+  .step-b .step-sub     { color: rgba(20,40,140,0.65); }
+  .step-r .step-sub     { color: rgba(4,60,40,0.65); }
+  .step-o .step-sub     { color: rgba(60,15,120,0.65); }
+  .step-offer .step-sub { color: rgba(255,255,255,0.6); }
+  .step-faq .step-sub   { color: #555; }
 
-  /* ── 고객 멘트 (VoC) ── */
+  /* ── VoC (고객 멘트) ── */
   .voc-list {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 16px;
+    margin-top: 20px;
   }
   .voc-list li {
     font-size: 15px;
-    line-height: 1.6;
-    padding: 11px 16px;
-    background: #f7f7f7;
-    border-radius: 8px;
-    border-left: 3px solid #ccc;
+    font-weight: 500;
     font-style: italic;
-    color: #333;
+    line-height: 1.68;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.72);
     word-break: keep-all;
+    color: #222;
   }
-  .step-p .voc-list li  { border-left-color: #1a56db; background: #eff6ff; }
-  .step-a .voc-list li  { border-left-color: #ef4444; background: #fff5f5; }
-  .step-s .voc-list li  { border-left-color: #f59e0b; background: #fffbeb; }
-  .step-b .voc-list li  { border-left-color: #3b82f6; background: #f0f7ff; }
-  .step-r .voc-list li  { border-left-color: #10b981; background: #f0fdf4; }
-  .step-o .voc-list li  { border-left-color: #6366f1; background: #eef2ff; }
-  .step-offer .voc-list li { border-left-color: #1a56db; background: #eff6ff; }
+  .step-p .voc-list li     { border-left: 3px solid #1a56db; }
+  .step-a .voc-list li     { border-left: 3px solid #dc2626; }
+  .step-s .voc-list li     { border-left: 3px solid #d97706; }
+  .step-b .voc-list li     { border-left: 3px solid #2563eb; }
+  .step-r .voc-list li     { border-left: 3px solid #059669; }
+  .step-o .voc-list li     { border-left: 3px solid #6d28d9; }
+  .step-offer .voc-list li { background: rgba(255,255,255,0.09); border-left: 3px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); }
 
   /* ── 배지 ── */
   .badge-row {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    margin-top: 16px;
+    margin-top: 22px;
   }
   .badge {
     display: inline-block;
-    padding: 6px 14px;
-    border: 1.5px solid #333;
+    padding: 7px 17px;
+    border: 2px solid rgba(0,0,0,0.18);
     border-radius: 100px;
     font-size: 13px;
-    font-weight: 700;
-    color: #333;
+    font-weight: 800;
+    color: #222;
+    background: rgba(255,255,255,0.6);
+    letter-spacing: 0.01em;
   }
 
   /* ── 기능 리스트 ── */
@@ -162,129 +189,135 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 18px;
+    gap: 18px;
+    margin-top: 22px;
   }
   .feat-list li {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 16px;
     font-size: 15px;
-    color: #333;
-    line-height: 1.6;
+    line-height: 1.68;
   }
   .feat-list .fnum {
     flex-shrink: 0;
-    width: 26px; height: 26px;
+    width: 28px; height: 28px;
     border-radius: 50%;
-    background: #111;
+    background: #059669;
     color: #fff;
-    font-size: 12px;
-    font-weight: 800;
+    font-size: 14px;
+    font-weight: 900;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 2px;
   }
 
-  /* ── LED 야간 다크 블록 ── */
+  /* ── LED 야간 블록 ── */
   .led-block {
-    background: #111;
-    padding: 40px 44px;
+    background: #06001a;
+    padding: 64px 52px;
     color: #f0f0f0;
-    border-left: 4px solid #e8a000;
   }
   .led-block .led-tag {
+    display: block;
     font-size: 11px;
     font-weight: 800;
-    letter-spacing: 0.1em;
-    color: #e8a000;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    color: #FFD700;
+    margin-bottom: 16px;
   }
   .led-block h3 {
-    font-size: 22px;
+    font-size: 46px;
     font-weight: 900;
-    line-height: 1.3;
-    margin-bottom: 10px;
+    line-height: 1.16;
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
     word-break: keep-all;
+    color: #fff;
   }
   .led-block p {
-    font-size: 15px;
-    color: #aaa;
-    line-height: 1.7;
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.78;
     word-break: keep-all;
+    max-width: 500px;
   }
   .led-badge {
     display: inline-block;
-    margin-top: 16px;
-    padding: 7px 18px;
-    background: #e8a000;
-    color: #111;
+    margin-top: 22px;
+    padding: 9px 22px;
+    background: #FFD700;
+    color: #0a0500;
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 900;
     border-radius: 100px;
+    letter-spacing: 0.03em;
   }
 
-  /* ── 구매 정보 카드 ── */
+  /* ── 구매 카드 ── */
   .offer-card {
-    background: #fff;
-    border: 1.5px solid #ddd;
-    border-radius: 12px;
-    padding: 22px 24px;
-    margin-top: 20px;
-    max-width: 360px;
+    background: rgba(255,255,255,0.08);
+    border: 1.5px solid rgba(255,255,255,0.16);
+    border-radius: 18px;
+    padding: 26px 30px;
+    margin-top: 32px;
+    max-width: 400px;
   }
-  .offer-card .name { font-size: 14px; color: #555; margin-bottom: 8px; word-break: keep-all; }
-  .offer-card .price { font-size: 30px; font-weight: 900; color: #111; }
-  .offer-card .price span { font-size: 14px; font-weight: 400; color: #888; }
-  .offer-card .delivery { font-size: 14px; color: #0077cc; font-weight: 700; margin-top: 6px; }
+  .offer-card .name     { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 10px; word-break: keep-all; }
+  .offer-card .price    { font-size: 40px; font-weight: 900; color: #fff; letter-spacing: -0.04em; }
+  .offer-card .price span { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.45); }
+  .offer-card .delivery { font-size: 14px; color: #7dd3fc; font-weight: 700; margin-top: 8px; }
 
   .info-list {
     list-style: none;
-    margin-top: 18px;
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
   }
   .info-list li {
     font-size: 14px;
-    color: #666;
-    padding-left: 14px;
+    color: rgba(255,255,255,0.58);
+    padding-left: 16px;
     position: relative;
-    line-height: 1.6;
+    line-height: 1.65;
   }
-  .info-list li::before { content: '·'; position: absolute; left: 0; color: #bbb; }
+  .info-list li::before { content: '·'; position: absolute; left: 0; color: rgba(255,255,255,0.28); }
 
-  /* ── 스펙 ── */
+  /* ── 스펙 테이블 ── */
   .spec-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
-    margin-top: 18px;
+    margin-top: 22px;
   }
-  .spec-table tr { border-bottom: 1px solid #eee; }
+  .spec-table tr { border-bottom: 1px solid rgba(0,0,0,0.07); }
   .spec-table th {
     width: 38%;
-    padding: 10px 12px 10px 0;
+    padding: 13px 16px 13px 0;
     text-align: left;
-    font-weight: 600;
-    color: #888;
+    font-weight: 700;
+    color: #777;
     vertical-align: top;
   }
-  .spec-table td { padding: 10px 0; color: #222; line-height: 1.6; }
+  .spec-table td { padding: 13px 0; color: #222; line-height: 1.68; }
 
   .page-footer {
-    padding: 28px 44px;
+    padding: 32px 52px;
     text-align: right;
-    font-size: 13px;
+    font-size: 12px;
     color: #bbb;
+    background: #fff;
   }
 
   @media (max-width: 600px) {
-    .step, .led-block { padding: 36px 20px; }
-    h2 { font-size: 20px; }
-    .page-footer { padding: 20px; }
+    .step, .led-block { padding: 48px 24px; }
+    h2 { font-size: 34px; }
+    .led-block h3 { font-size: 34px; }
+    .step-offer h2 { font-size: 30px; }
+    .page-footer { padding: 24px; }
   }
 </style>
 </head>
@@ -295,25 +328,25 @@
        P — 훅: 발견 경로 + 비주얼
   ════════════════════════ -->
 
-  <div class="img-box tall">
+  <div class="img-box tall tone-p">
     <span class="img-label">메인 썸네일</span>
-    <span class="img-desc">블루 + 핑크 2개 나란히 · 회오리 분사 장면<br>흰 배경 또는 야외 밝은 햇살<br>"회오리 물꽃놀이 · 2종 세트" 텍스트 오버레이</span>
+    <span class="img-desc">블루 + 핑크 2개 나란히 · 회오리 분사 장면<br>밝은 햇살 · "회오리 물꽃놀이 · 2종 세트" 텍스트 오버레이</span>
   </div>
 
   <div class="thumb-row">
-    <div class="img-box short">
-      <span class="img-label">서브 ①</span>
-      <span class="img-desc">아이 환호 표정 클로즈업<br>워터파크 · 공원 실사용</span>
+    <div class="img-box short tone-p">
+      <span class="img-label">서브 ① 실사용</span>
+      <span class="img-desc">아이 환호 표정 클로즈업 · 워터파크</span>
     </div>
-    <div class="img-box short dark">
+    <div class="img-box short tone-dark">
       <span class="img-label">서브 ② LED 야간</span>
-      <span class="img-desc">가로등 아래 야간 분사<br>빛 궤적 · 폭죽 같은 장면</span>
+      <span class="img-desc">가로등 아래 야간 분사 · 빛 궤적</span>
     </div>
   </div>
 
   <div class="step step-p">
-    <span class="step-tag">P — 훅 · 발견 경로 + 비주얼</span>
-    <h2>아이들은 이걸<br>"물꽃놀이"라고 부르더라고요</h2>
+    <span class="step-tag">P — 훅 · 발견 경로</span>
+    <h2>아이들은 이걸<br>"물꽃놀이"라고<br>부르더라고요</h2>
     <p class="step-sub">워터파크에서, 공원에서, 옆집 아이 손에서 — 한 번 보면 멈추고 바라보게 되는 물총입니다.</p>
     <ul class="voc-list">
       <li>"워터파크 갔는데 친구들이 이걸로 너무 재밋게 노는거에요!"</li>
@@ -322,9 +355,9 @@
     </ul>
   </div>
 
-  <div class="img-box mid">
+  <div class="img-box mid tone-p">
     <span class="img-label">훅 비주얼 — 회오리 분사 클로즈업</span>
-    <span class="img-desc">분수처럼 퍼지는 회오리 물줄기<br>GIF 또는 영상 스틸 · 정지 이미지보다 움직임 우선<br>보는 순간 "이게 뭔데?" 반응 유도</span>
+    <span class="img-desc">분수처럼 퍼지는 회오리 물줄기<br>GIF 또는 영상 스틸 · "이게 뭔데?" 반응 유도</span>
   </div>
 
 
@@ -333,8 +366,8 @@
   ════════════════════════ -->
 
   <div class="step step-a">
-    <span class="step-tag">A — 공감 · 페인 + 작년 실패</span>
-    <h2>작년 5천 원짜리 —<br>하루 쓰고 갈라져서 버리셨죠?</h2>
+    <span class="step-tag">A — 공감 · 작년 실패</span>
+    <h2>작년 5천 원짜리 —<br>하루 쓰고 갈라져서<br>버리셨죠?</h2>
     <p class="step-sub">집에 안 쓰는 물총 쌓인 집 아시나요? 매년 사고, 매번 실망하고, 결국 또 새로 사러 오는 그 사이클.</p>
     <ul class="voc-list">
       <li>"하루썻는데 갈라져서못씀 택포8천원 버린꼴"</li>
@@ -342,9 +375,9 @@
     </ul>
   </div>
 
-  <div class="img-box short">
+  <div class="img-box short tone-a">
     <span class="img-label">공감컷</span>
-    <span class="img-desc">부러진 싸구려 물총 이미지 또는 일러스트<br>첫날에 망가진 상황 · 아이 실망 표정</span>
+    <span class="img-desc">부러진 싸구려 물총 이미지 · 아이 실망 표정</span>
   </div>
 
 
@@ -353,8 +386,8 @@
   ════════════════════════ -->
 
   <div class="step step-s">
-    <span class="step-tag">S — 증폭 · 엄마 쉼 + 아이 반응</span>
-    <h2>애가 이거 하나면<br>엄마를 안 찾아요</h2>
+    <span class="step-tag">S — 증폭 · 엄마 쉼</span>
+    <h2>애가 이거 하나면<br>엄마를<br>안 찾아요</h2>
     <p class="step-sub">아이가 푹 빠진 만큼 엄마 손이 자유로워집니다. 풀빌라 저녁 준비할 때, 놀이터 벤치에 앉아 있을 때.</p>
     <ul class="voc-list">
       <li>"에너지 쭉쭉 빠져서 낮잠까지 푹!"</li>
@@ -363,9 +396,9 @@
     </ul>
   </div>
 
-  <div class="img-box mid">
+  <div class="img-box mid tone-s">
     <span class="img-label">증폭컷 — 엄마의 쉼</span>
-    <span class="img-desc">놀이터 · 물놀이장 벤치에 앉은 엄마 (여유 표정)<br>아이는 신나게 물총 쏘는 장면<br>"아이는 저기, 엄마는 여기" 구도</span>
+    <span class="img-desc">놀이터 벤치에 앉은 엄마 (여유 표정)<br>아이는 신나게 물총 · "아이는 저기, 엄마는 여기" 구도</span>
   </div>
 
 
@@ -374,8 +407,8 @@
   ════════════════════════ -->
 
   <div class="step step-b">
-    <span class="step-tag">B — 전환 · 우리 상품 등장</span>
-    <h2>건전지 없이, 물만 채우면<br>5세도 혼자 쏩니다</h2>
+    <span class="step-tag">B — 전환 · 상품 등장</span>
+    <h2>건전지 없이,<br>물만 채우면<br>5세도 혼자 쏩니다</h2>
     <p class="step-sub">충전 필요 없고, 건전지 안 갑니다. 펌프 한 번 당기면 회오리처럼 퍼집니다. KC 인증 완료.</p>
     <ul class="voc-list">
       <li>"건전지 없이 물만 채워서 바로 쓸 수 있어요"</li>
@@ -391,27 +424,27 @@
     </div>
   </div>
 
-  <div class="img-box mid">
+  <div class="img-box mid tone-b">
     <span class="img-label">전환컷 — 제품 클로즈업</span>
-    <span class="img-desc">블루 + 핑크 2개 나란히 · 흰 배경 누끼<br>ABS · KC 인증 마크 오버레이<br>5세 아이가 혼자 펌프 당기는 시연 컷</span>
+    <span class="img-desc">블루 + 핑크 2개 나란히 · 흰 배경 누끼<br>5세 아이가 혼자 펌프 당기는 시연 컷</span>
   </div>
 
-  <!-- LED 야간 — 독점 섹션 -->
+  <!-- LED 야간 독점 섹션 -->
   <div class="led-block">
-    <p class="led-tag">경쟁자 8곳 전부 없음 — 우리만</p>
+    <span class="led-tag">경쟁자 8곳 전부 없음 — 우리만</span>
     <h3>낮엔 애 손에,<br>밤엔 엄마 손에</h3>
     <p>가로등 아래에서 물을 발사하면 — 폭죽처럼 빛이 퍼집니다.<br>LED 탑재 물총, 시장에 우리뿐입니다.</p>
     <span class="led-badge">LED 탑재 · 경쟁자 0곳</span>
   </div>
 
-  <div class="img-box tall dark">
+  <div class="img-box tall tone-dark">
     <span class="img-label">LED 야간 메인 비주얼</span>
-    <span class="img-desc">어두운 배경 · 가로등 아래 야간 분사<br>빛 궤적이 퍼지는 장면 (폭죽 같은 이미지)<br>GIF 또는 영상 스틸 — 이 컷이 핵심</span>
+    <span class="img-desc">어두운 배경 · 가로등 아래 야간 분사<br>빛 궤적이 폭죽처럼 퍼지는 장면<br>GIF 또는 영상 스틸 — 이 컷이 핵심</span>
   </div>
 
-  <div class="step step-b" style="border-left-color:#e8a000;">
-    <span class="step-tag" style="background:#fff8e1; color:#b45309;">블루 + 핑크 · 색 지정</span>
-    <h2 style="color:#b45309;">색 골라 드려요<br>(랜덤 아님)</h2>
+  <div class="step step-b">
+    <span class="step-tag" style="background:#854d0e;">블루 + 핑크 · 색 지정</span>
+    <h2>색 골라 드려요<br>(랜덤 아님)</h2>
     <p class="step-sub">블루 1개 + 핑크 1개 고정 구성입니다. 처음부터 각자 것 — 형제도 안 싸우고, 친구랑도.</p>
     <div class="badge-row">
       <span class="badge" style="color:#1a5cb5; border-color:#1a5cb5;">블루</span>
@@ -420,9 +453,9 @@
     </div>
   </div>
 
-  <div class="img-box short">
+  <div class="img-box short tone-b">
     <span class="img-label">누끼컷 — 블루 + 핑크 2개</span>
-    <span class="img-desc">흰 배경에 블루·핑크 나란히<br>"COLOR FIXED — NOT RANDOM" 오버레이</span>
+    <span class="img-desc">흰 배경에 블루·핑크 나란히 · "COLOR FIXED" 오버레이</span>
   </div>
 
 
@@ -431,35 +464,34 @@
   ════════════════════════ -->
 
   <div class="step step-r">
-    <span class="step-tag">R — 가치 · 엄마 쉼 + 인싸 + 공유</span>
-    <h2>물 있는 곳에선<br>엄빠들이 쉴 수 있어요</h2>
+    <span class="step-tag">R — 가치 · 경험</span>
+    <h2>물 있는 곳에선<br>엄빠들이<br>쉴 수 있어요</h2>
     <p class="step-sub">아이가 신나서 노는 동안, 엄마는 드디어 앉을 수 있습니다. 목욕도, 놀이터도, 수영장도.</p>
     <ul class="voc-list">
       <li>"물있는곳에서 진짜 엄빠들은 쉴수있다는 커다란장점"</li>
       <li>"목욕 거부하던 아이도 이젠 먼저 들어가요"</li>
       <li>"수영장에서 인싸 수준이였어요 다른 물총은 처다도 안보더라구요"</li>
     </ul>
+    <ul class="feat-list" style="margin-top:28px;">
+      <li>
+        <span class="fnum">+</span>
+        <div><strong>어른도 같이 즐깁니다</strong><br><span style="color:#3d6457; font-size:14px;">"처음엔 애 주려고 샀는데 제가 더 신나서 쏘고 있었어요"</span></div>
+      </li>
+      <li>
+        <span class="fnum">+</span>
+        <div><strong>한 번 채우면 한참 — "물 또 넣어줘" 덜 불려다님</strong><br><span style="color:#3d6457; font-size:14px;">대용량 설계. 반복 보충 횟수가 줄어들어 엄마가 쉴 수 있습니다.</span></div>
+      </li>
+      <li>
+        <span class="fnum">+</span>
+        <div><strong>퍼져서 맞아도 안 아픔</strong><br><span style="color:#3d6457; font-size:14px;">직선 집중 분사가 아니라 퍼지는 물꽃 분사. 어린 동생이 맞아도 괜찮습니다.</span></div>
+      </li>
+    </ul>
   </div>
 
-  <div class="img-box mid">
+  <div class="img-box mid tone-r">
     <span class="img-label">가치컷 — 실사용 씬</span>
-    <span class="img-desc">아파트 수영장 · 공원 · 워터파크에서 아이들이 신나게 물총 쏘는 장면<br>주변 아이들도 몰려보는 인싸 구도<br>엄마는 편안하게 지켜보는 씬 포함</span>
+    <span class="img-desc">아파트 수영장 · 공원 · 워터파크에서 아이들이 신나게 쏘는 장면<br>주변 아이들도 몰려보는 인싸 구도</span>
   </div>
-
-  <ul class="feat-list" style="padding: 0 44px 40px; border-bottom: 1px solid #f0f0f0;">
-    <li>
-      <span class="fnum">+</span>
-      <div><strong>어른도 같이 즐깁니다</strong><br><span style="color:#666; font-size:14px;">"처음엔 애 주려고 샀는데 제가 더 신나서 쏘고 있었어요" — 어른도 무조건 재밌습니다.</span></div>
-    </li>
-    <li>
-      <span class="fnum">+</span>
-      <div><strong>한 번 채우면 한참 — "물 또 넣어줘" 덜 불려다님</strong><br><span style="color:#666; font-size:14px;">대용량 설계. 반복 보충 횟수가 줄어들어 엄마가 쉴 수 있습니다.</span></div>
-    </li>
-    <li>
-      <span class="fnum">+</span>
-      <div><strong>퍼져서 맞아도 안 아픔</strong><br><span style="color:#666; font-size:14px;">직선 집중 분사가 아니라 퍼지는 물꽃 분사. 어린 동생이 맞아도 괜찮습니다.</span></div>
-    </li>
-  </ul>
 
 
   <!-- ════════════════════════
@@ -467,8 +499,8 @@
   ════════════════════════ -->
 
   <div class="step step-o">
-    <span class="step-tag">O — 증거 · 내구 반박 + 실사용</span>
-    <h2>물놀이마다 챙겨갔는데<br>둘 다 부서진 곳 없이 왔어요</h2>
+    <span class="step-tag">O — 증거 · 내구 반박</span>
+    <h2>물놀이마다 챙겨갔는데<br>부서진 곳 없이<br>왔어요</h2>
     <p class="step-sub">내구성 걱정부터 하시는 분들께 — 직접 올립니다.</p>
     <ul class="voc-list">
       <li>"물놀이마다 챙겨갔는데 둘 다 부서진 곳없이 잘 놀고 가지고왔어요"</li>
@@ -476,22 +508,21 @@
     </ul>
   </div>
 
-  <div class="img-box mid">
+  <div class="img-box mid tone-o">
     <span class="img-label">리뷰 스크린샷 — 증거</span>
-    <span class="img-desc">실제 쿠팡 구매 리뷰 스크린샷 4~6개<br>★5 장문 리뷰 + 아이 사진 포함 리뷰 우선<br>내구성 걱정 → 해소 흐름의 리뷰 선별</span>
+    <span class="img-desc">실제 쿠팡 구매 리뷰 스크린샷 4~6개<br>★5 장문 리뷰 + 아이 사진 포함 리뷰 우선</span>
   </div>
 
-  <div class="step step-o" style="border-top: none;">
+  <div class="step step-o" style="padding-top: 0;">
     <span class="step-tag">낮은 별점도 직접 올립니다</span>
-    <h2 style="font-size:18px; color:#3730a3;">걱정하시는 분 있어서<br>직접 올립니다</h2>
-    <ul class="voc-list">
-      <li style="border-left-color:#ef4444; background:#fff5f5; font-style:normal;">
+    <ul class="voc-list" style="margin-top:0;">
+      <li style="border-left-color:#dc2626; font-style:normal;">
         ★★☆☆☆ "처음에 기름 냄새가 나서 당황했어요."<br>
-        <span style="color:#b45309; font-size:13px; font-style:normal;">→ 출하 전 윤활유 잔류입니다. 물 2~3회 채워 비우면 해소됩니다. 안내 카드 동봉.</span>
+        <span style="color:#6d28d9; font-size:13px; font-weight:700;">→ 출하 전 윤활유 잔류입니다. 물 2~3회 채워 비우면 해소됩니다. 안내 카드 동봉.</span>
       </li>
-      <li style="border-left-color:#ef4444; background:#fff5f5; font-style:normal;">
+      <li style="border-left-color:#dc2626; font-style:normal;">
         ★★★☆☆ "전투용으로 샀는데 물줄기가 퍼져서 아쉬웠어요."<br>
-        <span style="color:#b45309; font-size:13px; font-style:normal;">→ 이 물총은 물이 '퍼지는' 분수 감성용입니다. 직선 물총 싸움보다 회오리 물꽃 비주얼이 목적입니다.</span>
+        <span style="color:#6d28d9; font-size:13px; font-weight:700;">→ 이 물총은 물이 '퍼지는' 분수 감성용입니다. 회오리 물꽃 비주얼이 목적입니다.</span>
       </li>
     </ul>
   </div>
@@ -502,7 +533,7 @@
   ════════════════════════ -->
 
   <div class="step step-offer">
-    <span class="step-tag">→ 제안 · 가격 + 시즌 + 배송</span>
+    <span class="step-tag">→ 제안 · 가격 + 배송</span>
     <h2>올여름, 지금 사야<br>이번 여름에 씁니다</h2>
     <p class="step-sub">5월에 사야 6·7월 물놀이장 시즌을 온전히 씁니다. 로켓배송으로 내일 받고, 이번 주말부터.</p>
     <ul class="voc-list">
@@ -527,19 +558,19 @@
     </ul>
   </div>
 
-  <div class="img-box mid">
+  <div class="img-box mid tone-dark">
     <span class="img-label">아웃트로 비주얼</span>
-    <span class="img-desc">공원·물놀이장 저녁 씬 (가로등 아래)<br>블루 + 핑크 2개 + LED 빛 궤적<br>"올여름 제대로" 감성</span>
+    <span class="img-desc">공원·물놀이장 저녁 씬 · 가로등 아래<br>블루 + 핑크 2개 + LED 빛 궤적 · "올여름 제대로" 감성</span>
   </div>
 
 
   <!-- ════════════════════════
-       FAQ / 스펙
+       FAQ
   ════════════════════════ -->
 
-  <div class="step" style="border-left: 4px solid #e4e4e7;">
-    <span class="step-tag" style="background:#f4f4f5; color:#666;">FAQ</span>
-    <h2 style="color:#333; font-size:20px;">자주 묻는 것들</h2>
+  <div class="step step-faq">
+    <span class="step-tag">FAQ</span>
+    <h2>자주 묻는 것들</h2>
     <table class="spec-table">
       <tr><th>몇 살부터 쓸 수 있나요?</th><td>5세 이상 권장. 5세도 혼자 펌프 당깁니다. 3~4세 유아는 부모가 함께.</td></tr>
       <tr><th>전동 물총 금지 구역에서도 되나요?</th><td>네. 수동 펌프식이라 전동 제한 구역에서도 사용 가능합니다.</td></tr>
@@ -550,7 +581,7 @@
   </div>
 
   <footer class="page-footer">
-    <span style="font-family:'JetBrains Mono',monospace;">2026-05-13 &nbsp;by 차드</span>
+    <span>2026-05-13 &nbsp;by 차드 · Apple typo × Magic Spoon color v3</span>
   </footer>
 
 </div>
