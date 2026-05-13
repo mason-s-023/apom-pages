@@ -3,32 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>분수물총 P4 마케팅 원페이지 — 2026-05-13</title>
+<title>분수물총 기획서 — 2026-05-13</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 /* ─── APOM Design Tokens ─────────────────────────────── */
 :root {
-  /* surfaces */
   --background: #FFFFFF;
   --surface: #FFFFFF;
   --surface-subtle: #F7F6F3;
-  --surface-elevated: #FFFFFF;
   --border: #E8E7E3;
   --border-subtle: #EDECEA;
-
-  /* text */
   --text-primary: #1A1A19;
   --text-secondary: #5A5A56;
   --text-muted: #8B8B85;
-
-  /* primary (indigo) */
   --primary: #4F46E5;
-  --primary-hover: #4338CA;
   --primary-subtle: #EEF2FF;
   --on-primary: #FFFFFF;
-
-  /* status */
   --success: #16A34A;
   --success-subtle: #DCFCE7;
   --on-success-subtle: #166534;
@@ -41,25 +32,16 @@
   --info: #2563EB;
   --info-subtle: #DBEAFE;
   --on-info-subtle: #1E40AF;
-
-  /* confidence */
   --confidence-s: #16A34A;
   --confidence-a: #2563EB;
   --confidence-b: #D97706;
   --confidence-c: #6B7280;
-
-  /* shadows */
   --shadow-sm: 0 1px 2px rgba(0,0,0,.04), 0 1px 3px rgba(0,0,0,.06);
   --shadow-md: 0 2px 8px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.08);
-
-  /* radii */
   --rounded-sm: 4px;
   --rounded-md: 8px;
   --rounded-lg: 12px;
-  --rounded-xl: 16px;
   --rounded-full: 9999px;
-
-  /* spacing */
   --sp-xxs: 4px;
   --sp-xs: 8px;
   --sp-sm: 12px;
@@ -74,7 +56,7 @@
 
 body {
   font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.6;
   color: var(--text-primary);
@@ -97,33 +79,21 @@ section {
 section:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
 
 /* ─── Typography ──────────────────────────────────────── */
-h1 {
-  font-size: 24px; font-weight: 700; line-height: 1.3;
-  letter-spacing: -0.01em; color: var(--text-primary);
-}
-h2 {
-  font-size: 20px; font-weight: 600; line-height: 1.35;
-  color: var(--text-primary); margin-bottom: var(--sp-lg);
-}
-h3 {
-  font-size: 16px; font-weight: 600; line-height: 1.4;
-  color: var(--text-primary);
-}
-.display {
-  font-size: 32px; font-weight: 700; line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-.body-sm { font-size: 13px; line-height: 1.5; }
-.label { font-size: 13px; font-weight: 500; line-height: 1.4; }
-.label-sm { font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: 0.01em; }
+h1 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; }
+h2 { font-size: 22px; font-weight: 600; line-height: 1.35; margin-bottom: var(--sp-lg); }
+h3 { font-size: 18px; font-weight: 600; line-height: 1.4; }
+.display { font-size: 34px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+.body-sm { font-size: 15px; line-height: 1.5; }
+.label { font-size: 15px; font-weight: 500; line-height: 1.4; }
+.label-sm { font-size: 14px; font-weight: 500; line-height: 1.4; letter-spacing: 0.01em; }
 .text-secondary { color: var(--text-secondary); }
 .text-muted { color: var(--text-muted); }
 
 /* ─── Badges ──────────────────────────────────────────── */
 .badge {
   display: inline-flex; align-items: center; gap: 4px;
-  padding: 2px 8px;
-  font-size: 12px; font-weight: 500; line-height: 1.4;
+  padding: 2px 10px;
+  font-size: 14px; font-weight: 500; line-height: 1.4;
   border-radius: var(--rounded-full);
 }
 .badge-proceed { background: var(--success-subtle); color: var(--on-success-subtle); }
@@ -133,8 +103,8 @@ h3 {
 
 .conf-badge {
   display: inline-flex; align-items: center;
-  padding: 2px 6px;
-  font-size: 12px; font-weight: 500;
+  padding: 2px 7px;
+  font-size: 14px; font-weight: 600;
   border-radius: var(--rounded-sm);
 }
 .conf-s { background: var(--success-subtle); color: var(--on-success-subtle); }
@@ -142,34 +112,11 @@ h3 {
 .conf-b { background: var(--warning-subtle); color: var(--on-warning-subtle); }
 .conf-c { background: var(--surface-subtle); color: var(--text-primary); }
 
-/* ─── Cards ───────────────────────────────────────────── */
-.card {
-  background: var(--surface);
-  border-radius: var(--rounded-lg);
-  padding: var(--sp-lg);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 150ms ease;
-}
-.card:hover { box-shadow: var(--shadow-md); }
-
-.card-ai {
-  background: var(--primary-subtle);
-  border-radius: var(--rounded-lg);
-  padding: var(--sp-md);
-}
-
 /* ─── Header ──────────────────────────────────────────── */
-.page-header {
-  padding: var(--sp-xxl) 0 var(--sp-xl);
-}
+.page-header { padding: var(--sp-xxl) 0 var(--sp-xl); }
 .page-header-meta {
   display: flex; align-items: center; gap: var(--sp-sm);
-  margin-bottom: var(--sp-sm);
-  flex-wrap: wrap;
-}
-.page-header h1 { margin-bottom: var(--sp-xs); }
-.page-header .subtitle {
-  color: var(--text-secondary); font-size: 16px; line-height: 1.6;
+  margin-bottom: var(--sp-sm); flex-wrap: wrap;
 }
 .header-divider {
   height: 2px;
@@ -178,133 +125,108 @@ h3 {
   margin-top: var(--sp-xl);
 }
 
-/* ─── Product Nature — bar chart cards ───────────────── */
-.nature-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--sp-md);
-}
-.nature-card {
+/* ─── Trait List (상품성격) ───────────────────────────── */
+.trait-list { display: flex; flex-direction: column; gap: var(--sp-sm); }
+.trait-row {
   background: var(--surface);
-  border-radius: var(--rounded-lg);
-  padding: var(--sp-md) var(--sp-md) var(--sp-sm);
+  border-radius: var(--rounded-md);
+  padding: var(--sp-sm) var(--sp-md);
   box-shadow: var(--shadow-sm);
-  border-left: 4px solid transparent;
-  transition: box-shadow 150ms ease;
+  display: grid;
+  grid-template-columns: 76px 1fr 48px;
+  grid-template-rows: auto auto;
+  gap: 6px var(--sp-sm);
+  align-items: center;
+  border-left: 3px solid var(--border);
 }
-.nature-card:hover { box-shadow: var(--shadow-md); }
-.nature-card.exp  { border-left-color: var(--confidence-s); }
-.nature-card.eco  { border-left-color: var(--confidence-a); }
-.nature-card.sym  { border-left-color: var(--confidence-b); }
-.nature-card.func { border-left-color: var(--confidence-c); }
+.trait-row.exp  { border-left-color: var(--confidence-s); }
+.trait-row.eco  { border-left-color: var(--confidence-a); }
+.trait-row.sym  { border-left-color: var(--confidence-b); }
+.trait-row.func { border-left-color: var(--confidence-c); }
 
-.nature-header {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: var(--sp-sm);
+.trait-meta { display: flex; align-items: center; gap: 6px; grid-row: 1; grid-column: 1; }
+.trait-name { font-size: 16px; font-weight: 700; }
+
+.trait-bar-bg {
+  height: 7px; background: var(--border-subtle);
+  border-radius: var(--rounded-full); overflow: hidden;
+  grid-row: 1; grid-column: 2;
 }
-.nature-title { font-size: 16px; font-weight: 600; }
-.nature-pct {
-  font-size: 22px; font-weight: 700;
+.trait-bar-fill { height: 100%; border-radius: var(--rounded-full); }
+.trait-row.exp  .trait-bar-fill { background: var(--confidence-s); }
+.trait-row.eco  .trait-bar-fill { background: var(--confidence-a); }
+.trait-row.sym  .trait-bar-fill { background: var(--confidence-b); }
+.trait-row.func .trait-bar-fill { background: var(--confidence-c); }
+
+.trait-pct {
   font-family: 'JetBrains Mono', monospace;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
+  font-size: 17px; font-weight: 700; text-align: right;
+  grid-row: 1; grid-column: 3;
 }
-.nature-card.exp  .nature-pct { color: var(--confidence-s); }
-.nature-card.eco  .nature-pct { color: var(--confidence-a); }
-.nature-card.sym  .nature-pct { color: var(--confidence-b); }
-.nature-card.func .nature-pct { color: var(--confidence-c); }
+.trait-row.exp  .trait-pct { color: var(--confidence-s); }
+.trait-row.eco  .trait-pct { color: var(--confidence-a); }
+.trait-row.sym  .trait-pct { color: var(--confidence-b); }
+.trait-row.func .trait-pct { color: var(--confidence-c); }
 
-.nature-bar-track {
-  height: 5px;
-  background: var(--border-subtle);
-  border-radius: var(--rounded-full);
-  margin: var(--sp-xs) 0;
-  overflow: hidden;
+.trait-desc {
+  font-size: 14px; color: var(--text-secondary);
+  grid-row: 2; grid-column: 1 / -1; line-height: 1.4;
 }
-.nature-bar-fill {
-  height: 100%;
-  border-radius: var(--rounded-full);
-  transition: width 0.6s ease;
-}
-.nature-card.exp  .nature-bar-fill { background: var(--confidence-s); }
-.nature-card.eco  .nature-bar-fill { background: var(--confidence-a); }
-.nature-card.sym  .nature-bar-fill { background: var(--confidence-b); }
-.nature-card.func .nature-bar-fill { background: var(--confidence-c); }
 
-.nature-desc { color: var(--text-secondary); font-size: 13px; line-height: 1.5; }
-
-/* ─── Competitor insight ──────────────────────────────── */
+/* ─── Competitor Box ──────────────────────────────────── */
 .insight-box {
   background: var(--primary-subtle);
   border: 1px solid var(--primary);
   border-radius: var(--rounded-lg);
   padding: var(--sp-lg);
-  display: flex; gap: var(--sp-md); align-items: flex-start;
 }
-.insight-icon {
-  font-size: 24px; flex-shrink: 0;
-  margin-top: 2px;
-}
-.insight-tag {
-  font-size: 12px; font-weight: 600;
-  color: var(--primary);
-  letter-spacing: 0;
-  text-transform: none;
-  margin-bottom: var(--sp-xs);
-}
-.insight-point {
-  font-size: 18px; font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.3;
-  margin-bottom: var(--sp-xs);
-}
-.insight-sub { color: var(--text-secondary); font-size: 14px; }
+.insight-point { font-size: 20px; font-weight: 700; color: var(--text-primary); line-height: 1.3; margin-bottom: var(--sp-xs); }
+.insight-sub { color: var(--text-secondary); font-size: 16px; line-height: 1.6; }
 
-/* ─── Review Analysis ─────────────────────────────────── */
-.review-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--sp-md);
-}
-.review-col {
-  background: var(--surface);
-  border-radius: var(--rounded-lg);
-  padding: var(--sp-lg);
-  box-shadow: var(--shadow-sm);
-}
-.review-col-title {
-  font-size: 14px; font-weight: 600;
+/* ─── Review Table ────────────────────────────────────── */
+.review-section-title {
+  font-size: 15px; font-weight: 600;
   display: flex; align-items: center; gap: var(--sp-xs);
-  margin-bottom: var(--sp-md);
-  padding-bottom: var(--sp-sm);
-  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: var(--sp-sm);
+  padding-bottom: var(--sp-xs);
+  border-bottom: 2px solid var(--border-subtle);
 }
-.review-col-title.pos { color: var(--on-success-subtle); }
-.review-col-title.neg { color: var(--on-danger-subtle); }
+.review-section-title.pos { color: var(--on-success-subtle); }
+.review-section-title.neg { color: var(--on-danger-subtle); }
 
-.review-item {
-  display: flex; align-items: flex-start; gap: var(--sp-sm);
-  padding: var(--sp-xs) 0;
+.review-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 14px; margin-bottom: var(--sp-lg);
+}
+.review-table th {
+  background: var(--surface-subtle);
+  font-weight: 600; padding: 7px 10px;
+  text-align: left; border-bottom: 1px solid var(--border);
+  color: var(--text-secondary); white-space: nowrap;
+}
+.review-table th:nth-child(1) { width: 28px; text-align: center; }
+.review-table th:nth-child(3),
+.review-table th:nth-child(4) { text-align: right; width: 64px; }
+.review-table td {
+  padding: 8px 10px;
   border-bottom: 1px solid var(--border-subtle);
-  font-size: 13px; color: var(--text-primary);
+  vertical-align: middle;
 }
-.review-item:last-child { border-bottom: none; }
-.review-rank {
-  font-size: 12px; font-weight: 600;
+.review-table tr:last-child td { border-bottom: none; }
+.review-table .rk {
   font-family: 'JetBrains Mono', monospace;
-  width: 20px; flex-shrink: 0; text-align: right;
-  margin-top: 1px;
+  font-weight: 700; font-size: 13px; text-align: center;
 }
-.pos .review-rank { color: var(--confidence-s); }
-.neg .review-rank { color: var(--danger); }
+.review-table .rk.pos { color: var(--confidence-s); }
+.review-table .rk.neg { color: var(--danger); }
+.review-table .lbl { font-size: 14px; line-height: 1.4; }
+.review-table .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; text-align: right;
+  color: var(--text-secondary); white-space: nowrap;
+}
 
 /* ─── Persona ─────────────────────────────────────────── */
-.persona-wrap {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: var(--sp-lg);
-  align-items: start;
-}
 .persona-card {
   background: var(--surface);
   border-radius: var(--rounded-lg);
@@ -312,71 +234,17 @@ h3 {
   box-shadow: var(--shadow-sm);
 }
 .persona-avatar {
-  width: 56px; height: 56px;
-  border-radius: var(--rounded-full);
+  width: 56px; height: 56px; border-radius: var(--rounded-full);
   background: var(--primary-subtle);
   display: flex; align-items: center; justify-content: center;
   font-size: 28px; margin-bottom: var(--sp-sm);
 }
-.persona-name {
-  font-size: 18px; font-weight: 700; margin-bottom: 2px;
-}
-.persona-sub {
-  font-size: 13px; color: var(--text-secondary); margin-bottom: var(--sp-md);
-}
-.persona-row {
-  display: flex; flex-direction: column; gap: var(--sp-xs);
-}
-.persona-kv {
-  display: flex; gap: var(--sp-xs);
-  font-size: 13px;
-}
-.persona-k { font-weight: 500; color: var(--text-secondary); min-width: 60px; flex-shrink: 0; }
+.persona-name { font-size: 20px; font-weight: 700; margin-bottom: 2px; }
+.persona-sub { font-size: 15px; color: var(--text-secondary); margin-bottom: var(--sp-md); }
+.persona-row { display: flex; flex-direction: column; gap: var(--sp-xs); }
+.persona-kv { display: flex; gap: var(--sp-xs); font-size: 15px; }
+.persona-k { font-weight: 500; color: var(--text-secondary); min-width: 72px; flex-shrink: 0; }
 .persona-v { color: var(--text-primary); }
-
-.journey-timeline {
-  background: var(--surface);
-  border-radius: var(--rounded-lg);
-  padding: var(--sp-lg);
-  box-shadow: var(--shadow-sm);
-}
-.journey-title {
-  font-size: 14px; font-weight: 600;
-  margin-bottom: var(--sp-md);
-  color: var(--text-secondary);
-}
-.journey-steps { display: flex; flex-direction: column; gap: 0; }
-.journey-step {
-  display: flex; gap: var(--sp-sm); align-items: flex-start;
-  padding: var(--sp-sm) 0;
-  position: relative;
-}
-.journey-step:not(:last-child)::before {
-  content: '';
-  position: absolute;
-  left: 15px; top: 34px;
-  width: 2px; height: calc(100% - 10px);
-  background: var(--border-subtle);
-}
-.journey-dot {
-  width: 32px; height: 32px; flex-shrink: 0;
-  border-radius: var(--rounded-full);
-  background: var(--surface-subtle);
-  border: 2px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; z-index: 1;
-}
-.journey-step.active .journey-dot {
-  background: var(--primary-subtle);
-  border-color: var(--primary);
-}
-.journey-step.risk .journey-dot {
-  background: var(--danger-subtle);
-  border-color: var(--danger);
-}
-.journey-content { padding-top: 4px; }
-.journey-label { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
-.journey-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
 
 /* ─── USP ─────────────────────────────────────────────── */
 .usp-grid {
@@ -390,90 +258,50 @@ h3 {
   padding: var(--sp-lg);
   box-shadow: var(--shadow-sm);
   border-top: 3px solid var(--primary);
-  transition: box-shadow 150ms ease;
   text-align: center;
 }
-.usp-card:hover { box-shadow: var(--shadow-md); }
-.usp-icon {
-  font-size: 32px; margin-bottom: var(--sp-sm);
-  display: block;
-}
-.usp-title {
-  font-size: 15px; font-weight: 700;
-  color: var(--primary);
-  margin-bottom: var(--sp-xs);
-  line-height: 1.3;
-}
-.usp-desc {
-  font-size: 13px; color: var(--text-secondary);
-  line-height: 1.5;
-}
+.usp-icon { font-size: 32px; margin-bottom: var(--sp-sm); display: block; }
+.usp-title { font-size: 17px; font-weight: 700; color: var(--primary); margin-bottom: var(--sp-xs); line-height: 1.3; }
+.usp-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
 
 /* ─── PASBRO Story ────────────────────────────────────── */
-.pasbro-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
+.pasbro-steps { display: flex; flex-direction: column; gap: 0; }
 .pasbro-step {
-  display: flex;
-  gap: var(--sp-lg);
-  align-items: stretch;
-  position: relative;
+  display: flex; gap: var(--sp-lg);
+  align-items: stretch; position: relative;
 }
 .pasbro-step:not(:last-child)::after {
   content: '';
-  position: absolute;
-  left: 23px; top: 48px;
-  width: 2px;
-  height: calc(100% - 8px);
+  position: absolute; left: 23px; top: 48px;
+  width: 2px; height: calc(100% - 8px);
   background: var(--border-subtle);
 }
 .pasbro-left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-  width: 48px;
+  display: flex; flex-direction: column;
+  align-items: center; flex-shrink: 0; width: 48px;
 }
 .pasbro-circle {
-  width: 48px; height: 48px;
-  border-radius: var(--rounded-full);
+  width: 48px; height: 48px; border-radius: var(--rounded-full);
   display: flex; align-items: center; justify-content: center;
   font-size: 18px; font-weight: 700;
   flex-shrink: 0; z-index: 1;
   box-shadow: var(--shadow-sm);
   font-family: 'JetBrains Mono', monospace;
 }
-.pasbro-content {
-  flex: 1;
-  padding: 0 0 var(--sp-xl);
-}
-.pasbro-label {
-  font-size: 11px; font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0;
-  margin-bottom: 2px;
-}
-.pasbro-title {
-  font-size: 16px; font-weight: 700;
-  margin-bottom: var(--sp-sm);
-  line-height: 1.3;
-}
-.pasbro-body {
+.pasbro-content { flex: 1; padding: 0 0 var(--sp-xl); }
+.pasbro-label { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 2px; }
+.pasbro-title { font-size: 18px; font-weight: 700; margin-bottom: var(--sp-sm); line-height: 1.3; }
+
+/* quote list */
+.quote-list { list-style: none; display: flex; flex-direction: column; gap: 8px; padding: 0; }
+.quote-list li {
+  font-size: 15px; line-height: 1.5;
+  padding: 9px 14px;
   background: var(--surface-subtle);
   border-radius: var(--rounded-md);
-  padding: var(--sp-md);
-  font-size: 14px; line-height: 1.7;
-  color: var(--text-primary);
-}
-.pasbro-quote {
-  font-size: 13px; color: var(--text-secondary);
   border-left: 3px solid var(--border);
-  padding-left: var(--sp-sm);
-  margin-top: var(--sp-sm);
+  color: var(--text-primary);
   font-style: italic;
-  line-height: 1.6;
 }
 
 /* Step colours */
@@ -499,133 +327,46 @@ h3 {
   padding-top: var(--sp-lg);
   border-top: 1px solid var(--border-subtle);
   color: var(--text-muted);
-  font-size: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--sp-sm);
-}
-
-/* ─── Review Table ────────────────────────────────────── */
-.review-section-title {
-  font-size: 13px; font-weight: 600;
-  display: flex; align-items: center; gap: var(--sp-xs);
-  margin-bottom: var(--sp-sm);
-  padding-bottom: var(--sp-xs);
-  border-bottom: 2px solid var(--border-subtle);
-}
-.review-section-title.pos { color: var(--on-success-subtle); }
-.review-section-title.neg { color: var(--on-danger-subtle); }
-
-.review-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 12px;
-  margin-bottom: var(--sp-lg);
-}
-.review-table th {
-  background: var(--surface-subtle);
-  font-weight: 600;
-  padding: 6px 8px;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-  color: var(--text-secondary);
-  white-space: nowrap;
-}
-.review-table th:nth-child(1) { width: 24px; text-align: center; }
-.review-table th:nth-child(3),
-.review-table th:nth-child(4),
-.review-table th:nth-child(5) { text-align: right; width: 52px; }
-.review-table td {
-  padding: 7px 8px;
-  border-bottom: 1px solid var(--border-subtle);
-  vertical-align: middle;
-}
-.review-table tr:last-child td { border-bottom: none; }
-.review-table .rk {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-  font-size: 11px;
-  text-align: center;
-}
-.review-table .rk.pos { color: var(--confidence-s); }
-.review-table .rk.neg { color: var(--danger); }
-.review-table .label { font-size: 12px; line-height: 1.4; }
-.review-table .num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 14px;
   text-align: right;
-  color: var(--text-secondary);
-  white-space: nowrap;
 }
 
 /* ─── Print ───────────────────────────────────────────── */
 @media print {
   .page-wrap { padding: 20px; }
-  .card:hover, .nature-card:hover, .usp-card:hover { box-shadow: var(--shadow-sm); }
   section { page-break-inside: avoid; }
 }
 
 /* ─── Responsive ──────────────────────────────────────── */
 @media (max-width: 640px) {
-  /* layout */
-  .page-wrap {
-    padding: var(--sp-md) var(--sp-sm);
-    max-width: 100%;
-  }
-  section {
-    padding-top: var(--sp-xl);
-    margin-top: var(--sp-xl);
-  }
+  .page-wrap { padding: var(--sp-md) var(--sp-sm); max-width: 100%; }
+  section { padding-top: var(--sp-xl); margin-top: var(--sp-xl); }
+  .page-header { padding: var(--sp-xl) 0 var(--sp-lg); }
+  .display { font-size: 24px; }
+  h2 { font-size: 19px; margin-bottom: var(--sp-md); }
 
-  /* header */
-  .page-header {
-    padding: var(--sp-xl) 0 var(--sp-lg);
-  }
-  .display { font-size: 22px; }
-  .page-header h1 { font-size: 15px; }
-  h2 { font-size: 17px; margin-bottom: var(--sp-md); }
+  /* trait list */
+  .trait-row { grid-template-columns: 68px 1fr 44px; }
 
-  /* product nature */
-  .nature-grid   { grid-template-columns: 1fr; }
-  .nature-pct    { font-size: 24px; }
-
-  /* competitor insight */
-  .insight-box   { flex-direction: column; gap: var(--sp-sm); }
-  .insight-icon  { font-size: 20px; }
-  .insight-point { font-size: 16px; }
-
-  /* review */
-  .review-grid   { grid-template-columns: 1fr; }
-  .review-col    { padding: var(--sp-md); }
-
-  /* persona */
-  .persona-wrap  { grid-template-columns: 1fr; }
-  .persona-card  { padding: var(--sp-md); }
-  .journey-timeline { padding: var(--sp-md); }
+  /* competitor */
+  .insight-box { padding: var(--sp-md); }
 
   /* usp */
-  .usp-grid      { grid-template-columns: 1fr; }
-  .usp-card      { padding: var(--sp-md); text-align: left; }
-  .usp-icon      { display: inline; margin-right: 4px; font-size: 24px; }
+  .usp-grid { grid-template-columns: 1fr; }
+  .usp-card { text-align: left; padding: var(--sp-md); }
+  .usp-icon { display: inline; margin-right: 4px; font-size: 24px; }
 
   /* pasbro */
   .pasbro-step   { gap: var(--sp-xs); }
-  .pasbro-circle {
-    width: 36px; height: 36px;
-    font-size: 14px;
-  }
+  .pasbro-circle { width: 36px; height: 36px; font-size: 14px; }
   .pasbro-left   { width: 36px; }
-  .pasbro-step:not(:last-child)::after {
-    left: 17px; top: 36px;
-  }
+  .pasbro-step:not(:last-child)::after { left: 17px; top: 36px; }
   .pasbro-content { padding-bottom: var(--sp-lg); }
-  .pasbro-body   { font-size: 13px; padding: var(--sp-sm); }
-  .pasbro-title  { font-size: 14px; }
+  .pasbro-title  { font-size: 16px; }
+  .quote-list li { font-size: 14px; }
 
   /* footer */
-  .page-footer   { flex-direction: column; align-items: flex-start; }
+  .page-footer { text-align: right; }
   .page-header-meta { gap: var(--sp-xs); }
 }
 </style>
@@ -648,72 +389,60 @@ h3 {
   <!-- ───────────────────────── PRODUCT NATURE ── -->
   <section>
     <h2>상품 성격 분석</h2>
-    <div class="nature-grid">
+    <div class="trait-list">
 
-      <div class="nature-card exp">
-        <div class="nature-header">
-          <span class="nature-title">경험재</span>
+      <div class="trait-row exp">
+        <div class="trait-meta">
+          <span class="trait-name">경험재</span>
           <span class="conf-badge conf-s">S</span>
         </div>
-        <div class="nature-pct">52%</div>
-        <div class="nature-bar-track">
-          <div class="nature-bar-fill" style="width:52%"></div>
-        </div>
-        <div class="nature-desc">아이 몰입 → 엄마 쉼. 감각·현장 경험이 구매 결정을 압도한다. 압도적 비중.</div>
+        <div class="trait-bar-bg"><div class="trait-bar-fill" style="width:52%"></div></div>
+        <div class="trait-pct">52%</div>
+        <div class="trait-desc">아이 몰입 → 엄마의 쉼. 감각·현장 경험이 구매 결정을 압도한다.</div>
       </div>
 
-      <div class="nature-card eco">
-        <div class="nature-header">
-          <span class="nature-title">경제재</span>
+      <div class="trait-row eco">
+        <div class="trait-meta">
+          <span class="trait-name">경제재</span>
           <span class="conf-badge conf-a">A</span>
         </div>
-        <div class="nature-pct">20%</div>
-        <div class="nature-bar-track">
-          <div class="nature-bar-fill" style="width:20%"></div>
-        </div>
-        <div class="nature-desc">1만원 안쪽. 더 싸면 더 많이 산다 — 세트 구성의 근거.</div>
+        <div class="trait-bar-bg"><div class="trait-bar-fill" style="width:20%"></div></div>
+        <div class="trait-pct">20%</div>
+        <div class="trait-desc">1만원 안쪽. 더 싸면 더 많이 산다 — 세트 구성의 근거.</div>
       </div>
 
-      <div class="nature-card sym">
-        <div class="nature-header">
-          <span class="nature-title">상징재</span>
+      <div class="trait-row sym">
+        <div class="trait-meta">
+          <span class="trait-name">상징재</span>
           <span class="conf-badge conf-b">B</span>
         </div>
-        <div class="nature-pct">15%</div>
-        <div class="nature-bar-track">
-          <div class="nature-bar-fill" style="width:15%"></div>
-        </div>
-        <div class="nature-desc">SNS · 워터파크 목격 = 발견 트리거. 인싸템 포지셔닝 기회.</div>
+        <div class="trait-bar-bg"><div class="trait-bar-fill" style="width:15%"></div></div>
+        <div class="trait-pct">15%</div>
+        <div class="trait-desc">SNS · 워터파크 목격 = 발견 트리거. 인싸템 포지셔닝 기회.</div>
       </div>
 
-      <div class="nature-card func">
-        <div class="nature-header">
-          <span class="nature-title">기능재</span>
+      <div class="trait-row func">
+        <div class="trait-meta">
+          <span class="trait-name">기능재</span>
           <span class="conf-badge conf-c">C</span>
         </div>
-        <div class="nature-pct">13%</div>
-        <div class="nature-bar-track">
-          <div class="nature-bar-fill" style="width:13%"></div>
-        </div>
-        <div class="nature-desc">내구성은 승부처가 아닌 진입요건 — 안 부서진다는 것만 증명하면 된다.</div>
+        <div class="trait-bar-bg"><div class="trait-bar-fill" style="width:13%"></div></div>
+        <div class="trait-pct">13%</div>
+        <div class="trait-desc">내구성은 진입요건 — 안 부서진다는 것만 증명하면 된다.</div>
       </div>
 
     </div>
   </section>
 
-  <!-- ─────────────────────── COMPETITOR INSIGHT ── -->
+  <!-- ─────────────────────── COMPETITOR ── -->
   <section>
     <h2>경쟁자 분석</h2>
     <div class="insight-box">
-      <div class="insight-icon">🎥</div>
-      <div>
-        <div class="insight-tag">핵심 인사이트</div>
-        <div class="insight-point">동영상이 킥이다 — 결국 조명빨</div>
-        <div class="insight-sub">
-          경쟁 상품들의 전환 핵심은 동영상 콘텐츠. 회오리·물꽃 분사를 실제로 보여줘야 한다.
-          단순 상세페이지 이미지로는 경험재의 감각을 전달할 수 없다.
-          밤 가로등 촬영 → 빛 굴절 + 물꽃 = 조명빨 극대화가 차별화 포인트.
-        </div>
+      <div class="insight-point">동영상이 킥이다 — 결국 조명빨</div>
+      <div class="insight-sub">
+        경쟁 상품들의 전환 핵심은 동영상 콘텐츠. 회오리·물꽃 분사를 실제로 보여줘야 한다.
+        단순 상세페이지 이미지로는 경험재의 감각을 전달할 수 없다.
+        밤 가로등 촬영 → 빛 굴절 + 물꽃 = 조명빨 극대화가 차별화 포인트.
       </div>
     </div>
   </section>
@@ -723,52 +452,48 @@ h3 {
     <h2>리뷰 분석</h2>
     <p class="text-muted body-sm" style="margin-bottom:var(--sp-md);">경쟁자 671건 · 고유고객 417명 기준 (★5 86.3% / ★4 9.8% / ★3↓ 3.8%)</p>
 
-    <!-- 장점 표 -->
     <div class="review-section-title pos">✅ 장점 랭킹</div>
     <table class="review-table">
       <thead>
         <tr>
           <th>#</th>
           <th>맥락</th>
-          <th>고객수</th>
-          <th>고객%</th>
+          <th>리뷰건수</th>
           <th>리뷰%</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td class="rk pos">1</td><td class="label">아이 반응 · 재미 · 몰입</td><td class="num">181명</td><td class="num">43.4%</td><td class="num">36.2%</td></tr>
-        <tr><td class="rk pos">2</td><td class="label">물놀이 · 여름 · 야외 활용성</td><td class="num">141명</td><td class="num">33.8%</td><td class="num">26.4%</td></tr>
-        <tr><td class="rk pos">3</td><td class="label">배송 빠름 · 포장 양호</td><td class="num">49명</td><td class="num">11.8%</td><td class="num">11.3%</td></tr>
-        <tr><td class="rk pos">4</td><td class="label">분수 · 회오리 · 물꽃 비주얼</td><td class="num">64명</td><td class="num">15.3%</td><td class="num">11.0%</td></tr>
-        <tr><td class="rk pos">5</td><td class="label">선물 · 단체구매 · 세트 구성</td><td class="num">64명</td><td class="num">15.3%</td><td class="num">10.4%</td></tr>
-        <tr><td class="rk pos">6</td><td class="label">가격 · 가성비 · 저렴함</td><td class="num">56명</td><td class="num">13.4%</td><td class="num">9.7%</td></tr>
-        <tr><td class="rk pos">7</td><td class="label">크기 · 길이 · 대용량 만족</td><td class="num">45명</td><td class="num">10.8%</td><td class="num">8.0%</td></tr>
-        <tr><td class="rk pos">8</td><td class="label">SNS · 인싸템 · 핫템</td><td class="num">31명</td><td class="num">7.4%</td><td class="num">5.5%</td></tr>
-        <tr><td class="rk pos">9</td><td class="label">가벼움 · 아이 혼자 사용 가능</td><td class="num">30명</td><td class="num">7.2%</td><td class="num">5.5%</td></tr>
-        <tr><td class="rk pos">10</td><td class="label">건전지 불필요 · 조작 간단</td><td class="num">22명</td><td class="num">5.3%</td><td class="num">3.9%</td></tr>
+        <tr><td class="rk pos">1</td><td class="lbl">아이 반응 · 재미 · 몰입</td><td class="num">243건</td><td class="num">36.2%</td></tr>
+        <tr><td class="rk pos">2</td><td class="lbl">물놀이 · 여름 · 야외 활용성</td><td class="num">177건</td><td class="num">26.4%</td></tr>
+        <tr><td class="rk pos">3</td><td class="lbl">배송 빠름 · 포장 양호</td><td class="num">76건</td><td class="num">11.3%</td></tr>
+        <tr><td class="rk pos">4</td><td class="lbl">분수 · 회오리 · 물꽃 비주얼</td><td class="num">74건</td><td class="num">11.0%</td></tr>
+        <tr><td class="rk pos">5</td><td class="lbl">선물 · 단체구매 · 세트 구성</td><td class="num">70건</td><td class="num">10.4%</td></tr>
+        <tr><td class="rk pos">6</td><td class="lbl">가격 · 가성비 · 저렴함</td><td class="num">65건</td><td class="num">9.7%</td></tr>
+        <tr><td class="rk pos">7</td><td class="lbl">크기 · 길이 · 대용량 만족</td><td class="num">54건</td><td class="num">8.0%</td></tr>
+        <tr><td class="rk pos">8</td><td class="lbl">SNS · 인싸템 · 핫템</td><td class="num">37건</td><td class="num">5.5%</td></tr>
+        <tr><td class="rk pos">9</td><td class="lbl">가벼움 · 아이 혼자 사용 가능</td><td class="num">37건</td><td class="num">5.5%</td></tr>
+        <tr><td class="rk pos">10</td><td class="lbl">건전지 불필요 · 조작 간단</td><td class="num">26건</td><td class="num">3.9%</td></tr>
       </tbody>
     </table>
 
-    <!-- 단점 표 -->
     <div class="review-section-title neg">⚠️ 단점 랭킹</div>
     <table class="review-table">
       <thead>
         <tr>
           <th>#</th>
           <th>맥락</th>
-          <th>고객수</th>
-          <th>고객%</th>
+          <th>리뷰건수</th>
           <th>리뷰%</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td class="rk neg">1</td><td class="label">내구성 약함 · 파손 · 고장</td><td class="num">27명</td><td class="num">6.5%</td><td class="num">4.0%</td></tr>
-        <tr><td class="rk neg">2</td><td class="label">이물 · 윤활유 · 기름 · 마감 불량</td><td class="num">12명</td><td class="num">2.9%</td><td class="num">1.8%</td></tr>
-        <tr><td class="rk neg">3</td><td class="label">품질 수긍 · 한철용 인식</td><td class="num">6명</td><td class="num">1.4%</td><td class="num">1.5%</td></tr>
-        <tr><td class="rk neg">4</td><td class="label">불량 · 검수 부족 · 가공 문제</td><td class="num">4명</td><td class="num">1.0%</td><td class="num">0.7%</td></tr>
-        <tr><td class="rk neg">5</td><td class="label">사거리 · 파워 약함 (전투용 불리)</td><td class="num">5명</td><td class="num">1.2%</td><td class="num">0.7%</td></tr>
-        <tr><td class="rk neg">6</td><td class="label">배송 지연 · 느림</td><td class="num">4명</td><td class="num">1.0%</td><td class="num">0.6%</td></tr>
-        <tr><td class="rk neg">7</td><td class="label">크기 · 사이즈 기대 불일치</td><td class="num">2명</td><td class="num">0.5%</td><td class="num">0.3%</td></tr>
+        <tr><td class="rk neg">1</td><td class="lbl">내구성 약함 · 파손 · 고장</td><td class="num">27건</td><td class="num">4.0%</td></tr>
+        <tr><td class="rk neg">2</td><td class="lbl">이물 · 윤활유 · 기름 · 마감 불량</td><td class="num">12건</td><td class="num">1.8%</td></tr>
+        <tr><td class="rk neg">3</td><td class="lbl">품질 수긍 · 한철용 인식</td><td class="num">10건</td><td class="num">1.5%</td></tr>
+        <tr><td class="rk neg">4</td><td class="lbl">불량 · 검수 부족 · 가공 문제</td><td class="num">5건</td><td class="num">0.7%</td></tr>
+        <tr><td class="rk neg">5</td><td class="lbl">사거리 · 파워 약함 (전투용 불리)</td><td class="num">5건</td><td class="num">0.7%</td></tr>
+        <tr><td class="rk neg">6</td><td class="lbl">배송 지연 · 느림</td><td class="num">4건</td><td class="num">0.6%</td></tr>
+        <tr><td class="rk neg">7</td><td class="lbl">크기 · 사이즈 기대 불일치</td><td class="num">2건</td><td class="num">0.3%</td></tr>
       </tbody>
     </table>
   </section>
@@ -823,7 +548,7 @@ h3 {
       <div class="usp-card">
         <span class="usp-icon">🌀</span>
         <div class="usp-title">아이가 환장하는 회오리·물꽃</div>
-        <div class="usp-desc">시각적으로 압도하는 분사 성능. 장점 리뷰 1·3위를 동시에 충족. 동영상 한 컷으로 전달 가능.</div>
+        <div class="usp-desc">시각적으로 압도하는 분사 성능. 장점 리뷰 1·4위를 동시에 충족. 동영상 한 컷으로 전달 가능.</div>
       </div>
 
       <div class="usp-card">
@@ -835,118 +560,97 @@ h3 {
     </div>
   </section>
 
-  <!-- ─────────────────────── PASBRO STORY ── -->
+  <!-- ─────────────────────── STORY ── -->
   <section>
     <h2>Story 흐름</h2>
     <div class="pasbro-steps">
 
-      <!-- Hook -->
       <div class="pasbro-step step-hook">
-        <div class="pasbro-left">
-          <div class="pasbro-circle">P</div>
-        </div>
+        <div class="pasbro-left"><div class="pasbro-circle">P</div></div>
         <div class="pasbro-content">
-          <div class="pasbro-label">훅 (Hook) — 첫 3초 유입 결정</div>
-          <div class="pasbro-title">발견 경로 + 비주얼 + 카피</div>
-          <div class="pasbro-body">
-            저번에 워터파크 갔는데 친구들이 이걸로 너무 재밋게 노는거에요! 핫한 아이템이구나 싶어서 이번 여름 제대로 즐기기위해 준비했답니다.
-            <div class="pasbro-quote">촤라락 엄청 화려하고 재미나네요ㅎ — 아이들은 물꽃놀이라고 이름붙였네요~~</div>
-          </div>
+          <div class="pasbro-label">훅 — 첫 3초 유입 결정</div>
+          <div class="pasbro-title">발견 경로 + 비주얼</div>
+          <ul class="quote-list">
+            <li>"워터파크 갔는데 친구들이 이걸로 너무 재밋게 노는거에요!"</li>
+            <li>"촤라락 엄청 화려하고 재미나네요ㅎ 보기만해도 시원~"</li>
+            <li>"아이들은 물꽃놀이라고 이름붙였네요~~"</li>
+          </ul>
         </div>
       </div>
 
-      <!-- Pain / Empathy -->
       <div class="pasbro-step step-pain">
-        <div class="pasbro-left">
-          <div class="pasbro-circle">A</div>
-        </div>
+        <div class="pasbro-left"><div class="pasbro-circle">A</div></div>
         <div class="pasbro-content">
-          <div class="pasbro-label">공감 (Agitate) — 페인 공감 + 작년 실패</div>
+          <div class="pasbro-label">공감 — 페인 + 작년 실패</div>
           <div class="pasbro-title">내구 실패 → 종결 전환</div>
-          <div class="pasbro-body">
-            별로임 잘부서짐. 하루썻는데 옆에 갈라져서못씀. 택포8천원 버린꼴.
-            <div class="pasbro-quote">집에 물총 많이 쌓아놓고 안쓰시고 계신 아이들집 있으면 이걸로 종결입니다 ㅋㅋㅋ</div>
-          </div>
+          <ul class="quote-list">
+            <li>"하루썻는데 갈라져서못씀 택포8천원 버린꼴"</li>
+            <li>"집에 물총 많이 쌓아놓고 안쓰시고 계신 아이들집 있으면 이걸로 종결입니다 ㅋㅋㅋ"</li>
+          </ul>
         </div>
       </div>
 
-      <!-- Amplify -->
       <div class="pasbro-step step-amp">
-        <div class="pasbro-left">
-          <div class="pasbro-circle">S</div>
-        </div>
+        <div class="pasbro-left"><div class="pasbro-circle">S</div></div>
         <div class="pasbro-content">
-          <div class="pasbro-label">증폭 (Amplify) — 감정 극대화</div>
+          <div class="pasbro-label">증폭 — 감정 극대화</div>
           <div class="pasbro-title">엄마 쉼 + 아이 반응</div>
-          <div class="pasbro-body">
-            아이 집중도 높고, 에너지 쭉쭉 빠져서 낮잠까지 푹! 풀빌라에서 식사준비 분주한데 아이가 가지고 노느라 엄마를 덜 찾아서 너무너무 만족.
-            <div class="pasbro-quote">이 제품아니면 안씻겠다고 협박하심ㅋㅋㅋㅋㅋ 물놀이하자고 샤워 매일 즐겁게 하고있습니다</div>
-          </div>
+          <ul class="quote-list">
+            <li>"에너지 쭉쭉 빠져서 낮잠까지 푹!"</li>
+            <li>"이 제품아니면 안씻겠다고 협박하심ㅋㅋㅋㅋㅋ"</li>
+            <li>"풀빌라에서 아이가 가지고 노느라 엄마를 덜 찾아서 너무너무 만족"</li>
+          </ul>
         </div>
       </div>
 
-      <!-- Bridge / Solution -->
       <div class="pasbro-step step-bridge">
-        <div class="pasbro-left">
-          <div class="pasbro-circle">B</div>
-        </div>
+        <div class="pasbro-left"><div class="pasbro-circle">B</div></div>
         <div class="pasbro-content">
-          <div class="pasbro-label">전환 (Bridge) — 우리 상품 등장</div>
+          <div class="pasbro-label">전환 — 우리 상품 등장</div>
           <div class="pasbro-title">비주얼 + 기능 + 안전</div>
-          <div class="pasbro-body">
-            일반 물총과는 다른 분사 방식으로 정말 불꽃 아니, 물꽃놀이, 워터밤 분위기가 살아나요. 건전지 없이 물만 채워서 바로 쓸 수 있고, 수동식이라 아파트 물놀이장·놀이터에서도 사용 가능.
-            <div class="pasbro-quote">아파트 물놀이장에서 물총은 사용 못하게 하는데 이건 상관 안하더라구요 / KC 인증까지 완료돼서 안전성도 OK</div>
-          </div>
+          <ul class="quote-list">
+            <li>"건전지 없이 물만 채워서 바로 쓸 수 있어요"</li>
+            <li>"아파트 물놀이장에서 물총은 사용 못하는데 이건 상관 안하더라구요"</li>
+            <li>"KC 인증까지 완료돼서 안전성도 OK"</li>
+          </ul>
         </div>
       </div>
 
-      <!-- Roi / Value -->
       <div class="pasbro-step step-value">
-        <div class="pasbro-left">
-          <div class="pasbro-circle">R</div>
-        </div>
+        <div class="pasbro-left"><div class="pasbro-circle">R</div></div>
         <div class="pasbro-content">
-          <div class="pasbro-label">가치 (Roi) — 경험재 최대화</div>
-          <div class="pasbro-title">엄마 쉼 + 아이 인싸 + 사회적 공유</div>
-          <div class="pasbro-body">
-            물있는곳에서 진짜 엄빠들은 쉴수있다는 커다란장점. 수영장 가서 주변에 어디서 샀냐 물어봐서 여럿 소개했네여. 밤엔 가로등 아래서 물을 발사하면 폭죽처럼 예쁜 인생샷도.
-            <div class="pasbro-quote">욕조에 넣어주면 목욕이 놀이시간으로 변신! 분수 뿜뿜~ 회오리 슝슝~ 목욕 거부하던 아이도 이젠 먼저 들어가요 / 수영장에서 인싸 수준이였어요 다른 물총은 처다도 안보더라구요</div>
-          </div>
+          <div class="pasbro-label">가치 — 경험재 최대화</div>
+          <div class="pasbro-title">엄마 쉼 + 인싸 + 공유</div>
+          <ul class="quote-list">
+            <li>"물있는곳에서 진짜 엄빠들은 쉴수있다는 커다란장점"</li>
+            <li>"목욕 거부하던 아이도 이젠 먼저 들어가요"</li>
+            <li>"수영장에서 인싸 수준이였어요 다른 물총은 처다도 안보더라구요"</li>
+          </ul>
         </div>
       </div>
 
-      <!-- Proof -->
       <div class="pasbro-step step-proof">
-        <div class="pasbro-left">
-          <div class="pasbro-circle">O</div>
-        </div>
+        <div class="pasbro-left"><div class="pasbro-circle">O</div></div>
         <div class="pasbro-content">
-          <div class="pasbro-label">증거 (cOnfidence) — 신뢰 증명</div>
-          <div class="pasbro-title">내구 반박 + 안전 + 별점 스니펫</div>
-          <div class="pasbro-body">
-            물놀이마다 챙겨갔는데 둘 다 부서진 곳없이 잘 놀고 가지고왔어요. 내년여름에도 유용히 써먹어. 몇 번 떨어뜨려도 금방 흠집 나거나 깨지는 일 없이 잘 버텨주더라고요.
-            <div class="pasbro-quote">잘 안망가지고 아이들이 너무좋아합니다 / 생각보다 잘 망가져요 ㅎㅎ …그래도 하루 신나게 뽀사지게 잘 놀았어요~~ (★3도 인정한 경험재)</div>
-          </div>
+          <div class="pasbro-label">증거 — 내구 반박 + 별점</div>
+          <div class="pasbro-title">신뢰 증명</div>
+          <ul class="quote-list">
+            <li>"물놀이마다 챙겨갔는데 둘 다 부서진 곳없이 잘 놀고 가지고왔어요"</li>
+            <li>"잘 안망가지고 아이들이 너무좋아합니다"</li>
+          </ul>
         </div>
       </div>
 
-      <!-- Offer / CTA -->
-      <div class="pasbro-step step-offer" style="--pasbro-last:1;">
-        <div class="pasbro-left">
-          <div class="pasbro-circle">→</div>
-        </div>
+      <div class="pasbro-step step-offer">
+        <div class="pasbro-left"><div class="pasbro-circle">→</div></div>
         <div class="pasbro-content" style="padding-bottom:0;">
-          <div class="pasbro-label">제안 (Offer) — 구매 결정 트리거</div>
-          <div class="pasbro-title">가격 + 시간재 + 로켓</div>
-          <div class="pasbro-body">
-            <div style="display:flex;flex-wrap:wrap;gap:var(--sp-sm);margin-bottom:var(--sp-sm);">
-              <span class="badge badge-proceed">이 가격이면</span>
-              <span class="badge badge-warning">지금 사야 여름에 쓴다</span>
-              <span class="badge badge-info">2개 세트</span>
-              <span class="badge badge-proceed">로켓 다음날 도착</span>
-            </div>
-            솔직히 이 정도 분사력에 이 가격이면 만족스러웠어요! 너무 가격이 좋아서 반신반의로 2개만 시켰는데 10개시켜서 나눠가질걸그랬어요. 긴박감(시간재) + 가격 장벽 제거 + 배송 신뢰로 마지막 망설임을 해소한다.
-          </div>
+          <div class="pasbro-label">제안 — 구매 결정 트리거</div>
+          <div class="pasbro-title">가격 + 시즌 + 배송</div>
+          <ul class="quote-list">
+            <li>"솔직히 이 정도 분사력에 이 가격이면 만족스러웠어요!"</li>
+            <li>"2개만 시켰는데 10개시켜서 나눠가질걸그랬어요ㅜㅜ"</li>
+            <li>"업로드 되기만을 기다렸다가 바로 사서 다음날 받았어요!"</li>
+          </ul>
         </div>
       </div>
 
@@ -955,10 +659,9 @@ h3 {
 
   <!-- ─────────────────────────────────── FOOTER ── -->
   <footer class="page-footer">
-    <span>분수물총 P4 마케팅 원페이지 · APOM 내부 기획 문서</span>
-    <span style="font-family:'JetBrains Mono',monospace;">2026-05-13</span>
+    <span style="font-family:'JetBrains Mono',monospace;">2026-05-13 &nbsp;by 차드</span>
   </footer>
 
-</div><!-- /page-wrap -->
+</div>
 </body>
 </html>
