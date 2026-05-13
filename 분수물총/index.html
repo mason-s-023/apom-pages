@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>분수물총 P4 기획서</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #FFFFFF; --surface: #FFFFFF; --surface-subtle: #F7F6F3;
+    --border: #E8E7E3; --border-subtle: #EDECEA;
+    --text: #1A1A19; --text-2: #5A5A56; --text-muted: #8B8B85;
+    --primary: #4F46E5; --primary-subtle: #EEF2FF;
+    --success: #16A34A; --success-subtle: #DCFCE7;
+    --warning: #D97706; --warning-subtle: #FEF3C7;
+    --danger: #DC2626; --danger-subtle: #FEE2E2;
+    --info: #2563EB; --info-subtle: #DBEAFE;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 24px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 16px;
+  }
+  .header-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+  .header-badges {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .badge-primary { background: var(--primary); color: #fff; }
+  .badge-muted { background: var(--surface-subtle); color: var(--text-muted); border: 1px solid var(--border); }
+
+  /* ── GRID ROW 1 ── */
+  .row1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .card-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+  }
+
+  /* ── 4재 BARS ── */
+  .bar-item {
+    margin-bottom: 9px;
+  }
+  .bar-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .bar-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-2);
+  }
+  .bar-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .bar-track {
+    background: var(--border);
+    border-radius: 4px;
+    height: 7px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s;
+  }
+  .bar-green  { background: var(--success); color: var(--success); }
+  .bar-blue   { background: var(--info);    color: var(--info); }
+  .bar-amber  { background: var(--warning); color: var(--warning); }
+  .bar-gray   { background: var(--text-muted); color: var(--text-muted); }
+
+  /* ── 경쟁자 ── */
+  .comp-insight {
+    font-size: 11px;
+    color: var(--text-2);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .comp-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .comp-badge {
+    background: var(--primary-subtle);
+    color: var(--primary);
+    border: 1px solid #c7d2fe;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .comp-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  /* ── 리뷰 ── */
+  .review-list { list-style: none; }
+  .review-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 11.5px;
+    margin-bottom: 5px;
+    line-height: 1.45;
+  }
+  .rnum {
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .rnum-good { background: var(--success-subtle); color: var(--success); }
+  .rnum-bad  { background: var(--danger-subtle);  color: var(--danger); }
+  .review-divider {
+    border: none;
+    border-top: 1px dashed var(--border);
+    margin: 8px 0;
+  }
+  .review-section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .label-good { color: var(--success); }
+  .label-bad  { color: var(--danger); }
+
+  /* ── 페르소나 ── */
+  .persona-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .persona-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .persona-trigger {
+    background: var(--warning-subtle);
+    border: 1px solid #fcd34d;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 11px;
+    color: #92400e;
+    line-height: 1.5;
+  }
+  .persona-trigger strong {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    margin-bottom: 3px;
+    color: var(--warning);
+  }
+
+  /* ── USP ── */
+  .row-usp {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .usp-card {
+    background: var(--primary-subtle);
+    border: 1px solid #c7d2fe;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .usp-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+  .usp-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .usp-desc {
+    font-size: 11.5px;
+    color: var(--text-2);
+    line-height: 1.55;
+  }
+  .usp-quote {
+    margin-top: 7px;
+    font-size: 11px;
+    color: var(--primary);
+    font-style: italic;
+    background: rgba(79,70,229,0.07);
+    border-radius: 5px;
+    padding: 5px 8px;
+  }
+
+  /* ── STORY ── */
+  .story-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+  .story-step {
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 10px;
+    text-align: center;
+    position: relative;
+  }
+  .story-step::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 12px;
+    z-index: 1;
+  }
+  .story-step:last-child::after { display: none; }
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-muted);
+    margin-bottom: 3px;
+  }
+  .step-name {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .step-desc {
+    font-size: 10px;
+    color: var(--text-2);
+    line-height: 1.45;
+  }
+
+  .step-0 { border-top: 3px solid var(--danger); }
+  .step-1 { border-top: 3px solid var(--warning); }
+  .step-2 { border-top: 3px solid var(--warning); }
+  .step-3 { border-top: 3px solid var(--primary); }
+  .step-4 { border-top: 3px solid var(--success); }
+  .step-5 { border-top: 3px solid var(--success); }
+  .step-6 { border-top: 3px solid var(--primary); }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+  }
+
+  @media print {
+    body { font-size: 11px; }
+    .page { padding: 12px 16px; max-width: 100%; }
+    .header { margin-bottom: 10px; padding-bottom: 10px; }
+    .row1, .row-usp { gap: 8px; }
+    .story-row { gap: 5px; }
+    .card, .usp-card, .story-step { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-title">분수물총 상페 기획서</div>
+    <div class="header-badges">
+      <span class="badge badge-primary">P4</span>
+      <span class="badge badge-muted">2026-05-13</span>
+    </div>
+  </div>
+
+  <!-- ROW 1: 4재 / 경쟁자 / 리뷰 / 페르소나 -->
+  <div class="row1">
+
+    <!-- 4재 비중 -->
+    <div class="card">
+      <div class="card-title">상품 성격 · 4재</div>
+
+      <div class="bar-item">
+        <div class="bar-label">
+          <span class="bar-name">경험재</span>
+          <span class="bar-pct bar-green">52%</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill bar-green" style="width:52%"></div></div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:2px">아이 몰입 → 엄마 쉼</div>
+      </div>
+
+      <div class="bar-item">
+        <div class="bar-label">
+          <span class="bar-name">경제재</span>
+          <span class="bar-pct bar-blue">20%</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill bar-blue" style="width:20%"></div></div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:2px">1만원 안쪽</div>
+      </div>
+
+      <div class="bar-item">
+        <div class="bar-label">
+          <span class="bar-name">상징재</span>
+          <span class="bar-pct bar-amber">15%</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill bar-amber" style="width:15%"></div></div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:2px">SNS·워터파크 목격</div>
+      </div>
+
+      <div class="bar-item">
+        <div class="bar-label">
+          <span class="bar-name">기능재</span>
+          <span class="bar-pct bar-gray">13%</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill bar-gray" style="width:13%"></div></div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:2px">내구성 = 진입요건</div>
+      </div>
+    </div>
+
+    <!-- 경쟁자 -->
+    <div class="card">
+      <div class="card-title">경쟁자 인사이트</div>
+      <p class="comp-insight">경쟁 상품의 핵심 킥은 <strong>동영상</strong>.<br>그러나 실제 성과는 <strong>조명빨</strong>에 의존.</p>
+      <div class="comp-badges">
+        <span class="comp-badge">동영상 = 킥</span>
+        <span class="comp-badge">결국 조명빨</span>
+      </div>
+      <p class="comp-sub">
+        → 동영상 없이는 노출 불가<br>
+        → 야간 LED 효과가 전환율 좌우<br>
+        → 낮 사용성 차별화 여지 있음
+      </p>
+    </div>
+
+    <!-- 리뷰 TOP3 -->
+    <div class="card">
+      <div class="card-title">리뷰 TOP3</div>
+      <div class="review-section-label label-good">장점</div>
+      <ul class="review-list">
+        <li><span class="rnum rnum-good">1</span>아이 반응·재미·인싸템</li>
+        <li><span class="rnum rnum-good">2</span>물놀이·여름 활용성</li>
+        <li><span class="rnum rnum-good">3</span>분수·회오리 성능</li>
+      </ul>
+      <hr class="review-divider">
+      <div class="review-section-label label-bad">단점</div>
+      <ul class="review-list">
+        <li><span class="rnum rnum-bad">1</span>내구성 약함·파손</li>
+        <li><span class="rnum rnum-bad">2</span>이물·윤활유 마감</li>
+        <li><span class="rnum rnum-bad">3</span>불량·검수 부족</li>
+      </ul>
+    </div>
+
+    <!-- 페르소나 -->
+    <div class="card">
+      <div class="card-title">페르소나</div>
+      <div class="persona-name">수영장맘 지영</div>
+      <div class="persona-meta">37세 · 아이 5세 · 7월 공원 물놀이장</div>
+      <div class="persona-trigger">
+        <strong>구매 트리거</strong>
+        작년 5천원짜리 부러짐<br>
+        → 인스타 발견 → 별점 1~3 확인<br>
+        → <strong>1만원 안쪽 2개 세트</strong> 탐색
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 2: USP -->
+  <div class="section-label">USP</div>
+  <div class="row-usp">
+    <div class="usp-card">
+      <div class="usp-num">USP 01</div>
+      <div class="usp-title">엄마의 쉼</div>
+      <div class="usp-desc">아이가 완전히 몰입하면 엄마에게 진짜 휴식이 생긴다.</div>
+      <div class="usp-quote">"애가 이거 하나면 엄마를 안 찾아요"</div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-num">USP 02</div>
+      <div class="usp-title">회오리·물꽃 분사</div>
+      <div class="usp-desc">아이가 환장하는 압도적 분사 성능. 경쟁 상품이 흉내 못 내는 시각적 임팩트.</div>
+    </div>
+    <div class="usp-card">
+      <div class="usp-num">USP 03</div>
+      <div class="usp-title">엄마 인생샷</div>
+      <div class="usp-desc">야간 LED 조명 + 물꽃 = SNS 바이럴 트리거. 낮 놀이 + 밤 인생샷 2가지 페르소나 충족.</div>
+    </div>
+  </div>
+
+  <!-- ROW 3: Story 7단계 -->
+  <div class="section-label">Story 흐름</div>
+  <div class="story-row">
+    <div class="story-step step-0">
+      <div class="step-num">01</div>
+      <div class="step-name">훅</div>
+      <div class="step-desc">동영상 첫 3초<br>회오리 분사</div>
+    </div>
+    <div class="story-step step-1">
+      <div class="step-num">02</div>
+      <div class="step-name">공감</div>
+      <div class="step-desc">지영이 겪은<br>부러진 장난감</div>
+    </div>
+    <div class="story-step step-2">
+      <div class="step-num">03</div>
+      <div class="step-name">증폭</div>
+      <div class="step-desc">별점 1~3<br>내구성 공포</div>
+    </div>
+    <div class="story-step step-3">
+      <div class="step-num">04</div>
+      <div class="step-name">전환</div>
+      <div class="step-desc">그런데 이건<br>다르다</div>
+    </div>
+    <div class="story-step step-4">
+      <div class="step-num">05</div>
+      <div class="step-name">가치</div>
+      <div class="step-desc">USP 3가지<br>엄마 쉼·성능·샷</div>
+    </div>
+    <div class="story-step step-5">
+      <div class="step-num">06</div>
+      <div class="step-name">증거</div>
+      <div class="step-desc">리뷰 장점 TOP3<br>실제 영상</div>
+    </div>
+    <div class="story-step step-6">
+      <div class="step-num">07</div>
+      <div class="step-name">제안</div>
+      <div class="step-desc">1만원 안쪽<br>2개 세트 CTA</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
