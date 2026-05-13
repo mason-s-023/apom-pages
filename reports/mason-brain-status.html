@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mason_brain 운영 현황 — 2026-05-13</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    font-size: 15px;
+    color: #1a1a1a;
+    background: #f4f4f5;
+    line-height: 1.6;
+    padding: 32px 16px 64px;
+  }
+  .page { max-width: 760px; margin: 0 auto; }
+
+  h1 { font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+  .meta { font-size: 13px; color: #888; margin-bottom: 28px; font-family: 'JetBrains Mono', monospace; }
+
+  /* 카드 */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+    border: 1px solid #e4e4e7;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /* 상태 행 */
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .status-row:last-child { border-bottom: none; }
+  .dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+  .dot.ok   { background: #22c55e; }
+  .dot.warn { background: #f59e0b; }
+  .dot.err  { background: #ef4444; }
+  .dot.info { background: #94a3b8; }
+  .s-label { font-weight: 600; font-size: 14px; min-width: 130px; }
+  .s-val   { font-size: 14px; color: #444; }
+  .s-badge {
+    margin-left: auto;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 100px;
+  }
+  .s-badge.ok   { background: #dcfce7; color: #16a34a; }
+  .s-badge.warn { background: #fef3c7; color: #b45309; }
+  .s-badge.err  { background: #fee2e2; color: #dc2626; }
+
+  /* 요약 그리드 */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .stat-box {
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px 14px;
+    border: 1px solid #e4e4e7;
+    text-align: center;
+  }
+  .stat-num { font-size: 28px; font-weight: 900; line-height: 1.1; margin-bottom: 4px; }
+  .stat-num.ok   { color: #22c55e; }
+  .stat-num.warn { color: #f59e0b; }
+  .stat-num.err  { color: #ef4444; }
+  .stat-label { font-size: 12px; color: #888; }
+
+  /* 이슈 리스트 */
+  .issue-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .issue-list li {
+    font-size: 13px;
+    color: #444;
+    padding: 6px 10px;
+    background: #fafafa;
+    border-radius: 6px;
+    border-left: 3px solid #e4e4e7;
+    line-height: 1.5;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .issue-list li.hi { border-left-color: #ef4444; }
+  .issue-list li.mid { border-left-color: #f59e0b; }
+  .issue-list li.lo { border-left-color: #94a3b8; }
+
+  /* 액션 */
+  .action-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .action-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: #333; line-height: 1.5;
+  }
+  .a-num {
+    flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+    background: #111; color: #fff; font-size: 12px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; margin-top: 1px;
+  }
+  .a-num.done { background: #22c55e; }
+
+  /* 섹션 구분 */
+  .section-title {
+    font-size: 11px; font-weight: 700; color: #aaa;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin: 22px 0 8px;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    background: #f4f4f5;
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: #374151;
+  }
+
+  .footer {
+    text-align: right;
+    font-size: 13px;
+    color: #bbb;
+    margin-top: 28px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  @media (max-width: 480px) {
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>Mason_brain 운영 현황</h1>
+  <p class="meta">2026-05-13 14:03 KST &nbsp;·&nbsp; 메이슨 Sonnet 자동 진단</p>
+
+  <!-- 요약 수치 -->
+  <div class="summary-grid">
+    <div class="stat-box">
+      <div class="stat-num err">✗</div>
+      <div class="stat-label">cron 미등록</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num ok">17</div>
+      <div class="stat-label">wiki 노트</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num warn">63</div>
+      <div class="stat-label">lint 이슈</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num ok">3</div>
+      <div class="stat-label">ollama 모델</div>
+    </div>
+  </div>
+
+  <!-- 컴포넌트 상태 -->
+  <p class="section-title">컴포넌트 상태</p>
+  <div class="card">
+    <div class="status-row">
+      <span class="dot err"></span>
+      <span class="s-label">cron (00:03 KST)</span>
+      <span class="s-val">미등록 — 야간 자동 실행 안 됨. 지금 등록 가능.</span>
+      <span class="s-badge err">❌ 미등록</span>
+    </div>
+    <div class="status-row">
+      <span class="dot ok"></span>
+      <span class="s-label">ollama</span>
+      <span class="s-val">정상. 3개 모델 로드됨.</span>
+      <span class="s-badge ok">✅ UP</span>
+    </div>
+    <div class="status-row">
+      <span class="dot ok"></span>
+      <span class="s-label">qwen2.5:7b-instruct</span>
+      <span class="s-val">4,466 MB — 큐레이션 메인 모델</span>
+      <span class="s-badge ok">로드됨</span>
+    </div>
+    <div class="status-row">
+      <span class="dot ok"></span>
+      <span class="s-label">qwen2.5-coder:7b</span>
+      <span class="s-val">4,466 MB — graphify AST 추출</span>
+      <span class="s-badge ok">로드됨</span>
+    </div>
+    <div class="status-row">
+      <span class="dot ok"></span>
+      <span class="s-label">nomic-embed-text</span>
+      <span class="s-val">261 MB — 임베딩 (의미검색 준비)</span>
+      <span class="s-badge ok">로드됨</span>
+    </div>
+    <div class="status-row">
+      <span class="dot warn"></span>
+      <span class="s-label">lint.sh</span>
+      <span class="s-val">배열 첨자 오류 2건 (한글 파일명 키). 결과는 나오나 카운트 일부 부정확 가능.</span>
+      <span class="s-badge warn">⚠️ 오류</span>
+    </div>
+    <div class="status-row">
+      <span class="dot ok"></span>
+      <span class="s-label">graphify</span>
+      <span class="s-val">마지막 실행 04:25 — code-only 증분. 95 nodes / 119 edges.</span>
+      <span class="s-badge ok">정상</span>
+    </div>
+    <div class="status-row">
+      <span class="dot ok"></span>
+      <span class="s-label">dream proposals</span>
+      <span class="s-val">2026-05-13: 큐레이션·전체·lint 3개 파일 생성됨.</span>
+      <span class="s-badge ok">생성됨</span>
+    </div>
+  </div>
+
+  <!-- wiki 현황 -->
+  <p class="section-title">Wiki 현황</p>
+  <div class="card">
+    <p class="card-title">파일 분포 (lint 대상 66개 중)</p>
+    <div class="status-row">
+      <span class="dot ok"></span>
+      <span class="s-label">wiki/ 노트</span>
+      <span class="s-val">concepts 5 · entities 8 · sources 1 · comparisons 2 · projects 1 = <strong>17개</strong></span>
+    </div>
+    <div class="status-row">
+      <span class="dot info"></span>
+      <span class="s-label">최근 수정</span>
+      <span class="s-val"><code>APOM_DESIGN_시스템_학습.md</code> (09:48, 오늘)</span>
+    </div>
+    <div class="status-row">
+      <span class="dot info"></span>
+      <span class="s-label">전체 대상 66개</span>
+      <span class="s-val">raw/ 미포함 기준 — projects, skills, memory, 루트 운영파일 포함</span>
+    </div>
+  </div>
+
+  <!-- lint 이슈 -->
+  <p class="section-title">Lint 이슈 상세 (66개 파일 · 63건)</p>
+  <div class="card">
+    <p class="card-title">Frontmatter 없음 23건 — 실제 위험도 분류</p>
+    <ul class="issue-list" style="margin-bottom: 12px;">
+      <li class="lo">raw/ · 조사_지식체계/ 하위 8개 — <strong>lint 제외 대상.</strong> 원본 보관 폴더, frontmatter 불필요.</li>
+      <li class="lo">루트 운영파일 (AGENTS.md·MEMORY.md·IDENTITY.md 등) — 설계상 frontmatter 없는 운영 파일.</li>
+      <li class="mid">memory/2026-05-11.md · 2026-05-12.md — 포맷 없음. 향후 통일 필요.</li>
+      <li class="hi">projects/분수물총_상페_기획/참고/쿠팡리뷰전수수집_결과_2026-05-13.md — 실제 wiki 노트인데 frontmatter 없음.</li>
+    </ul>
+    <p class="card-title">깨진 Wikilink 24건 — 주요 원인</p>
+    <ul class="issue-list" style="margin-bottom: 12px;">
+      <li class="hi">[[CLAUDE]] — APOM.md·분수물총_00_기획서.md 등. 실제 파일 없음 → 생성 or 링크 수정 필요.</li>
+      <li class="mid">[[분수물총_킥오프]] — 3개 파일에서 참조 중. 실제 파일 없거나 경로 불일치.</li>
+      <li class="mid">[[Context_Engineering]] · [[에이전트AI_적용사례_조사]] — wiki 빈 페이지 목록. 채우기 대기 중.</li>
+      <li class="lo">[[graphify_knowledge_graph_조사]] · [[옵시디언_조사]] · [[검증5단계]] — 백로그 wiki 페이지.</li>
+    </ul>
+    <p class="card-title">고아 노트 14건</p>
+    <ul class="issue-list">
+      <li class="lo">raw/ · skills/ 하위 8개 — lint 제외 or 구조적으로 링크 불필요.</li>
+      <li class="mid">projects/Mason_brain_genesis/00_index.md — 인바운드 링크 없음. 연결 필요.</li>
+    </ul>
+  </div>
+
+  <!-- 실제 조치 가능한 이슈 -->
+  <p class="section-title">지금 당장 조치 가능한 것</p>
+  <div class="card">
+    <ul class="action-list">
+      <li>
+        <span class="a-num">1</span>
+        <div>
+          <strong>cron 등록</strong> — <code>3 15 * * * cd /home/mason/.openclaw/workspace && bash skills/dream_routine/run.sh --full >> /tmp/dream.log 2>&amp;1</code><br>
+          <span style="color:#888; font-size:13px;">00:03 KST = 15:03 UTC. 차드 OK 받으면 즉시 등록.</span>
+        </div>
+      </li>
+      <li>
+        <span class="a-num">2</span>
+        <div>
+          <strong>lint.sh 배열 오류 수정</strong> — 한글 파일명이 bash 연관 배열 키에 들어갈 때 발생. <code>declare -A</code> 초기화 순서 문제. 수정 범위 좁음 (~5줄).<br>
+          <span style="color:#888; font-size:13px;">현재는 결과가 나오지만 일부 카운트 부정확 가능.</span>
+        </div>
+      </li>
+      <li>
+        <span class="a-num">3</span>
+        <div>
+          <strong>lint 제외 경로 추가</strong> — raw/ · 조사_지식체계/ · 루트 운영파일을 lint 대상에서 제외 → 실제 이슈 63건 → 약 15건으로 압축.<br>
+          <span style="color:#888; font-size:13px;">lint.sh <code>find</code> 제외 경로에 추가.</span>
+        </div>
+      </li>
+      <li>
+        <span class="a-num">4</span>
+        <div>
+          <strong>빈 wiki 페이지 채우기 (백로그)</strong> — [[Context_Engineering]] · [[에이전트AI_적용사례_조사]] · [[옵시디언_조사]] · [[검증5단계]] · [[graphify_knowledge_graph_조사]].<br>
+          <span style="color:#888; font-size:13px;">깨진 wikilink 24건 중 절반 이상 해소됨.</span>
+        </div>
+      </li>
+      <li>
+        <span class="a-num">5</span>
+        <div>
+          <strong>graphify 주간 전체 재추출 cron 추가</strong> — 매일 code-only + 매주 docs 전체 재추출.<br>
+          <span style="color:#888; font-size:13px;">예: 매주 월 00:30 KST (15:30 UTC) <code>graphify extract --backend ollama --full</code></span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 3층 루프 흐름 현황 -->
+  <p class="section-title">3층 루프 — 현재 가동 여부</p>
+  <div class="card">
+    <div class="status-row">
+      <span class="dot ok"></span>
+      <span class="s-label">L1 wiki 저장</span>
+      <span class="s-val">정상 — 17개 노트, git 추적 중.</span>
+      <span class="s-badge ok">✅ 가동</span>
+    </div>
+    <div class="status-row">
+      <span class="dot err"></span>
+      <span class="s-label">L2 dream 루틴</span>
+      <span class="s-val">스크립트 존재·1회 테스트 완료. <strong>cron 미등록 → 자동화 아직 X.</strong> 수동 실행은 가능.</span>
+      <span class="s-badge err">⚠️ 수동만</span>
+    </div>
+    <div class="status-row">
+      <span class="dot warn"></span>
+      <span class="s-label">L3 graphify</span>
+      <span class="s-val">마지막 실행 04:25 code-only 증분. docs 포함 전체 재추출 = 수동 or 별도 cron 필요.</span>
+      <span class="s-badge warn">부분 가동</span>
+    </div>
+  </div>
+
+  <!-- 결론 -->
+  <div class="card" style="background: #111; color: #f5f5f5; border-color: #333;">
+    <p style="font-size:13px; color:#aaa; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:10px;">결론</p>
+    <p style="font-size:15px; line-height:1.7; color:#ddd;">
+      인프라(ollama·스크립트·graphify)는 다 갖춰졌다. <strong>cron 1줄만 등록하면 L2 자동화 완성.</strong><br>
+      lint.sh 오류 수정 + 제외 경로 추가하면 이슈 수가 현실적인 숫자로 줄어든다.<br>
+      wiki 빈 페이지(Context_Engineering 등 5개)는 차드 우선순위 확인 후 ingest.
+    </p>
+  </div>
+
+  <p class="footer">2026-05-13 14:03 &nbsp;by 메이슨 (Sonnet)</p>
+
+</div>
+</body>
+</html>
