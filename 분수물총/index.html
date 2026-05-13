@@ -3,504 +3,958 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>분수물총 P4 기획서</title>
+<title>분수물총 P4 마케팅 원페이지 — 2026-05-13</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+/* ─── APOM Design Tokens ─────────────────────────────── */
+:root {
+  /* surfaces */
+  --background: #FFFFFF;
+  --surface: #FFFFFF;
+  --surface-subtle: #F7F6F3;
+  --surface-elevated: #FFFFFF;
+  --border: #E8E7E3;
+  --border-subtle: #EDECEA;
 
-  :root {
-    --bg: #FFFFFF; --surface: #FFFFFF; --surface-subtle: #F7F6F3;
-    --border: #E8E7E3; --border-subtle: #EDECEA;
-    --text: #1A1A19; --text-2: #5A5A56; --text-muted: #8B8B85;
-    --primary: #4F46E5; --primary-subtle: #EEF2FF;
-    --success: #16A34A; --success-subtle: #DCFCE7;
-    --warning: #D97706; --warning-subtle: #FEF3C7;
-    --danger: #DC2626; --danger-subtle: #FEE2E2;
-    --info: #2563EB; --info-subtle: #DBEAFE;
-  }
+  /* text */
+  --text-primary: #1A1A19;
+  --text-secondary: #5A5A56;
+  --text-muted: #8B8B85;
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  /* primary (indigo) */
+  --primary: #4F46E5;
+  --primary-hover: #4338CA;
+  --primary-subtle: #EEF2FF;
+  --on-primary: #FFFFFF;
 
-  body {
-    font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 13px;
-    line-height: 1.6;
-    word-break: keep-all;
-  }
+  /* status */
+  --success: #16A34A;
+  --success-subtle: #DCFCE7;
+  --on-success-subtle: #166534;
+  --warning: #D97706;
+  --warning-subtle: #FEF3C7;
+  --on-warning-subtle: #92400E;
+  --danger: #DC2626;
+  --danger-subtle: #FEE2E2;
+  --on-danger-subtle: #991B1B;
+  --info: #2563EB;
+  --info-subtle: #DBEAFE;
+  --on-info-subtle: #1E40AF;
 
-  .page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 24px;
-  }
+  /* confidence */
+  --confidence-s: #16A34A;
+  --confidence-a: #2563EB;
+  --confidence-b: #D97706;
+  --confidence-c: #6B7280;
 
-  /* ── HEADER ── */
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 14px;
-    border-bottom: 2px solid var(--border);
-    margin-bottom: 16px;
-  }
-  .header-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.3px;
-  }
-  .header-badges {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-  }
-  .badge-primary { background: var(--primary); color: #fff; }
-  .badge-muted { background: var(--surface-subtle); color: var(--text-muted); border: 1px solid var(--border); }
+  /* shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.04), 0 1px 3px rgba(0,0,0,.06);
+  --shadow-md: 0 2px 8px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.08);
 
-  /* ── GRID ROW 1 ── */
-  .row1 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
+  /* radii */
+  --rounded-sm: 4px;
+  --rounded-md: 8px;
+  --rounded-lg: 12px;
+  --rounded-xl: 16px;
+  --rounded-full: 9999px;
 
-  /* ── CARD ── */
-  .card {
-    background: var(--surface-subtle);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 16px;
-  }
-  .card-title {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 12px;
-  }
+  /* spacing */
+  --sp-xxs: 4px;
+  --sp-xs: 8px;
+  --sp-sm: 12px;
+  --sp-md: 16px;
+  --sp-lg: 24px;
+  --sp-xl: 32px;
+  --sp-xxl: 48px;
+}
 
-  /* ── 4재 BARS ── */
-  .bar-item {
-    margin-bottom: 9px;
-  }
-  .bar-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 4px;
-  }
-  .bar-name {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-2);
-  }
-  .bar-pct {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    font-weight: 700;
-  }
-  .bar-track {
-    background: var(--border);
-    border-radius: 4px;
-    height: 7px;
-    overflow: hidden;
-  }
-  .bar-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.3s;
-  }
-  .bar-green  { background: var(--success); color: var(--success); }
-  .bar-blue   { background: var(--info);    color: var(--info); }
-  .bar-amber  { background: var(--warning); color: var(--warning); }
-  .bar-gray   { background: var(--text-muted); color: var(--text-muted); }
+/* ─── Reset & Base ────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* ── 경쟁자 ── */
-  .comp-insight {
-    font-size: 11px;
-    color: var(--text-2);
-    margin-bottom: 10px;
-    line-height: 1.5;
-  }
-  .comp-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .comp-badge {
-    background: var(--primary-subtle);
-    color: var(--primary);
-    border: 1px solid #c7d2fe;
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 12px;
-    font-weight: 700;
-  }
-  .comp-sub {
-    font-size: 10px;
-    color: var(--text-muted);
-    margin-top: 10px;
-    line-height: 1.5;
-  }
+body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--background);
+  word-break: keep-all;
+}
 
-  /* ── 리뷰 ── */
-  .review-list { list-style: none; }
-  .review-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
-    font-size: 11.5px;
-    margin-bottom: 5px;
-    line-height: 1.45;
-  }
-  .rnum {
-    min-width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .rnum-good { background: var(--success-subtle); color: var(--success); }
-  .rnum-bad  { background: var(--danger-subtle);  color: var(--danger); }
-  .review-divider {
-    border: none;
-    border-top: 1px dashed var(--border);
-    margin: 8px 0;
-  }
-  .review-section-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
-  }
-  .label-good { color: var(--success); }
-  .label-bad  { color: var(--danger); }
+/* ─── Layout ──────────────────────────────────────────── */
+.page-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--sp-xl) var(--sp-lg);
+}
 
-  /* ── 페르소나 ── */
-  .persona-name {
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--text);
-    line-height: 1.2;
-  }
-  .persona-meta {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-  }
-  .persona-trigger {
-    background: var(--warning-subtle);
-    border: 1px solid #fcd34d;
-    border-radius: 6px;
-    padding: 8px 10px;
-    font-size: 11px;
-    color: #92400e;
-    line-height: 1.5;
-  }
-  .persona-trigger strong {
-    display: block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    margin-bottom: 3px;
-    color: var(--warning);
-  }
+section {
+  padding-top: var(--sp-xxl);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: var(--sp-xxl);
+}
+section:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
 
-  /* ── USP ── */
-  .row-usp {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .usp-card {
-    background: var(--primary-subtle);
-    border: 1px solid #c7d2fe;
-    border-radius: 10px;
-    padding: 14px 16px;
-  }
-  .usp-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 4px;
-    letter-spacing: 0.5px;
-  }
-  .usp-title {
-    font-size: 14px;
-    font-weight: 800;
-    color: var(--primary);
-    margin-bottom: 6px;
-    line-height: 1.3;
-  }
-  .usp-desc {
-    font-size: 11.5px;
-    color: var(--text-2);
-    line-height: 1.55;
-  }
-  .usp-quote {
-    margin-top: 7px;
-    font-size: 11px;
-    color: var(--primary);
-    font-style: italic;
-    background: rgba(79,70,229,0.07);
-    border-radius: 5px;
-    padding: 5px 8px;
-  }
+/* ─── Typography ──────────────────────────────────────── */
+h1 {
+  font-size: 24px; font-weight: 700; line-height: 1.3;
+  letter-spacing: -0.01em; color: var(--text-primary);
+}
+h2 {
+  font-size: 20px; font-weight: 600; line-height: 1.35;
+  color: var(--text-primary); margin-bottom: var(--sp-lg);
+}
+h3 {
+  font-size: 16px; font-weight: 600; line-height: 1.4;
+  color: var(--text-primary);
+}
+.display {
+  font-size: 32px; font-weight: 700; line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.body-sm { font-size: 13px; line-height: 1.5; }
+.label { font-size: 13px; font-weight: 500; line-height: 1.4; }
+.label-sm { font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: 0.01em; }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
 
-  /* ── STORY ── */
-  .story-row {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-  }
-  .story-step {
-    background: var(--surface-subtle);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 10px;
-    text-align: center;
-    position: relative;
-  }
-  .story-step::after {
-    content: '→';
-    position: absolute;
-    right: -10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-muted);
-    font-size: 12px;
-    z-index: 1;
-  }
-  .story-step:last-child::after { display: none; }
-  .step-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    color: var(--text-muted);
-    margin-bottom: 3px;
-  }
-  .step-name {
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-  .step-desc {
-    font-size: 10px;
-    color: var(--text-2);
-    line-height: 1.45;
-  }
+/* ─── Badges ──────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px;
+  font-size: 12px; font-weight: 500; line-height: 1.4;
+  border-radius: var(--rounded-full);
+}
+.badge-proceed { background: var(--success-subtle); color: var(--on-success-subtle); }
+.badge-info    { background: var(--info-subtle);    color: var(--on-info-subtle); }
+.badge-warning { background: var(--warning-subtle); color: var(--on-warning-subtle); }
+.badge-danger  { background: var(--danger-subtle);  color: var(--on-danger-subtle); }
 
-  .step-0 { border-top: 3px solid var(--danger); }
-  .step-1 { border-top: 3px solid var(--warning); }
-  .step-2 { border-top: 3px solid var(--warning); }
-  .step-3 { border-top: 3px solid var(--primary); }
-  .step-4 { border-top: 3px solid var(--success); }
-  .step-5 { border-top: 3px solid var(--success); }
-  .step-6 { border-top: 3px solid var(--primary); }
+.conf-badge {
+  display: inline-flex; align-items: center;
+  padding: 2px 6px;
+  font-size: 12px; font-weight: 500;
+  border-radius: var(--rounded-sm);
+}
+.conf-s { background: var(--success-subtle); color: var(--on-success-subtle); }
+.conf-a { background: var(--info-subtle);    color: var(--on-info-subtle); }
+.conf-b { background: var(--warning-subtle); color: var(--on-warning-subtle); }
+.conf-c { background: var(--surface-subtle); color: var(--text-primary); }
 
-  .section-label {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 8px;
-  }
+/* ─── Cards ───────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border-radius: var(--rounded-lg);
+  padding: var(--sp-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 150ms ease;
+}
+.card:hover { box-shadow: var(--shadow-md); }
 
-  @media print {
-    body { font-size: 11px; }
-    .page { padding: 12px 16px; max-width: 100%; }
-    .header { margin-bottom: 10px; padding-bottom: 10px; }
-    .row1, .row-usp { gap: 8px; }
-    .story-row { gap: 5px; }
-    .card, .usp-card, .story-step { page-break-inside: avoid; }
-  }
+.card-ai {
+  background: var(--primary-subtle);
+  border-radius: var(--rounded-lg);
+  padding: var(--sp-md);
+}
+
+/* ─── Header ──────────────────────────────────────────── */
+.page-header {
+  padding: var(--sp-xxl) 0 var(--sp-xl);
+}
+.page-header-meta {
+  display: flex; align-items: center; gap: var(--sp-sm);
+  margin-bottom: var(--sp-sm);
+  flex-wrap: wrap;
+}
+.page-header h1 { margin-bottom: var(--sp-xs); }
+.page-header .subtitle {
+  color: var(--text-secondary); font-size: 16px; line-height: 1.6;
+}
+.header-divider {
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-subtle) 100%);
+  border-radius: var(--rounded-full);
+  margin-top: var(--sp-xl);
+}
+
+/* ─── Product Nature — bar chart cards ───────────────── */
+.nature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-md);
+}
+.nature-card {
+  background: var(--surface);
+  border-radius: var(--rounded-lg);
+  padding: var(--sp-lg);
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid transparent;
+  transition: box-shadow 150ms ease;
+}
+.nature-card:hover { box-shadow: var(--shadow-md); }
+.nature-card.exp  { border-left-color: var(--confidence-s); }
+.nature-card.eco  { border-left-color: var(--confidence-a); }
+.nature-card.sym  { border-left-color: var(--confidence-b); }
+.nature-card.func { border-left-color: var(--confidence-c); }
+
+.nature-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: var(--sp-sm);
+}
+.nature-title { font-size: 16px; font-weight: 600; }
+.nature-pct {
+  font-size: 28px; font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.nature-card.exp  .nature-pct { color: var(--confidence-s); }
+.nature-card.eco  .nature-pct { color: var(--confidence-a); }
+.nature-card.sym  .nature-pct { color: var(--confidence-b); }
+.nature-card.func .nature-pct { color: var(--confidence-c); }
+
+.nature-bar-track {
+  height: 6px;
+  background: var(--border-subtle);
+  border-radius: var(--rounded-full);
+  margin: var(--sp-sm) 0;
+  overflow: hidden;
+}
+.nature-bar-fill {
+  height: 100%;
+  border-radius: var(--rounded-full);
+  transition: width 0.6s ease;
+}
+.nature-card.exp  .nature-bar-fill { background: var(--confidence-s); }
+.nature-card.eco  .nature-bar-fill { background: var(--confidence-a); }
+.nature-card.sym  .nature-bar-fill { background: var(--confidence-b); }
+.nature-card.func .nature-bar-fill { background: var(--confidence-c); }
+
+.nature-desc { color: var(--text-secondary); font-size: 13px; line-height: 1.5; }
+
+/* ─── Competitor insight ──────────────────────────────── */
+.insight-box {
+  background: var(--primary-subtle);
+  border: 1px solid var(--primary);
+  border-radius: var(--rounded-lg);
+  padding: var(--sp-lg);
+  display: flex; gap: var(--sp-md); align-items: flex-start;
+}
+.insight-icon {
+  font-size: 24px; flex-shrink: 0;
+  margin-top: 2px;
+}
+.insight-tag {
+  font-size: 12px; font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0;
+  text-transform: none;
+  margin-bottom: var(--sp-xs);
+}
+.insight-point {
+  font-size: 18px; font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: var(--sp-xs);
+}
+.insight-sub { color: var(--text-secondary); font-size: 14px; }
+
+/* ─── Review Analysis ─────────────────────────────────── */
+.review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-md);
+}
+.review-col {
+  background: var(--surface);
+  border-radius: var(--rounded-lg);
+  padding: var(--sp-lg);
+  box-shadow: var(--shadow-sm);
+}
+.review-col-title {
+  font-size: 14px; font-weight: 600;
+  display: flex; align-items: center; gap: var(--sp-xs);
+  margin-bottom: var(--sp-md);
+  padding-bottom: var(--sp-sm);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.review-col-title.pos { color: var(--on-success-subtle); }
+.review-col-title.neg { color: var(--on-danger-subtle); }
+
+.review-item {
+  display: flex; align-items: flex-start; gap: var(--sp-sm);
+  padding: var(--sp-xs) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 13px; color: var(--text-primary);
+}
+.review-item:last-child { border-bottom: none; }
+.review-rank {
+  font-size: 12px; font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  width: 20px; flex-shrink: 0; text-align: right;
+  margin-top: 1px;
+}
+.pos .review-rank { color: var(--confidence-s); }
+.neg .review-rank { color: var(--danger); }
+
+/* ─── Persona ─────────────────────────────────────────── */
+.persona-wrap {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--sp-lg);
+  align-items: start;
+}
+.persona-card {
+  background: var(--surface);
+  border-radius: var(--rounded-lg);
+  padding: var(--sp-lg);
+  box-shadow: var(--shadow-sm);
+}
+.persona-avatar {
+  width: 56px; height: 56px;
+  border-radius: var(--rounded-full);
+  background: var(--primary-subtle);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; margin-bottom: var(--sp-sm);
+}
+.persona-name {
+  font-size: 18px; font-weight: 700; margin-bottom: 2px;
+}
+.persona-sub {
+  font-size: 13px; color: var(--text-secondary); margin-bottom: var(--sp-md);
+}
+.persona-row {
+  display: flex; flex-direction: column; gap: var(--sp-xs);
+}
+.persona-kv {
+  display: flex; gap: var(--sp-xs);
+  font-size: 13px;
+}
+.persona-k { font-weight: 500; color: var(--text-secondary); min-width: 60px; flex-shrink: 0; }
+.persona-v { color: var(--text-primary); }
+
+.journey-timeline {
+  background: var(--surface);
+  border-radius: var(--rounded-lg);
+  padding: var(--sp-lg);
+  box-shadow: var(--shadow-sm);
+}
+.journey-title {
+  font-size: 14px; font-weight: 600;
+  margin-bottom: var(--sp-md);
+  color: var(--text-secondary);
+}
+.journey-steps { display: flex; flex-direction: column; gap: 0; }
+.journey-step {
+  display: flex; gap: var(--sp-sm); align-items: flex-start;
+  padding: var(--sp-sm) 0;
+  position: relative;
+}
+.journey-step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 15px; top: 34px;
+  width: 2px; height: calc(100% - 10px);
+  background: var(--border-subtle);
+}
+.journey-dot {
+  width: 32px; height: 32px; flex-shrink: 0;
+  border-radius: var(--rounded-full);
+  background: var(--surface-subtle);
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; z-index: 1;
+}
+.journey-step.active .journey-dot {
+  background: var(--primary-subtle);
+  border-color: var(--primary);
+}
+.journey-step.risk .journey-dot {
+  background: var(--danger-subtle);
+  border-color: var(--danger);
+}
+.journey-content { padding-top: 4px; }
+.journey-label { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.journey-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+/* ─── USP ─────────────────────────────────────────────── */
+.usp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-md);
+}
+.usp-card {
+  background: var(--surface);
+  border-radius: var(--rounded-lg);
+  padding: var(--sp-lg);
+  box-shadow: var(--shadow-sm);
+  border-top: 3px solid var(--primary);
+  transition: box-shadow 150ms ease;
+  text-align: center;
+}
+.usp-card:hover { box-shadow: var(--shadow-md); }
+.usp-icon {
+  font-size: 32px; margin-bottom: var(--sp-sm);
+  display: block;
+}
+.usp-title {
+  font-size: 15px; font-weight: 700;
+  color: var(--primary);
+  margin-bottom: var(--sp-xs);
+  line-height: 1.3;
+}
+.usp-desc {
+  font-size: 13px; color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ─── PASBRO Story ────────────────────────────────────── */
+.pasbro-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.pasbro-step {
+  display: flex;
+  gap: var(--sp-lg);
+  align-items: stretch;
+  position: relative;
+}
+.pasbro-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 23px; top: 48px;
+  width: 2px;
+  height: calc(100% - 8px);
+  background: var(--border-subtle);
+}
+.pasbro-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 48px;
+}
+.pasbro-circle {
+  width: 48px; height: 48px;
+  border-radius: var(--rounded-full);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700;
+  flex-shrink: 0; z-index: 1;
+  box-shadow: var(--shadow-sm);
+  font-family: 'JetBrains Mono', monospace;
+}
+.pasbro-content {
+  flex: 1;
+  padding: 0 0 var(--sp-xl);
+}
+.pasbro-label {
+  font-size: 11px; font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0;
+  margin-bottom: 2px;
+}
+.pasbro-title {
+  font-size: 16px; font-weight: 700;
+  margin-bottom: var(--sp-sm);
+  line-height: 1.3;
+}
+.pasbro-body {
+  background: var(--surface-subtle);
+  border-radius: var(--rounded-md);
+  padding: var(--sp-md);
+  font-size: 14px; line-height: 1.7;
+  color: var(--text-primary);
+}
+.pasbro-quote {
+  font-size: 13px; color: var(--text-secondary);
+  border-left: 3px solid var(--border);
+  padding-left: var(--sp-sm);
+  margin-top: var(--sp-sm);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Step colours */
+.step-hook   .pasbro-circle { background: var(--primary);        color: var(--on-primary); }
+.step-pain   .pasbro-circle { background: var(--danger-subtle);  color: var(--on-danger-subtle); }
+.step-amp    .pasbro-circle { background: var(--warning-subtle); color: var(--on-warning-subtle); }
+.step-bridge .pasbro-circle { background: var(--primary-subtle); color: var(--primary); }
+.step-value  .pasbro-circle { background: var(--success-subtle); color: var(--on-success-subtle); }
+.step-proof  .pasbro-circle { background: var(--info-subtle);    color: var(--on-info-subtle); }
+.step-offer  .pasbro-circle { background: var(--primary);        color: var(--on-primary); }
+
+.step-hook   .pasbro-title { color: var(--primary); }
+.step-pain   .pasbro-title { color: var(--danger); }
+.step-amp    .pasbro-title { color: var(--warning); }
+.step-bridge .pasbro-title { color: var(--primary); }
+.step-value  .pasbro-title { color: var(--success); }
+.step-proof  .pasbro-title { color: var(--info); }
+.step-offer  .pasbro-title { color: var(--primary); }
+
+/* ─── Footer ──────────────────────────────────────────── */
+.page-footer {
+  margin-top: var(--sp-xxl);
+  padding-top: var(--sp-lg);
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+}
+
+/* ─── Print ───────────────────────────────────────────── */
+@media print {
+  .page-wrap { padding: 20px; }
+  .card:hover, .nature-card:hover, .usp-card:hover { box-shadow: var(--shadow-sm); }
+  section { page-break-inside: avoid; }
+}
+
+/* ─── Responsive ──────────────────────────────────────── */
+@media (max-width: 640px) {
+  .nature-grid   { grid-template-columns: 1fr; }
+  .review-grid   { grid-template-columns: 1fr; }
+  .usp-grid      { grid-template-columns: 1fr; }
+  .persona-wrap  { grid-template-columns: 1fr; }
+  .pasbro-step   { gap: var(--sp-sm); }
+  .page-footer   { flex-direction: column; align-items: flex-start; }
+}
 </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-title">분수물총 상페 기획서</div>
-    <div class="header-badges">
-      <span class="badge badge-primary">P4</span>
-      <span class="badge badge-muted">2026-05-13</span>
+<div class="page-wrap">
+
+  <!-- ───────────────────────────────── HEADER ── -->
+  <header class="page-header">
+    <div class="page-header-meta">
+      <span class="badge badge-proceed">진행</span>
+      <span class="badge badge-info">P4 마케팅 기획</span>
+      <span class="text-muted label-sm" style="font-family:'JetBrains Mono',monospace;">2026-05-13</span>
     </div>
-  </div>
+    <div class="display" style="margin-bottom:var(--sp-xs);">분수물총 P4</div>
+    <h1 style="font-weight:400;font-size:22px;color:var(--text-secondary);letter-spacing:0;">마케팅 원페이지 — 상품 성격 · 경쟁자 · 리뷰 · 페르소나 · USP · 스토리</h1>
+    <div class="header-divider"></div>
+  </header>
 
-  <!-- ROW 1: 4재 / 경쟁자 / 리뷰 / 페르소나 -->
-  <div class="row1">
+  <!-- ───────────────────────── PRODUCT NATURE ── -->
+  <section>
+    <h2>상품 성격 분석</h2>
+    <div class="nature-grid">
 
-    <!-- 4재 비중 -->
-    <div class="card">
-      <div class="card-title">상품 성격 · 4재</div>
-
-      <div class="bar-item">
-        <div class="bar-label">
-          <span class="bar-name">경험재</span>
-          <span class="bar-pct bar-green">52%</span>
+      <div class="nature-card exp">
+        <div class="nature-header">
+          <span class="nature-title">경험재</span>
+          <span class="conf-badge conf-s">S</span>
         </div>
-        <div class="bar-track"><div class="bar-fill bar-green" style="width:52%"></div></div>
-        <div style="font-size:10px;color:var(--text-muted);margin-top:2px">아이 몰입 → 엄마 쉼</div>
-      </div>
-
-      <div class="bar-item">
-        <div class="bar-label">
-          <span class="bar-name">경제재</span>
-          <span class="bar-pct bar-blue">20%</span>
+        <div class="nature-pct">52%</div>
+        <div class="nature-bar-track">
+          <div class="nature-bar-fill" style="width:52%"></div>
         </div>
-        <div class="bar-track"><div class="bar-fill bar-blue" style="width:20%"></div></div>
-        <div style="font-size:10px;color:var(--text-muted);margin-top:2px">1만원 안쪽</div>
+        <div class="nature-desc">아이 몰입 → 엄마 쉼. 감각·현장 경험이 구매 결정을 압도한다. 압도적 비중.</div>
       </div>
 
-      <div class="bar-item">
-        <div class="bar-label">
-          <span class="bar-name">상징재</span>
-          <span class="bar-pct bar-amber">15%</span>
+      <div class="nature-card eco">
+        <div class="nature-header">
+          <span class="nature-title">경제재</span>
+          <span class="conf-badge conf-a">A</span>
         </div>
-        <div class="bar-track"><div class="bar-fill bar-amber" style="width:15%"></div></div>
-        <div style="font-size:10px;color:var(--text-muted);margin-top:2px">SNS·워터파크 목격</div>
-      </div>
-
-      <div class="bar-item">
-        <div class="bar-label">
-          <span class="bar-name">기능재</span>
-          <span class="bar-pct bar-gray">13%</span>
+        <div class="nature-pct">20%</div>
+        <div class="nature-bar-track">
+          <div class="nature-bar-fill" style="width:20%"></div>
         </div>
-        <div class="bar-track"><div class="bar-fill bar-gray" style="width:13%"></div></div>
-        <div style="font-size:10px;color:var(--text-muted);margin-top:2px">내구성 = 진입요건</div>
+        <div class="nature-desc">1만원 안쪽. 더 싸면 더 많이 산다 — 세트 구성의 근거.</div>
+      </div>
+
+      <div class="nature-card sym">
+        <div class="nature-header">
+          <span class="nature-title">상징재</span>
+          <span class="conf-badge conf-b">B</span>
+        </div>
+        <div class="nature-pct">15%</div>
+        <div class="nature-bar-track">
+          <div class="nature-bar-fill" style="width:15%"></div>
+        </div>
+        <div class="nature-desc">SNS · 워터파크 목격 = 발견 트리거. 인싸템 포지셔닝 기회.</div>
+      </div>
+
+      <div class="nature-card func">
+        <div class="nature-header">
+          <span class="nature-title">기능재</span>
+          <span class="conf-badge conf-c">C</span>
+        </div>
+        <div class="nature-pct">13%</div>
+        <div class="nature-bar-track">
+          <div class="nature-bar-fill" style="width:13%"></div>
+        </div>
+        <div class="nature-desc">내구성은 승부처가 아닌 진입요건 — 안 부서진다는 것만 증명하면 된다.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────────────── COMPETITOR INSIGHT ── -->
+  <section>
+    <h2>경쟁자 인사이트</h2>
+    <div class="insight-box">
+      <div class="insight-icon">🎥</div>
+      <div>
+        <div class="insight-tag">핵심 인사이트</div>
+        <div class="insight-point">동영상이 킥이다 — 결국 조명빨</div>
+        <div class="insight-sub">
+          경쟁 상품들의 전환 핵심은 동영상 콘텐츠. 회오리·물꽃 분사를 실제로 보여줘야 한다.
+          단순 상세페이지 이미지로는 경험재의 감각을 전달할 수 없다.
+          밤 가로등 촬영 → 빛 굴절 + 물꽃 = 조명빨 극대화가 차별화 포인트.
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- 경쟁자 -->
-    <div class="card">
-      <div class="card-title">경쟁자 인사이트</div>
-      <p class="comp-insight">경쟁 상품의 핵심 킥은 <strong>동영상</strong>.<br>그러나 실제 성과는 <strong>조명빨</strong>에 의존.</p>
-      <div class="comp-badges">
-        <span class="comp-badge">동영상 = 킥</span>
-        <span class="comp-badge">결국 조명빨</span>
+  <!-- ──────────────────────────── REVIEW ANALYSIS ── -->
+  <section>
+    <h2>리뷰 분석</h2>
+    <div class="review-grid">
+
+      <!-- 장점 -->
+      <div class="review-col pos">
+        <div class="review-col-title pos">
+          <span>✅</span> 장점 랭킹
+        </div>
+        <div class="review-item">
+          <span class="review-rank">1</span>
+          <span>아이 반응 · 재미 · 인싸템</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">2</span>
+          <span>물놀이 · 여름 · 여행 활용성</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">3</span>
+          <span>분수 · 회오리 · 분사 성능</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">4</span>
+          <span>배송 빠름 · 수령 만족</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">5</span>
+          <span>선물 · 단체구매 적합</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">6</span>
+          <span>사용 편의 · 가벼움 · 아이 혼자 사용</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">7</span>
+          <span>가격 · 가성비 · 저렴함</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">8</span>
+          <span>크기 · 길이 · 대용량 만족</span>
+        </div>
       </div>
-      <p class="comp-sub">
-        → 동영상 없이는 노출 불가<br>
-        → 야간 LED 효과가 전환율 좌우<br>
-        → 낮 사용성 차별화 여지 있음
-      </p>
+
+      <!-- 단점 -->
+      <div class="review-col neg">
+        <div class="review-col-title neg">
+          <span>⚠️</span> 단점 랭킹
+        </div>
+        <div class="review-item">
+          <span class="review-rank">1</span>
+          <span>내구성 약함 · 파손 · 고장</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">2</span>
+          <span>이물 · 윤활유 · 기름 · 마감 문제</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">3</span>
+          <span>불량 · 검수 부족 · 가공 문제</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">4</span>
+          <span>성능 · 작동 문제</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">5</span>
+          <span>크기 · 사이즈 기대 불일치</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">6</span>
+          <span>품질 대비 기대 미달 · 한철용</span>
+        </div>
+        <div class="review-item">
+          <span class="review-rank">7</span>
+          <span>배송 지연 · 느림</span>
+        </div>
+      </div>
+
     </div>
 
-    <!-- 리뷰 TOP3 -->
-    <div class="card">
-      <div class="card-title">리뷰 TOP3</div>
-      <div class="review-section-label label-good">장점</div>
-      <ul class="review-list">
-        <li><span class="rnum rnum-good">1</span>아이 반응·재미·인싸템</li>
-        <li><span class="rnum rnum-good">2</span>물놀이·여름 활용성</li>
-        <li><span class="rnum rnum-good">3</span>분수·회오리 성능</li>
-      </ul>
-      <hr class="review-divider">
-      <div class="review-section-label label-bad">단점</div>
-      <ul class="review-list">
-        <li><span class="rnum rnum-bad">1</span>내구성 약함·파손</li>
-        <li><span class="rnum rnum-bad">2</span>이물·윤활유 마감</li>
-        <li><span class="rnum rnum-bad">3</span>불량·검수 부족</li>
-      </ul>
-    </div>
-
-    <!-- 페르소나 -->
-    <div class="card">
-      <div class="card-title">페르소나</div>
-      <div class="persona-name">수영장맘 지영</div>
-      <div class="persona-meta">37세 · 아이 5세 · 7월 공원 물놀이장</div>
-      <div class="persona-trigger">
-        <strong>구매 트리거</strong>
-        작년 5천원짜리 부러짐<br>
-        → 인스타 발견 → 별점 1~3 확인<br>
-        → <strong>1만원 안쪽 2개 세트</strong> 탐색
+    <!-- AI 분석 카드 -->
+    <div class="card-ai" style="margin-top:var(--sp-md);">
+      <div style="font-size:12px;font-weight:600;color:var(--primary);margin-bottom:var(--sp-xs);">
+        ⚡ 리뷰 인사이트
+      </div>
+      <div style="font-size:13px;color:var(--text-primary);line-height:1.6;">
+        <strong>장점 1위(아이 반응)가 핵심 경험재 USP</strong>를 직접 증명한다.
+        단점 1위(내구성)는 기능재 진입요건 — 리뷰 스니펫으로 "안 부서졌다"를 증거로 제시하면 충분.
+        단점 2~3위(이물·불량)는 검수·출하 QC 이슈 → 상페에서 선제적으로 "세척 후 발송" 언급 권장.
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ROW 2: USP -->
-  <div class="section-label">USP</div>
-  <div class="row-usp">
-    <div class="usp-card">
-      <div class="usp-num">USP 01</div>
-      <div class="usp-title">엄마의 쉼</div>
-      <div class="usp-desc">아이가 완전히 몰입하면 엄마에게 진짜 휴식이 생긴다.</div>
-      <div class="usp-quote">"애가 이거 하나면 엄마를 안 찾아요"</div>
-    </div>
-    <div class="usp-card">
-      <div class="usp-num">USP 02</div>
-      <div class="usp-title">회오리·물꽃 분사</div>
-      <div class="usp-desc">아이가 환장하는 압도적 분사 성능. 경쟁 상품이 흉내 못 내는 시각적 임팩트.</div>
-    </div>
-    <div class="usp-card">
-      <div class="usp-num">USP 03</div>
-      <div class="usp-title">엄마 인생샷</div>
-      <div class="usp-desc">야간 LED 조명 + 물꽃 = SNS 바이럴 트리거. 낮 놀이 + 밤 인생샷 2가지 페르소나 충족.</div>
-    </div>
-  </div>
+  <!-- ────────────────────────────────── PERSONA ── -->
+  <section>
+    <h2>페르소나</h2>
+    <div class="persona-wrap">
 
-  <!-- ROW 3: Story 7단계 -->
-  <div class="section-label">Story 흐름</div>
-  <div class="story-row">
-    <div class="story-step step-0">
-      <div class="step-num">01</div>
-      <div class="step-name">훅</div>
-      <div class="step-desc">동영상 첫 3초<br>회오리 분사</div>
-    </div>
-    <div class="story-step step-1">
-      <div class="step-num">02</div>
-      <div class="step-name">공감</div>
-      <div class="step-desc">지영이 겪은<br>부러진 장난감</div>
-    </div>
-    <div class="story-step step-2">
-      <div class="step-num">03</div>
-      <div class="step-name">증폭</div>
-      <div class="step-desc">별점 1~3<br>내구성 공포</div>
-    </div>
-    <div class="story-step step-3">
-      <div class="step-num">04</div>
-      <div class="step-name">전환</div>
-      <div class="step-desc">그런데 이건<br>다르다</div>
-    </div>
-    <div class="story-step step-4">
-      <div class="step-num">05</div>
-      <div class="step-name">가치</div>
-      <div class="step-desc">USP 3가지<br>엄마 쉼·성능·샷</div>
-    </div>
-    <div class="story-step step-5">
-      <div class="step-num">06</div>
-      <div class="step-name">증거</div>
-      <div class="step-desc">리뷰 장점 TOP3<br>실제 영상</div>
-    </div>
-    <div class="story-step step-6">
-      <div class="step-num">07</div>
-      <div class="step-name">제안</div>
-      <div class="step-desc">1만원 안쪽<br>2개 세트 CTA</div>
-    </div>
-  </div>
+      <div class="persona-card">
+        <div class="persona-avatar">👩</div>
+        <div class="persona-name">수영장맘 지영</div>
+        <div class="persona-sub">37세 · 아이 5세 엄마</div>
+        <div class="persona-row">
+          <div class="persona-kv">
+            <span class="persona-k">장소</span>
+            <span class="persona-v">7월 아파트 인근 공원 물놀이장</span>
+          </div>
+          <div class="persona-kv">
+            <span class="persona-k">과거 경험</span>
+            <span class="persona-v">작년 5천원짜리 → 펌프 빠지고 바로 부러짐, 아이 울음</span>
+          </div>
+          <div class="persona-kv">
+            <span class="persona-k">발견</span>
+            <span class="persona-v">인스타에서 회오리 물총 목격, 봄 시즌</span>
+          </div>
+          <div class="persona-kv">
+            <span class="persona-k">검증 행동</span>
+            <span class="persona-v">★1~3 리뷰 스크롤 — "또 부서졌나" 확인</span>
+          </div>
+          <div class="persona-kv">
+            <span class="persona-k">구매 조건</span>
+            <span class="persona-v">1만원 안쪽 2개 세트</span>
+          </div>
+          <div class="persona-kv">
+            <span class="persona-k">나만의 용도</span>
+            <span class="persona-v">밤 가로등에서 엄마 인생샷 촬영</span>
+          </div>
+        </div>
+      </div>
 
-</div>
+      <div class="journey-timeline">
+        <div class="journey-title">구매 여정 타임라인</div>
+        <div class="journey-steps">
+
+          <div class="journey-step">
+            <div class="journey-left">
+              <div class="journey-dot">📱</div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-label">발견</div>
+              <div class="journey-desc">인스타 스크롤 중 워터파크·공원에서 아이들이 쓰는 모습 목격. 봄 시즌 = 구매 트리거 활성화.</div>
+            </div>
+          </div>
+
+          <div class="journey-step">
+            <div class="journey-left">
+              <div class="journey-dot">🔍</div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-label">검색</div>
+              <div class="journey-desc">"회오리 물총" 검색 → 상세페이지 유입. 비주얼(분사 영상·사진)로 1차 판단.</div>
+            </div>
+          </div>
+
+          <div class="journey-step risk">
+            <div class="journey-left">
+              <div class="journey-dot">⭐</div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-label" style="color:var(--danger);">위험 구간 — 저평점 리뷰 탐색</div>
+              <div class="journey-desc">★1~3 리뷰로 스크롤 내려 "또 부서진다는 사람 없나" 확인. 내구성 불안 해소 못 하면 이탈.</div>
+            </div>
+          </div>
+
+          <div class="journey-step active">
+            <div class="journey-left">
+              <div class="journey-dot">🛒</div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-label" style="color:var(--primary);">구매 결정</div>
+              <div class="journey-desc">1만원 안쪽 + 2개 세트 + 로켓 다음날 도착 확인 → 장바구니 담기.</div>
+            </div>
+          </div>
+
+          <div class="journey-step">
+            <div class="journey-left">
+              <div class="journey-dot">🌙</div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-label">재사용 · 콘텐츠</div>
+              <div class="journey-desc">낮엔 아이 놀이 → 저녁엔 가로등 아래 엄마 인생샷. SNS 공유 → 상징재 순환 강화.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───────────────────────────────────── USP ── -->
+  <section>
+    <h2>USP (핵심 차별화 포인트)</h2>
+    <div class="usp-grid">
+
+      <div class="usp-card">
+        <span class="usp-icon">☕</span>
+        <div class="usp-title">엄마의 쉼</div>
+        <div class="usp-desc">"애가 이거 하나면 엄마를 안 찾아요"<br>— 경험재 52% 직접 소구. 아이 몰입 = 엄마 자유 시간.</div>
+      </div>
+
+      <div class="usp-card">
+        <span class="usp-icon">🌀</span>
+        <div class="usp-title">아이가 환장하는 회오리·물꽃</div>
+        <div class="usp-desc">시각적으로 압도하는 분사 성능. 장점 리뷰 1·3위를 동시에 충족. 동영상 한 컷으로 전달 가능.</div>
+      </div>
+
+      <div class="usp-card">
+        <span class="usp-icon">🌙</span>
+        <div class="usp-title">밤엔 엄마 인생샷</div>
+        <div class="usp-desc">가로등 + 물꽃 = 조명빨 극대화. SNS 바이럴 트리거. 상징재 15% + 경험재 확장.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────────────── PASBRO STORY ── -->
+  <section>
+    <h2>Story 흐름 — PASBRO 구조</h2>
+    <div class="pasbro-steps">
+
+      <!-- Hook -->
+      <div class="pasbro-step step-hook">
+        <div class="pasbro-left">
+          <div class="pasbro-circle">P</div>
+        </div>
+        <div class="pasbro-content">
+          <div class="pasbro-label">훅 (Hook) — 첫 3초 유입 결정</div>
+          <div class="pasbro-title">발견 경로 + 비주얼 + 카피</div>
+          <div class="pasbro-body">
+            워터파크 갔는데 친구들이 이걸로 노는 거에요!
+            <div class="pasbro-quote">촤라락 엄청 화려하고 재미나네요 — 물꽃놀이</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pain / Empathy -->
+      <div class="pasbro-step step-pain">
+        <div class="pasbro-left">
+          <div class="pasbro-circle">A</div>
+        </div>
+        <div class="pasbro-content">
+          <div class="pasbro-label">공감 (Agitate) — 페인 공감 + 작년 실패</div>
+          <div class="pasbro-title">내구 실패 → 종결 전환</div>
+          <div class="pasbro-body">
+            하루 썼는데 갈라져서 못 씀
+            <div class="pasbro-quote">물총 이걸로 종결</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amplify -->
+      <div class="pasbro-step step-amp">
+        <div class="pasbro-left">
+          <div class="pasbro-circle">S</div>
+        </div>
+        <div class="pasbro-content">
+          <div class="pasbro-label">증폭 (Amplify) — 감정 극대화</div>
+          <div class="pasbro-title">엄마 쉼 + 아이 반응</div>
+          <div class="pasbro-body">
+            에너지 쭉쭉 빠져서 낮잠까지 푹
+            <div class="pasbro-quote">아이가 이거 아니면 안 씻겠다고 협박</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bridge / Solution -->
+      <div class="pasbro-step step-bridge">
+        <div class="pasbro-left">
+          <div class="pasbro-circle">B</div>
+        </div>
+        <div class="pasbro-content">
+          <div class="pasbro-label">전환 (Bridge) — 우리 상품 등장</div>
+          <div class="pasbro-title">비주얼 + 기능 + 안전</div>
+          <div class="pasbro-body">
+            회오리 물꽃놀이
+            <div class="pasbro-quote">건전지 불필요 / 수동식 = 물놀이장 통과</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roi / Value -->
+      <div class="pasbro-step step-value">
+        <div class="pasbro-left">
+          <div class="pasbro-circle">R</div>
+        </div>
+        <div class="pasbro-content">
+          <div class="pasbro-label">가치 (Roi) — 경험재 최대화</div>
+          <div class="pasbro-title">장소 + 어른 + 사회</div>
+          <div class="pasbro-body">
+            엄빠 쉴 수 있다는 커다란 장점
+            <div class="pasbro-quote">목욕 거부하던 아이도 이젠 먼저 들어가요 — 수영장에서 인싸</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proof -->
+      <div class="pasbro-step step-proof">
+        <div class="pasbro-left">
+          <div class="pasbro-circle">O</div>
+        </div>
+        <div class="pasbro-content">
+          <div class="pasbro-label">증거 (cOnfidence) — 신뢰 증명</div>
+          <div class="pasbro-title">반박 + 내구 + 별점 스니펫</div>
+          <div class="pasbro-body">
+            둘 다 부서진 곳 없이 잘 놀고
+            <div class="pasbro-quote">잘 안 망가지고 아이들이 너무 좋아합니다</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Offer / CTA -->
+      <div class="pasbro-step step-offer" style="--pasbro-last:1;">
+        <div class="pasbro-left">
+          <div class="pasbro-circle">→</div>
+        </div>
+        <div class="pasbro-content" style="padding-bottom:0;">
+          <div class="pasbro-label">제안 (Offer) — 구매 결정 트리거</div>
+          <div class="pasbro-title">가격 + 시간재 + 로켓</div>
+          <div class="pasbro-body">
+            <div style="display:flex;flex-wrap:wrap;gap:var(--sp-sm);margin-bottom:var(--sp-sm);">
+              <span class="badge badge-proceed">이 가격이면</span>
+              <span class="badge badge-warning">지금 사야 여름에 쓴다</span>
+              <span class="badge badge-info">2개 세트</span>
+              <span class="badge badge-proceed">로켓 다음날 도착</span>
+            </div>
+            긴박감(시간재) + 가격 장벽 제거 + 배송 신뢰로 마지막 망설임을 해소한다.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────── FOOTER ── -->
+  <footer class="page-footer">
+    <span>분수물총 P4 마케팅 원페이지 · APOM 내부 기획 문서</span>
+    <span style="font-family:'JetBrains Mono',monospace;">2026-05-13</span>
+  </footer>
+
+</div><!-- /page-wrap -->
 </body>
 </html>
