@@ -187,7 +187,7 @@ h3 {
 .nature-card {
   background: var(--surface);
   border-radius: var(--rounded-lg);
-  padding: var(--sp-lg);
+  padding: var(--sp-md) var(--sp-md) var(--sp-sm);
   box-shadow: var(--shadow-sm);
   border-left: 4px solid transparent;
   transition: box-shadow 150ms ease;
@@ -204,7 +204,7 @@ h3 {
 }
 .nature-title { font-size: 16px; font-weight: 600; }
 .nature-pct {
-  font-size: 28px; font-weight: 700;
+  font-size: 22px; font-weight: 700;
   font-family: 'JetBrains Mono', monospace;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
@@ -215,10 +215,10 @@ h3 {
 .nature-card.func .nature-pct { color: var(--confidence-c); }
 
 .nature-bar-track {
-  height: 6px;
+  height: 5px;
   background: var(--border-subtle);
   border-radius: var(--rounded-full);
-  margin: var(--sp-sm) 0;
+  margin: var(--sp-xs) 0;
   overflow: hidden;
 }
 .nature-bar-fill {
@@ -507,6 +507,59 @@ h3 {
   gap: var(--sp-sm);
 }
 
+/* ─── Review Table ────────────────────────────────────── */
+.review-section-title {
+  font-size: 13px; font-weight: 600;
+  display: flex; align-items: center; gap: var(--sp-xs);
+  margin-bottom: var(--sp-sm);
+  padding-bottom: var(--sp-xs);
+  border-bottom: 2px solid var(--border-subtle);
+}
+.review-section-title.pos { color: var(--on-success-subtle); }
+.review-section-title.neg { color: var(--on-danger-subtle); }
+
+.review-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-bottom: var(--sp-lg);
+}
+.review-table th {
+  background: var(--surface-subtle);
+  font-weight: 600;
+  padding: 6px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.review-table th:nth-child(1) { width: 24px; text-align: center; }
+.review-table th:nth-child(3),
+.review-table th:nth-child(4),
+.review-table th:nth-child(5) { text-align: right; width: 52px; }
+.review-table td {
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+}
+.review-table tr:last-child td { border-bottom: none; }
+.review-table .rk {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 11px;
+  text-align: center;
+}
+.review-table .rk.pos { color: var(--confidence-s); }
+.review-table .rk.neg { color: var(--danger); }
+.review-table .label { font-size: 12px; line-height: 1.4; }
+.review-table .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-align: right;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
 /* ─── Print ───────────────────────────────────────────── */
 @media print {
   .page-wrap { padding: 20px; }
@@ -585,11 +638,10 @@ h3 {
   <header class="page-header">
     <div class="page-header-meta">
       <span class="badge badge-proceed">진행</span>
-      <span class="badge badge-info">P4 마케팅 기획</span>
+      <span class="badge badge-info">기획서</span>
       <span class="text-muted label-sm" style="font-family:'JetBrains Mono',monospace;">2026-05-13</span>
     </div>
-    <div class="display" style="margin-bottom:var(--sp-xs);">분수물총 P4</div>
-    <h1 style="font-weight:400;font-size:22px;color:var(--text-secondary);letter-spacing:0;">마케팅 원페이지 — 상품 성격 · 경쟁자 · 리뷰 · 페르소나 · USP · 스토리</h1>
+    <div class="display" style="margin-bottom:var(--sp-xs);">분수물총 기획서</div>
     <div class="header-divider"></div>
   </header>
 
@@ -651,7 +703,7 @@ h3 {
 
   <!-- ─────────────────────── COMPETITOR INSIGHT ── -->
   <section>
-    <h2>경쟁자 인사이트</h2>
+    <h2>경쟁자 분석</h2>
     <div class="insight-box">
       <div class="insight-icon">🎥</div>
       <div>
@@ -669,191 +721,91 @@ h3 {
   <!-- ──────────────────────────── REVIEW ANALYSIS ── -->
   <section>
     <h2>리뷰 분석</h2>
-    <div class="review-grid">
+    <p class="text-muted body-sm" style="margin-bottom:var(--sp-md);">경쟁자 671건 · 고유고객 417명 기준 (★5 86.3% / ★4 9.8% / ★3↓ 3.8%)</p>
 
-      <!-- 장점 -->
-      <div class="review-col pos">
-        <div class="review-col-title pos">
-          <span>✅</span> 장점 랭킹
-        </div>
-        <div class="review-item">
-          <span class="review-rank">1</span>
-          <span>아이 반응 · 재미 · 인싸템</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">2</span>
-          <span>물놀이 · 여름 · 여행 활용성</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">3</span>
-          <span>분수 · 회오리 · 분사 성능</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">4</span>
-          <span>배송 빠름 · 수령 만족</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">5</span>
-          <span>선물 · 단체구매 적합</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">6</span>
-          <span>사용 편의 · 가벼움 · 아이 혼자 사용</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">7</span>
-          <span>가격 · 가성비 · 저렴함</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">8</span>
-          <span>크기 · 길이 · 대용량 만족</span>
-        </div>
-      </div>
+    <!-- 장점 표 -->
+    <div class="review-section-title pos">✅ 장점 랭킹</div>
+    <table class="review-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>맥락</th>
+          <th>고객수</th>
+          <th>고객%</th>
+          <th>리뷰%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="rk pos">1</td><td class="label">아이 반응 · 재미 · 몰입</td><td class="num">181명</td><td class="num">43.4%</td><td class="num">36.2%</td></tr>
+        <tr><td class="rk pos">2</td><td class="label">물놀이 · 여름 · 야외 활용성</td><td class="num">141명</td><td class="num">33.8%</td><td class="num">26.4%</td></tr>
+        <tr><td class="rk pos">3</td><td class="label">배송 빠름 · 포장 양호</td><td class="num">49명</td><td class="num">11.8%</td><td class="num">11.3%</td></tr>
+        <tr><td class="rk pos">4</td><td class="label">분수 · 회오리 · 물꽃 비주얼</td><td class="num">64명</td><td class="num">15.3%</td><td class="num">11.0%</td></tr>
+        <tr><td class="rk pos">5</td><td class="label">선물 · 단체구매 · 세트 구성</td><td class="num">64명</td><td class="num">15.3%</td><td class="num">10.4%</td></tr>
+        <tr><td class="rk pos">6</td><td class="label">가격 · 가성비 · 저렴함</td><td class="num">56명</td><td class="num">13.4%</td><td class="num">9.7%</td></tr>
+        <tr><td class="rk pos">7</td><td class="label">크기 · 길이 · 대용량 만족</td><td class="num">45명</td><td class="num">10.8%</td><td class="num">8.0%</td></tr>
+        <tr><td class="rk pos">8</td><td class="label">SNS · 인싸템 · 핫템</td><td class="num">31명</td><td class="num">7.4%</td><td class="num">5.5%</td></tr>
+        <tr><td class="rk pos">9</td><td class="label">가벼움 · 아이 혼자 사용 가능</td><td class="num">30명</td><td class="num">7.2%</td><td class="num">5.5%</td></tr>
+        <tr><td class="rk pos">10</td><td class="label">건전지 불필요 · 조작 간단</td><td class="num">22명</td><td class="num">5.3%</td><td class="num">3.9%</td></tr>
+      </tbody>
+    </table>
 
-      <!-- 단점 -->
-      <div class="review-col neg">
-        <div class="review-col-title neg">
-          <span>⚠️</span> 단점 랭킹
-        </div>
-        <div class="review-item">
-          <span class="review-rank">1</span>
-          <span>내구성 약함 · 파손 · 고장</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">2</span>
-          <span>이물 · 윤활유 · 기름 · 마감 문제</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">3</span>
-          <span>불량 · 검수 부족 · 가공 문제</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">4</span>
-          <span>성능 · 작동 문제</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">5</span>
-          <span>크기 · 사이즈 기대 불일치</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">6</span>
-          <span>품질 대비 기대 미달 · 한철용</span>
-        </div>
-        <div class="review-item">
-          <span class="review-rank">7</span>
-          <span>배송 지연 · 느림</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- AI 분석 카드 -->
-    <div class="card-ai" style="margin-top:var(--sp-md);">
-      <div style="font-size:12px;font-weight:600;color:var(--primary);margin-bottom:var(--sp-xs);">
-        ⚡ 리뷰 인사이트
-      </div>
-      <div style="font-size:13px;color:var(--text-primary);line-height:1.6;">
-        <strong>장점 1위(아이 반응)가 핵심 경험재 USP</strong>를 직접 증명한다.
-        단점 1위(내구성)는 기능재 진입요건 — 리뷰 스니펫으로 "안 부서졌다"를 증거로 제시하면 충분.
-        단점 2~3위(이물·불량)는 검수·출하 QC 이슈 → 상페에서 선제적으로 "세척 후 발송" 언급 권장.
-      </div>
-    </div>
+    <!-- 단점 표 -->
+    <div class="review-section-title neg">⚠️ 단점 랭킹</div>
+    <table class="review-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>맥락</th>
+          <th>고객수</th>
+          <th>고객%</th>
+          <th>리뷰%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="rk neg">1</td><td class="label">내구성 약함 · 파손 · 고장</td><td class="num">27명</td><td class="num">6.5%</td><td class="num">4.0%</td></tr>
+        <tr><td class="rk neg">2</td><td class="label">이물 · 윤활유 · 기름 · 마감 불량</td><td class="num">12명</td><td class="num">2.9%</td><td class="num">1.8%</td></tr>
+        <tr><td class="rk neg">3</td><td class="label">품질 수긍 · 한철용 인식</td><td class="num">6명</td><td class="num">1.4%</td><td class="num">1.5%</td></tr>
+        <tr><td class="rk neg">4</td><td class="label">불량 · 검수 부족 · 가공 문제</td><td class="num">4명</td><td class="num">1.0%</td><td class="num">0.7%</td></tr>
+        <tr><td class="rk neg">5</td><td class="label">사거리 · 파워 약함 (전투용 불리)</td><td class="num">5명</td><td class="num">1.2%</td><td class="num">0.7%</td></tr>
+        <tr><td class="rk neg">6</td><td class="label">배송 지연 · 느림</td><td class="num">4명</td><td class="num">1.0%</td><td class="num">0.6%</td></tr>
+        <tr><td class="rk neg">7</td><td class="label">크기 · 사이즈 기대 불일치</td><td class="num">2명</td><td class="num">0.5%</td><td class="num">0.3%</td></tr>
+      </tbody>
+    </table>
   </section>
 
   <!-- ────────────────────────────────── PERSONA ── -->
   <section>
     <h2>페르소나</h2>
-    <div class="persona-wrap">
-
-      <div class="persona-card">
-        <div class="persona-avatar">👩</div>
-        <div class="persona-name">수영장맘 지영</div>
-        <div class="persona-sub">37세 · 아이 5세 엄마</div>
-        <div class="persona-row">
-          <div class="persona-kv">
-            <span class="persona-k">장소</span>
-            <span class="persona-v">7월 아파트 인근 공원 물놀이장</span>
-          </div>
-          <div class="persona-kv">
-            <span class="persona-k">과거 경험</span>
-            <span class="persona-v">작년 5천원짜리 → 펌프 빠지고 바로 부러짐, 아이 울음</span>
-          </div>
-          <div class="persona-kv">
-            <span class="persona-k">발견</span>
-            <span class="persona-v">인스타에서 회오리 물총 목격, 봄 시즌</span>
-          </div>
-          <div class="persona-kv">
-            <span class="persona-k">검증 행동</span>
-            <span class="persona-v">★1~3 리뷰 스크롤 — "또 부서졌나" 확인</span>
-          </div>
-          <div class="persona-kv">
-            <span class="persona-k">구매 조건</span>
-            <span class="persona-v">1만원 안쪽 2개 세트</span>
-          </div>
-          <div class="persona-kv">
-            <span class="persona-k">나만의 용도</span>
-            <span class="persona-v">밤 가로등에서 엄마 인생샷 촬영</span>
-          </div>
+    <div class="persona-card" style="max-width:440px;">
+      <div class="persona-avatar">👩</div>
+      <div class="persona-name">수영장맘 지영</div>
+      <div class="persona-sub">37세 · 아이 5세 엄마</div>
+      <div class="persona-row">
+        <div class="persona-kv">
+          <span class="persona-k">장소</span>
+          <span class="persona-v">7월 아파트 인근 공원 물놀이장</span>
+        </div>
+        <div class="persona-kv">
+          <span class="persona-k">과거 경험</span>
+          <span class="persona-v">작년 5천원짜리 → 펌프 빠지고 바로 부러짐, 아이 울음</span>
+        </div>
+        <div class="persona-kv">
+          <span class="persona-k">발견</span>
+          <span class="persona-v">인스타에서 회오리 물총 목격, 봄 시즌</span>
+        </div>
+        <div class="persona-kv">
+          <span class="persona-k">검증 행동</span>
+          <span class="persona-v">★1~3 리뷰 스크롤 — "또 부서졌나" 확인</span>
+        </div>
+        <div class="persona-kv">
+          <span class="persona-k">구매 조건</span>
+          <span class="persona-v">1만원 안쪽 2개 세트</span>
+        </div>
+        <div class="persona-kv">
+          <span class="persona-k">나만의 용도</span>
+          <span class="persona-v">밤 가로등에서 엄마 인생샷 촬영</span>
         </div>
       </div>
-
-      <div class="journey-timeline">
-        <div class="journey-title">구매 여정 타임라인</div>
-        <div class="journey-steps">
-
-          <div class="journey-step">
-            <div class="journey-left">
-              <div class="journey-dot">📱</div>
-            </div>
-            <div class="journey-content">
-              <div class="journey-label">발견</div>
-              <div class="journey-desc">인스타 스크롤 중 워터파크·공원에서 아이들이 쓰는 모습 목격. 봄 시즌 = 구매 트리거 활성화.</div>
-            </div>
-          </div>
-
-          <div class="journey-step">
-            <div class="journey-left">
-              <div class="journey-dot">🔍</div>
-            </div>
-            <div class="journey-content">
-              <div class="journey-label">검색</div>
-              <div class="journey-desc">"회오리 물총" 검색 → 상세페이지 유입. 비주얼(분사 영상·사진)로 1차 판단.</div>
-            </div>
-          </div>
-
-          <div class="journey-step risk">
-            <div class="journey-left">
-              <div class="journey-dot">⭐</div>
-            </div>
-            <div class="journey-content">
-              <div class="journey-label" style="color:var(--danger);">위험 구간 — 저평점 리뷰 탐색</div>
-              <div class="journey-desc">★1~3 리뷰로 스크롤 내려 "또 부서진다는 사람 없나" 확인. 내구성 불안 해소 못 하면 이탈.</div>
-            </div>
-          </div>
-
-          <div class="journey-step active">
-            <div class="journey-left">
-              <div class="journey-dot">🛒</div>
-            </div>
-            <div class="journey-content">
-              <div class="journey-label" style="color:var(--primary);">구매 결정</div>
-              <div class="journey-desc">1만원 안쪽 + 2개 세트 + 로켓 다음날 도착 확인 → 장바구니 담기.</div>
-            </div>
-          </div>
-
-          <div class="journey-step">
-            <div class="journey-left">
-              <div class="journey-dot">🌙</div>
-            </div>
-            <div class="journey-content">
-              <div class="journey-label">재사용 · 콘텐츠</div>
-              <div class="journey-desc">낮엔 아이 놀이 → 저녁엔 가로등 아래 엄마 인생샷. SNS 공유 → 상징재 순환 강화.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -885,7 +837,7 @@ h3 {
 
   <!-- ─────────────────────── PASBRO STORY ── -->
   <section>
-    <h2>Story 흐름 — PASBRO 구조</h2>
+    <h2>Story 흐름</h2>
     <div class="pasbro-steps">
 
       <!-- Hook -->
