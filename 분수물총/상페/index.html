@@ -9,9 +9,19 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  /* ── Magic Spoon 실제 사이트 색상 ── */
+  :root {
+    --ms-blue:    #72D2FF;   /* 스카이블루 */
+    --ms-pink:    #FFB8E7;   /* 핑크 */
+    --ms-peach:   #FFEFDB;   /* 크림피치 */
+    --ms-purple:  #dad9ff;   /* 연보라 */
+    --ms-lavender:#C9B2FD;   /* 라벤더 */
+    --ms-orange:  #FFAB71;   /* 피치오렌지 */
+    --ms-dark:    #06001a;   /* 야간 딥다크 */
+  }
+
   body {
-    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 16px;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #111;
     background: #fff;
     line-height: 1.6;
@@ -20,7 +30,9 @@
 
   .page { max-width: 780px; margin: 0 auto; }
 
-  /* ── 이미지 플레이스홀더 ── */
+  /* ══════════════════════════════════
+     이미지 플레이스홀더
+  ══════════════════════════════════ */
   .img-box {
     width: 100%;
     display: flex;
@@ -30,14 +42,13 @@
     gap: 8px;
     padding: 40px 24px;
     text-align: center;
-    background: #e8e8e8;
   }
   .img-box .img-label {
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(0,0,0,0.28);
+    color: rgba(0,0,0,0.3);
   }
   .img-box .img-desc {
     font-size: 13px;
@@ -49,14 +60,14 @@
   .img-box.mid   { min-height: 280px; }
   .img-box.short { min-height: 160px; }
 
-  /* 단계 배경 톤 그대로 img-box에 */
-  .img-box.tone-p { background: #bfd9f7; }
-  .img-box.tone-a { background: #ffc8c8; }
-  .img-box.tone-s { background: #fef08a; }
-  .img-box.tone-b { background: #b9d6f9; }
-  .img-box.tone-r { background: #a7f3d0; }
-  .img-box.tone-o { background: #d8c4ff; }
-  .img-box.tone-dark { background: #06001a; }
+  /* img-box 배경 = 해당 단계 Magic Spoon 색 */
+  .img-box.tone-p       { background: var(--ms-blue); }
+  .img-box.tone-a       { background: var(--ms-pink); }
+  .img-box.tone-s       { background: var(--ms-peach); }
+  .img-box.tone-b       { background: var(--ms-purple); }
+  .img-box.tone-r       { background: var(--ms-lavender); }
+  .img-box.tone-o       { background: var(--ms-orange); }
+  .img-box.tone-dark    { background: var(--ms-dark); }
   .img-box.tone-dark .img-label { color: rgba(255,255,255,0.25); }
   .img-box.tone-dark .img-desc  { color: rgba(255,255,255,0.25); }
 
@@ -67,76 +78,88 @@
   }
 
   /* ══════════════════════════════════
-     PASBRO 단계 — Magic Spoon 배경 블록
+     PASBRO 단계 배경 (Magic Spoon 실제 색)
   ══════════════════════════════════ */
-  .step { padding: 64px 52px; }
+  .step { padding: 80px 52px; }
 
-  /* 배경색 (좌측 보더 제거 → 풀 배경으로) */
-  .step-p     { background: #dbeeff; }
-  .step-a     { background: #ffe0e0; }
-  .step-s     { background: #fef9c3; }
-  .step-b     { background: #ddeeff; }
-  .step-r     { background: #d1fae5; }
-  .step-o     { background: #ede9fe; }
-  .step-offer { background: #0a0a1a; color: #fff; }
-  .step-faq   { background: #f9f9f9; }
+  .step-p     { background: var(--ms-blue); }
+  .step-a     { background: var(--ms-pink); }
+  .step-s     { background: var(--ms-peach); }
+  .step-b     { background: var(--ms-purple); }
+  .step-r     { background: var(--ms-lavender); }
+  .step-o     { background: var(--ms-orange); }
+  .step-offer { background: var(--ms-dark); color: #fff; }
+  .step-faq   { background: #f4f4f5; }
 
-  /* ── step-tag ── */
+  /* ── step-tag (각 단계 진한 색) ── */
   .step-tag {
     display: inline-block;
     font-size: 11px;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     padding: 5px 14px;
     border-radius: 100px;
-    margin-bottom: 22px;
+    margin-bottom: 24px;
   }
-  .step-p .step-tag     { background: #1a56db; color: #fff; }
-  .step-a .step-tag     { background: #dc2626; color: #fff; }
-  .step-s .step-tag     { background: #d97706; color: #fff; }
-  .step-b .step-tag     { background: #2563eb; color: #fff; }
-  .step-r .step-tag     { background: #059669; color: #fff; }
-  .step-o .step-tag     { background: #6d28d9; color: #fff; }
-  .step-offer .step-tag { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+  .step-p .step-tag     { background: #003d66; color: #fff; }
+  .step-a .step-tag     { background: #6b003d; color: #fff; }
+  .step-s .step-tag     { background: #5a3200; color: #fff; }
+  .step-b .step-tag     { background: #1a1166; color: #fff; }
+  .step-r .step-tag     { background: #2d0066; color: #fff; }
+  .step-o .step-tag     { background: #3d1f00; color: #fff; }
+  .step-offer .step-tag { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.22); }
   .step-faq .step-tag   { background: #e4e4e7; color: #52525b; }
 
   /* ══════════════════════════════════
-     헤드라인 — Apple 타이포그래피
+     헤드라인 — Apple 타이포 비율
+     h2 64px : step-sub 19px = 약 3.4:1
+     중앙 정렬 + 매우 타이트한 자간
   ══════════════════════════════════ */
   h2 {
-    font-size: 46px;
+    font-size: 64px;
     font-weight: 900;
-    line-height: 1.16;
-    letter-spacing: -0.04em;
-    margin-bottom: 18px;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    margin-bottom: 20px;
     word-break: keep-all;
+    text-align: center;
   }
-  .step-p h2     { color: #1141a8; }
-  .step-a h2     { color: #9b1c1c; }
-  .step-s h2     { color: #78350f; }
-  .step-b h2     { color: #1e40af; }
-  .step-r h2     { color: #064e3b; }
-  .step-o h2     { color: #4c1d95; }
-  .step-offer h2 { color: #fff; font-size: 42px; }
-  .step-faq h2   { color: #111; font-size: 28px; letter-spacing: -0.03em; }
+  .step-p h2     { color: #003d66; }
+  .step-a h2     { color: #6b003d; }
+  .step-s h2     { color: #5a3200; }
+  .step-b h2     { color: #1a1166; }
+  .step-r h2     { color: #2d0066; }
+  .step-o h2     { color: #3d1f00; }
+  .step-offer h2 { color: #fff; font-size: 56px; }
+  .step-faq h2   { color: #111; font-size: 32px; letter-spacing: -0.03em; text-align: left; }
 
+  /* 서브텍스트 — 헤드라인 1/3 크기, 가운데 */
   .step-sub {
-    font-size: 17px;
+    font-size: 19px;
     font-weight: 400;
-    line-height: 1.78;
-    margin-bottom: 26px;
+    line-height: 1.72;
+    margin-bottom: 32px;
     word-break: keep-all;
-    max-width: 560px;
+    text-align: center;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .step-p .step-sub     { color: #1e3a8a99; color: rgba(21,48,150,0.65); }
-  .step-a .step-sub     { color: rgba(120,30,30,0.65); }
-  .step-s .step-sub     { color: rgba(100,50,0,0.65); }
-  .step-b .step-sub     { color: rgba(20,40,140,0.65); }
-  .step-r .step-sub     { color: rgba(4,60,40,0.65); }
-  .step-o .step-sub     { color: rgba(60,15,120,0.65); }
-  .step-offer .step-sub { color: rgba(255,255,255,0.6); }
-  .step-faq .step-sub   { color: #555; }
+  .step-p .step-sub     { color: rgba(0,40,80,0.62); }
+  .step-a .step-sub     { color: rgba(80,0,40,0.62); }
+  .step-s .step-sub     { color: rgba(70,35,0,0.62); }
+  .step-b .step-sub     { color: rgba(20,10,80,0.62); }
+  .step-r .step-sub     { color: rgba(35,0,80,0.62); }
+  .step-o .step-sub     { color: rgba(50,20,0,0.62); }
+  .step-offer .step-sub { color: rgba(255,255,255,0.58); text-align: left; margin-left: 0; }
+  .step-faq .step-sub   { color: #555; text-align: left; margin-left: 0; font-size: 17px; }
+
+  /* step-tag도 중앙 정렬 (offer·faq 제외) */
+  .step-p, .step-a, .step-s, .step-b, .step-r, .step-o {
+    text-align: center;
+  }
+  .step-offer, .step-faq { text-align: left; }
 
   /* ── VoC (고객 멘트) ── */
   .voc-list {
@@ -145,43 +168,45 @@
     flex-direction: column;
     gap: 10px;
     margin-top: 20px;
+    text-align: left;
   }
   .voc-list li {
     font-size: 15px;
     font-weight: 500;
     font-style: italic;
-    line-height: 1.68;
+    line-height: 1.7;
     padding: 14px 18px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.72);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.68);
     word-break: keep-all;
-    color: #222;
+    color: #111;
   }
-  .step-p .voc-list li     { border-left: 3px solid #1a56db; }
-  .step-a .voc-list li     { border-left: 3px solid #dc2626; }
-  .step-s .voc-list li     { border-left: 3px solid #d97706; }
-  .step-b .voc-list li     { border-left: 3px solid #2563eb; }
-  .step-r .voc-list li     { border-left: 3px solid #059669; }
-  .step-o .voc-list li     { border-left: 3px solid #6d28d9; }
-  .step-offer .voc-list li { background: rgba(255,255,255,0.09); border-left: 3px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); }
+  .step-p .voc-list li     { border-left: 3px solid #003d66; }
+  .step-a .voc-list li     { border-left: 3px solid #6b003d; }
+  .step-s .voc-list li     { border-left: 3px solid #5a3200; }
+  .step-b .voc-list li     { border-left: 3px solid #1a1166; }
+  .step-r .voc-list li     { border-left: 3px solid #2d0066; }
+  .step-o .voc-list li     { border-left: 3px solid #3d1f00; }
+  .step-offer .voc-list li { background: rgba(255,255,255,0.08); border-left: 3px solid rgba(255,255,255,0.28); color: rgba(255,255,255,0.85); font-style: normal; }
 
   /* ── 배지 ── */
   .badge-row {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    margin-top: 22px;
+    margin-top: 24px;
+    justify-content: center;
   }
+  .step-offer .badge-row, .step-faq .badge-row { justify-content: flex-start; }
   .badge {
     display: inline-block;
     padding: 7px 17px;
-    border: 2px solid rgba(0,0,0,0.18);
+    border: 2px solid rgba(0,0,0,0.22);
     border-radius: 100px;
     font-size: 13px;
     font-weight: 800;
-    color: #222;
-    background: rgba(255,255,255,0.6);
-    letter-spacing: 0.01em;
+    color: #111;
+    background: rgba(255,255,255,0.55);
   }
 
   /* ── 기능 리스트 ── */
@@ -190,20 +215,21 @@
     display: flex;
     flex-direction: column;
     gap: 18px;
-    margin-top: 22px;
+    margin-top: 24px;
+    text-align: left;
   }
   .feat-list li {
     display: flex;
     align-items: flex-start;
     gap: 16px;
     font-size: 15px;
-    line-height: 1.68;
+    line-height: 1.7;
   }
   .feat-list .fnum {
     flex-shrink: 0;
     width: 28px; height: 28px;
     border-radius: 50%;
-    background: #059669;
+    background: #2d0066;
     color: #fff;
     font-size: 14px;
     font-weight: 900;
@@ -215,8 +241,8 @@
 
   /* ── LED 야간 블록 ── */
   .led-block {
-    background: #06001a;
-    padding: 64px 52px;
+    background: var(--ms-dark);
+    padding: 80px 52px;
     color: #f0f0f0;
   }
   .led-block .led-tag {
@@ -226,28 +252,33 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: #FFD700;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    text-align: center;
   }
   .led-block h3 {
-    font-size: 46px;
+    font-size: 64px;
     font-weight: 900;
-    line-height: 1.16;
-    letter-spacing: -0.04em;
-    margin-bottom: 16px;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    margin-bottom: 20px;
     word-break: keep-all;
     color: #fff;
+    text-align: center;
   }
   .led-block p {
-    font-size: 17px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.78;
+    font-size: 19px;
+    color: rgba(255,255,255,0.52);
+    line-height: 1.72;
     word-break: keep-all;
-    max-width: 500px;
+    max-width: 480px;
+    text-align: center;
+    margin: 0 auto;
   }
   .led-badge {
-    display: inline-block;
-    margin-top: 22px;
-    padding: 9px 22px;
+    display: block;
+    width: fit-content;
+    margin: 24px auto 0;
+    padding: 9px 24px;
     background: #FFD700;
     color: #0a0500;
     font-size: 13px;
@@ -259,16 +290,16 @@
   /* ── 구매 카드 ── */
   .offer-card {
     background: rgba(255,255,255,0.08);
-    border: 1.5px solid rgba(255,255,255,0.16);
+    border: 1.5px solid rgba(255,255,255,0.15);
     border-radius: 18px;
-    padding: 26px 30px;
-    margin-top: 32px;
+    padding: 28px 32px;
+    margin-top: 36px;
     max-width: 400px;
   }
-  .offer-card .name     { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 10px; word-break: keep-all; }
-  .offer-card .price    { font-size: 40px; font-weight: 900; color: #fff; letter-spacing: -0.04em; }
-  .offer-card .price span { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.45); }
-  .offer-card .delivery { font-size: 14px; color: #7dd3fc; font-weight: 700; margin-top: 8px; }
+  .offer-card .name     { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 10px; word-break: keep-all; }
+  .offer-card .price    { font-size: 44px; font-weight: 900; color: #fff; letter-spacing: -0.05em; }
+  .offer-card .price span { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.4); }
+  .offer-card .delivery { font-size: 14px; color: var(--ms-blue); font-weight: 700; margin-top: 8px; }
 
   .info-list {
     list-style: none;
@@ -279,19 +310,19 @@
   }
   .info-list li {
     font-size: 14px;
-    color: rgba(255,255,255,0.58);
+    color: rgba(255,255,255,0.55);
     padding-left: 16px;
     position: relative;
-    line-height: 1.65;
+    line-height: 1.68;
   }
-  .info-list li::before { content: '·'; position: absolute; left: 0; color: rgba(255,255,255,0.28); }
+  .info-list li::before { content: '·'; position: absolute; left: 0; color: rgba(255,255,255,0.25); }
 
   /* ── 스펙 테이블 ── */
   .spec-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
-    margin-top: 22px;
+    margin-top: 24px;
   }
   .spec-table tr { border-bottom: 1px solid rgba(0,0,0,0.07); }
   .spec-table th {
@@ -313,10 +344,11 @@
   }
 
   @media (max-width: 600px) {
-    .step, .led-block { padding: 48px 24px; }
-    h2 { font-size: 34px; }
-    .led-block h3 { font-size: 34px; }
-    .step-offer h2 { font-size: 30px; }
+    .step, .led-block { padding: 56px 24px; }
+    h2 { font-size: 42px; }
+    .led-block h3 { font-size: 42px; }
+    .step-offer h2 { font-size: 36px; }
+    .step-sub { font-size: 17px; }
     .page-footer { padding: 24px; }
   }
 </style>
@@ -325,7 +357,7 @@
 <div class="page">
 
   <!-- ════════════════════════
-       P — 훅: 발견 경로 + 비주얼
+       P — 훅
   ════════════════════════ -->
 
   <div class="img-box tall tone-p">
@@ -347,7 +379,7 @@
   <div class="step step-p">
     <span class="step-tag">P — 훅 · 발견 경로</span>
     <h2>아이들은 이걸<br>"물꽃놀이"라고<br>부르더라고요</h2>
-    <p class="step-sub">워터파크에서, 공원에서, 옆집 아이 손에서 — 한 번 보면 멈추고 바라보게 되는 물총입니다.</p>
+    <p class="step-sub">워터파크에서, 공원에서, 옆집 아이 손에서 —<br>한 번 보면 멈추고 바라보게 되는 물총입니다.</p>
     <ul class="voc-list">
       <li>"워터파크 갔는데 친구들이 이걸로 너무 재밋게 노는거에요!"</li>
       <li>"촤라락 엄청 화려하고 재미나네요ㅎ 보기만해도 시원~"</li>
@@ -362,13 +394,13 @@
 
 
   <!-- ════════════════════════
-       A — 공감: 내구 실패 → 종결 전환
+       A — 공감
   ════════════════════════ -->
 
   <div class="step step-a">
     <span class="step-tag">A — 공감 · 작년 실패</span>
     <h2>작년 5천 원짜리 —<br>하루 쓰고 갈라져서<br>버리셨죠?</h2>
-    <p class="step-sub">집에 안 쓰는 물총 쌓인 집 아시나요? 매년 사고, 매번 실망하고, 결국 또 새로 사러 오는 그 사이클.</p>
+    <p class="step-sub">집에 안 쓰는 물총 쌓인 집 아시나요?<br>매년 사고, 매번 실망하고, 결국 또 새로 사러 오는 그 사이클.</p>
     <ul class="voc-list">
       <li>"하루썻는데 갈라져서못씀 택포8천원 버린꼴"</li>
       <li>"집에 물총 많이 쌓아놓고 안쓰시고 계신 아이들집 있으면 이걸로 종결입니다 ㅋㅋㅋ"</li>
@@ -382,13 +414,13 @@
 
 
   <!-- ════════════════════════
-       S — 증폭: 엄마 쉼 + 아이 반응
+       S — 증폭
   ════════════════════════ -->
 
   <div class="step step-s">
     <span class="step-tag">S — 증폭 · 엄마 쉼</span>
     <h2>애가 이거 하나면<br>엄마를<br>안 찾아요</h2>
-    <p class="step-sub">아이가 푹 빠진 만큼 엄마 손이 자유로워집니다. 풀빌라 저녁 준비할 때, 놀이터 벤치에 앉아 있을 때.</p>
+    <p class="step-sub">아이가 푹 빠진 만큼 엄마 손이 자유로워집니다.<br>풀빌라 저녁 준비할 때, 놀이터 벤치에 앉아 있을 때.</p>
     <ul class="voc-list">
       <li>"에너지 쭉쭉 빠져서 낮잠까지 푹!"</li>
       <li>"이 제품아니면 안씻겠다고 협박하심ㅋㅋㅋㅋㅋ"</li>
@@ -403,13 +435,13 @@
 
 
   <!-- ════════════════════════
-       B — 전환: 비주얼 + 기능 + 안전
+       B — 전환
   ════════════════════════ -->
 
   <div class="step step-b">
     <span class="step-tag">B — 전환 · 상품 등장</span>
     <h2>건전지 없이,<br>물만 채우면<br>5세도 혼자 쏩니다</h2>
-    <p class="step-sub">충전 필요 없고, 건전지 안 갑니다. 펌프 한 번 당기면 회오리처럼 퍼집니다. KC 인증 완료.</p>
+    <p class="step-sub">충전 필요 없고, 건전지 안 갑니다.<br>펌프 한 번 당기면 회오리처럼 퍼집니다. KC 인증 완료.</p>
     <ul class="voc-list">
       <li>"건전지 없이 물만 채워서 바로 쓸 수 있어요"</li>
       <li>"아파트 물놀이장에서 물총은 사용 못하는데 이건 상관 안하더라구요"</li>
@@ -443,12 +475,12 @@
   </div>
 
   <div class="step step-b">
-    <span class="step-tag" style="background:#854d0e;">블루 + 핑크 · 색 지정</span>
+    <span class="step-tag" style="background:#5a3200;">블루 + 핑크 · 색 지정</span>
     <h2>색 골라 드려요<br>(랜덤 아님)</h2>
-    <p class="step-sub">블루 1개 + 핑크 1개 고정 구성입니다. 처음부터 각자 것 — 형제도 안 싸우고, 친구랑도.</p>
+    <p class="step-sub">블루 1개 + 핑크 1개 고정 구성입니다.<br>처음부터 각자 것 — 형제도 안 싸우고, 친구랑도.</p>
     <div class="badge-row">
-      <span class="badge" style="color:#1a5cb5; border-color:#1a5cb5;">블루</span>
-      <span class="badge" style="color:#c04080; border-color:#c04080;">핑크</span>
+      <span class="badge" style="color:#003d99; border-color:#003d99;">블루</span>
+      <span class="badge" style="color:#99003d; border-color:#99003d;">핑크</span>
       <span class="badge">색상 고정 · 랜덤 아님</span>
     </div>
   </div>
@@ -460,30 +492,30 @@
 
 
   <!-- ════════════════════════
-       R — 가치: 엄마 쉼 + 인싸 + 공유
+       R — 가치
   ════════════════════════ -->
 
   <div class="step step-r">
     <span class="step-tag">R — 가치 · 경험</span>
     <h2>물 있는 곳에선<br>엄빠들이<br>쉴 수 있어요</h2>
-    <p class="step-sub">아이가 신나서 노는 동안, 엄마는 드디어 앉을 수 있습니다. 목욕도, 놀이터도, 수영장도.</p>
+    <p class="step-sub">아이가 신나서 노는 동안, 엄마는 드디어 앉을 수 있습니다.<br>목욕도, 놀이터도, 수영장도.</p>
     <ul class="voc-list">
       <li>"물있는곳에서 진짜 엄빠들은 쉴수있다는 커다란장점"</li>
       <li>"목욕 거부하던 아이도 이젠 먼저 들어가요"</li>
       <li>"수영장에서 인싸 수준이였어요 다른 물총은 처다도 안보더라구요"</li>
     </ul>
-    <ul class="feat-list" style="margin-top:28px;">
+    <ul class="feat-list" style="margin-top:32px;">
       <li>
         <span class="fnum">+</span>
-        <div><strong>어른도 같이 즐깁니다</strong><br><span style="color:#3d6457; font-size:14px;">"처음엔 애 주려고 샀는데 제가 더 신나서 쏘고 있었어요"</span></div>
+        <div><strong>어른도 같이 즐깁니다</strong><br><span style="color:#2d0066; font-size:14px;">"처음엔 애 주려고 샀는데 제가 더 신나서 쏘고 있었어요"</span></div>
       </li>
       <li>
         <span class="fnum">+</span>
-        <div><strong>한 번 채우면 한참 — "물 또 넣어줘" 덜 불려다님</strong><br><span style="color:#3d6457; font-size:14px;">대용량 설계. 반복 보충 횟수가 줄어들어 엄마가 쉴 수 있습니다.</span></div>
+        <div><strong>한 번 채우면 한참 — "물 또 넣어줘" 덜 불려다님</strong><br><span style="color:#2d0066; font-size:14px;">대용량 설계. 반복 보충 횟수가 줄어들어 엄마가 쉴 수 있습니다.</span></div>
       </li>
       <li>
         <span class="fnum">+</span>
-        <div><strong>퍼져서 맞아도 안 아픔</strong><br><span style="color:#3d6457; font-size:14px;">직선 집중 분사가 아니라 퍼지는 물꽃 분사. 어린 동생이 맞아도 괜찮습니다.</span></div>
+        <div><strong>퍼져서 맞아도 안 아픔</strong><br><span style="color:#2d0066; font-size:14px;">직선 집중 분사가 아니라 퍼지는 물꽃 분사. 어린 동생이 맞아도 괜찮습니다.</span></div>
       </li>
     </ul>
   </div>
@@ -495,7 +527,7 @@
 
 
   <!-- ════════════════════════
-       O — 증거: 내구 반박 + 별점
+       O — 증거
   ════════════════════════ -->
 
   <div class="step step-o">
@@ -513,23 +545,23 @@
     <span class="img-desc">실제 쿠팡 구매 리뷰 스크린샷 4~6개<br>★5 장문 리뷰 + 아이 사진 포함 리뷰 우선</span>
   </div>
 
-  <div class="step step-o" style="padding-top: 0;">
+  <div class="step step-o" style="padding-top:0;">
     <span class="step-tag">낮은 별점도 직접 올립니다</span>
     <ul class="voc-list" style="margin-top:0;">
-      <li style="border-left-color:#dc2626; font-style:normal;">
+      <li style="border-left-color:#6b003d; font-style:normal;">
         ★★☆☆☆ "처음에 기름 냄새가 나서 당황했어요."<br>
-        <span style="color:#6d28d9; font-size:13px; font-weight:700;">→ 출하 전 윤활유 잔류입니다. 물 2~3회 채워 비우면 해소됩니다. 안내 카드 동봉.</span>
+        <span style="color:#3d1f00; font-size:13px; font-weight:700;">→ 출하 전 윤활유 잔류입니다. 물 2~3회 채워 비우면 해소됩니다. 안내 카드 동봉.</span>
       </li>
-      <li style="border-left-color:#dc2626; font-style:normal;">
+      <li style="border-left-color:#6b003d; font-style:normal;">
         ★★★☆☆ "전투용으로 샀는데 물줄기가 퍼져서 아쉬웠어요."<br>
-        <span style="color:#6d28d9; font-size:13px; font-weight:700;">→ 이 물총은 물이 '퍼지는' 분수 감성용입니다. 회오리 물꽃 비주얼이 목적입니다.</span>
+        <span style="color:#3d1f00; font-size:13px; font-weight:700;">→ 이 물총은 물이 '퍼지는' 분수 감성용입니다. 회오리 물꽃 비주얼이 목적입니다.</span>
       </li>
     </ul>
   </div>
 
 
   <!-- ════════════════════════
-       → — 제안: 가격 + 시즌 + 배송
+       → — 제안
   ════════════════════════ -->
 
   <div class="step step-offer">
@@ -560,7 +592,7 @@
 
   <div class="img-box mid tone-dark">
     <span class="img-label">아웃트로 비주얼</span>
-    <span class="img-desc">공원·물놀이장 저녁 씬 · 가로등 아래<br>블루 + 핑크 2개 + LED 빛 궤적 · "올여름 제대로" 감성</span>
+    <span class="img-desc">공원·물놀이장 저녁 씬 · 가로등 아래<br>블루 + 핑크 2개 + LED 빛 궤적</span>
   </div>
 
 
@@ -581,7 +613,7 @@
   </div>
 
   <footer class="page-footer">
-    <span>2026-05-13 &nbsp;by 차드 · Apple typo × Magic Spoon color v3</span>
+    <span>2026-05-13 &nbsp;by 차드 · Apple typo × Magic Spoon color v4</span>
   </footer>
 
 </div>
