@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>에이폼 회오리 분수물총 블루+핑크 2종 세트</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    font-size: 16px;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* ── 이미지 플레이스홀더 ── */
+  .img-box {
+    width: 100%;
+    background: #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .img-box .img-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #666;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .img-box .img-desc {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.5;
+    max-width: 480px;
+  }
+  .img-box.tall { min-height: 380px; }
+  .img-box.mid { min-height: 280px; }
+  .img-box.short { min-height: 200px; }
+  .img-box.dark {
+    background: #2a2a2a;
+  }
+  .img-box.dark .img-label { color: #aaa; }
+  .img-box.dark .img-desc { color: #888; }
+
+  /* ── 섹션 공통 ── */
+  .sec {
+    padding: 52px 40px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .sec.dark-bg {
+    background: #111;
+    color: #f5f5f5;
+    border-bottom: none;
+  }
+  .sec-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #999;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .sec-tag.highlight { color: #e8a000; }
+  .sec-tag.dark-tag { color: #aaa; }
+
+  h2 {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 14px;
+    word-break: keep-all;
+  }
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    word-break: keep-all;
+  }
+  p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.75;
+    margin-bottom: 10px;
+    word-break: keep-all;
+  }
+  .dark-bg p { color: #bbb; }
+  .dark-bg h2 { color: #f0f0f0; }
+
+  /* ── 인트로 히어로 ── */
+  .hero-txt {
+    padding: 40px 40px 0;
+    text-align: center;
+  }
+  .hero-txt .pre-tag {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 12px;
+  }
+  .hero-txt h1 {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.3;
+    word-break: keep-all;
+    margin-bottom: 14px;
+  }
+  .hero-txt .sub {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* ── 서브 썸네일 그리드 ── */
+  .thumb-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  /* ── 공감 블록 ── */
+  .pain-quote {
+    background: #f7f7f7;
+    border-left: 4px solid #ccc;
+    padding: 18px 22px;
+    margin: 20px 0;
+    font-size: 16px;
+    color: #555;
+    font-style: italic;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+
+  /* ── 배지 열 ── */
+  .badge-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 7px 16px;
+    border: 1.5px solid #333;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+  }
+
+  /* ── 특징 리스트 ── */
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .feature-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+  }
+  .feature-list li .f-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: #111;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    margin-top: 1px;
+  }
+
+  /* ── LED 야간 섹션 ── */
+  .led-claim {
+    font-size: 22px;
+    font-weight: 800;
+    color: #f5f5f5;
+    line-height: 1.35;
+    margin-bottom: 12px;
+    word-break: keep-all;
+  }
+  .led-sub {
+    font-size: 15px;
+    color: #999;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+  .led-badge {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 8px 20px;
+    background: #e8a000;
+    color: #111;
+    font-size: 14px;
+    font-weight: 800;
+    border-radius: 100px;
+  }
+
+  /* ── 리뷰 카드 ── */
+  .review-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .review-card {
+    background: #f7f7f7;
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+  .review-card .stars {
+    font-size: 14px;
+    color: #f5a623;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+  .review-card .body {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.65;
+    font-style: italic;
+    word-break: keep-all;
+  }
+  .review-card .meta {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #999;
+  }
+  .review-card.defense {
+    background: #fff8f0;
+    border-left: 3px solid #e8a000;
+  }
+  .review-card.defense .body { font-style: normal; }
+  .review-card.defense .rebuttal {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #b07000;
+    font-weight: 600;
+  }
+
+  /* ── 스펙 테이블 ── */
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin-top: 20px;
+  }
+  .spec-table tr { border-bottom: 1px solid #eee; }
+  .spec-table th {
+    width: 36%;
+    padding: 12px 16px 12px 0;
+    text-align: left;
+    font-weight: 600;
+    color: #888;
+    vertical-align: top;
+  }
+  .spec-table td {
+    padding: 12px 0;
+    color: #222;
+    line-height: 1.6;
+  }
+
+  /* ── 아웃트로 ── */
+  .outro-wrap {
+    background: #f7f7f7;
+    padding: 52px 40px;
+    text-align: center;
+  }
+  .outro-wrap h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .outro-wrap .outro-sub {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 28px;
+    word-break: keep-all;
+  }
+  .outro-wrap .product-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    display: inline-block;
+    text-align: left;
+    max-width: 340px;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+  }
+  .outro-wrap .product-card .name {
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 600;
+    word-break: keep-all;
+  }
+  .outro-wrap .product-card .price {
+    font-size: 28px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 6px;
+  }
+  .outro-wrap .product-card .price span {
+    font-size: 15px;
+    font-weight: 400;
+    color: #888;
+  }
+  .outro-wrap .product-card .delivery {
+    font-size: 14px;
+    color: #0077cc;
+    font-weight: 600;
+  }
+  .info-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+    text-align: left;
+  }
+  .info-list li {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .info-list li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: #aaa;
+  }
+
+  /* ── 구분선 ── */
+  .divider {
+    height: 1px;
+    background: #eee;
+    margin: 0 40px;
+  }
+
+  @media (max-width: 600px) {
+    .sec { padding: 40px 20px; }
+    .hero-txt { padding: 32px 20px 0; }
+    .hero-txt h1 { font-size: 22px; }
+    h2 { font-size: 22px; }
+    .outro-wrap { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══════════════════════════════════════
+       P — 인트로·후킹
+  ══════════════════════════════════════ -->
+
+  <!-- 히어로 이미지 -->
+  <div class="img-box tall">
+    <span class="img-label">메인 썸네일 · 히어로컷</span>
+    <span class="img-desc">블루 + 핑크 2개 나란히 + 회오리 분사 장면<br>흰 배경 또는 야외 밝은 햇살 배경<br>"회오리 물꽃놀이 · 2종 세트" 텍스트 오버레이</span>
+  </div>
+
+  <!-- 히어로 카피 -->
+  <div class="hero-txt">
+    <p class="pre-tag">에이폼 회오리 분수물총 · 블루 + 핑크 2종 세트</p>
+    <h1>아이들은 이걸<br>"물꽃놀이"라고 부르더라고요</h1>
+    <p class="sub">물 있는 곳에선, 진짜 엄빠들이 쉴 수 있다는 거 — 아세요?</p>
+  </div>
+
+  <!-- 서브 썸네일 2×2 -->
+  <div style="margin-top: 2px;">
+    <div class="thumb-row">
+      <div class="img-box short">
+        <span class="img-label">서브 ①</span>
+        <span class="img-desc">아이 환호 표정<br>클로즈업 · 감정 후킹</span>
+      </div>
+      <div class="img-box short dark">
+        <span class="img-label">서브 ②</span>
+        <span class="img-desc">LED 야간<br>가로등 아래 빛 궤적<br>"밤엔 이게 달라"</span>
+      </div>
+      <div class="img-box short">
+        <span class="img-label">서브 ③</span>
+        <span class="img-desc">공원·물놀이장 실사용 씬<br>엄마 + 아이 야외</span>
+      </div>
+      <div class="img-box short">
+        <span class="img-label">서브 ④</span>
+        <span class="img-desc">ABS · KC 인증 뱃지<br>"내구 테스트 통과" 명시<br>불신 선제 해소</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       A — 공감 · 방어 (미들1)
+  ══════════════════════════════════════ -->
+
+  <div class="sec">
+    <span class="sec-tag">공감</span>
+    <h2>작년 5천 원짜리 —<br>첫날에 펌프 빠지셨죠?</h2>
+    <div class="pain-quote">
+      "물놀이 갔는데 아이가 신나서 쏘려는데 첫날에 갈라져서 못씀 ㅠ 사진만 남았어요"
+    </div>
+    <div class="pain-quote">
+      "하루 썼는데 부러져서 버렸어요. 싸구려는 이제 안 사요"
+    </div>
+    <p>집에 안 쓰는 물총 쌓인 집 계신가요?<br>
+    그리고 결국 또 새로 사러 오셨죠?</p>
+  </div>
+
+  <div class="img-box mid">
+    <span class="img-label">공감컷</span>
+    <span class="img-desc">부러진 싸구려 물총 이미지 또는 일러스트<br>짧은 여름 시즌, 첫날에 망가진 상황 표현</span>
+  </div>
+
+  <div class="sec">
+    <span class="sec-tag">내구 방어 — 1관문</span>
+    <h2>ABS에 KC 인증입니다.<br>일부러 떨궈봤어요.</h2>
+    <p>내구성을 먼저 말씀드리는 이유는, 가장 먼저 걱정하시는 걸 알기 때문입니다.</p>
+    <p>ABS(고강도 플라스틱) + KC 안전 인증. 충격 테스트 진행 후 출고합니다.</p>
+    <div class="badge-row">
+      <span class="badge">ABS 재질</span>
+      <span class="badge">KC 인증</span>
+      <span class="badge">내구 테스트 완료</span>
+      <span class="badge">건전지 불필요</span>
+    </div>
+  </div>
+
+  <div class="img-box mid">
+    <span class="img-label">내구 방어컷</span>
+    <span class="img-desc">ABS 재질 표기 + KC 인증 마크 확대 컷<br>낙하 테스트 영상 스틸컷 (직접 떨어뜨리는 장면)</span>
+  </div>
+
+  <!-- 낮은 별점 리뷰 반박 -->
+  <div class="sec">
+    <span class="sec-tag">실제 걱정 리뷰, 직접 올립니다</span>
+    <h2>걱정하시는 분 있어서<br>직접 올립니다.</h2>
+
+    <div class="review-cards">
+      <div class="review-card defense">
+        <div class="stars">★★☆☆☆</div>
+        <p class="body">"처음에 기름 냄새가 나서 당황했어요. 세척하니 괜찮아졌는데 미리 알았으면 좋았을 것 같아요."</p>
+        <p class="rebuttal">→ 출하 전 공장 윤활유 잔류는 초기 물총에서 종종 있습니다. 물에 2~3회 채워 비우면 해소됩니다. 상품 내 안내 카드 동봉.</p>
+      </div>
+      <div class="review-card defense">
+        <div class="stars">★★★☆☆</div>
+        <p class="body">"펌프가 살짝 빡빡한데 이게 오래가는 거라 생각했어요. 며칠 쓰니 부드러워졌어요."</p>
+        <p class="rebuttal">→ 처음 사용 시 펌프가 뻑뻑할 수 있습니다. 5~10회 빈 손 펌핑 후 물 채우면 부드러워집니다.</p>
+      </div>
+      <div class="review-card defense">
+        <div class="stars">★★☆☆☆</div>
+        <p class="body">"전투용으로 샀는데 물줄기가 퍼져서 아쉬웠어요."</p>
+        <p class="rebuttal">→ 이 물총은 물이 '퍼지는' 분수 감성용입니다. 직선 물총 싸움보다 회오리 물꽃 비주얼을 즐기는 분께 맞습니다. 전투용이라면 직선형 물총을 추천드려요.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <div class="img-box short">
+        <span class="img-label">리뷰 스크린샷 플레이스홀더</span>
+        <span class="img-desc">실제 구매 리뷰 스크린샷 (낮은 별점 반박용)<br>상단에 ★낮은 별점 원문, 하단에 판매자 답변 코멘트</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       S — 전환 (엄마의 쉼)
+  ══════════════════════════════════════ -->
+
+  <div class="sec">
+    <span class="sec-tag">전환</span>
+    <h2>이제 애가 여기 빠지면<br>엄마는 잠깐 쉴 수 있어요</h2>
+    <p>풀빌라 저녁 준비 분주한데 아이가 가지고 노느라 엄마를 덜 찾아서 너무너무 만족이에요.</p>
+    <p>물 있는 곳에선, 진짜 엄빠들이 쉴 수 있다는 커다란 장점.</p>
+    <div class="pain-quote" style="border-left-color: #4a90d9; background: #f0f6ff;">
+      "집에 안 쓰는 물총 쌓인 집은 이걸로 종결이에요. 올 여름 내내 잘 썼어요."
+    </div>
+  </div>
+
+  <div class="img-box mid">
+    <span class="img-label">엄마의 쉼 — 전환컷</span>
+    <span class="img-desc">놀이터·물놀이장 의자에 앉은 엄마 (여유 있는 표정)<br>아이는 신나게 물총 쏘는 장면<br>엄마 시선 = 잠깐의 자유</span>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       B — 가치 전개 (미들2)
+  ══════════════════════════════════════ -->
+
+  <!-- B-1: 회오리 분사 -->
+  <div class="sec">
+    <span class="sec-tag">Tier 1 — 아이가 환장하는 이유</span>
+    <h2>분수처럼 촤라락 —<br>보는 순간 애가 환장합니다</h2>
+    <p>일반 물총처럼 한 줄기가 아닙니다. 회오리처럼 퍼지는 물꽃 분사. 처음 보는 아이들은 멈추고 바라봐요.</p>
+    <div class="pain-quote" style="border-left-color: #4a90d9; background: #f0f6ff;">
+      "엄청 화려하게 촤라락 퍼져요. 애가 눈이 커져서 '다시 해줘' 반복하더라고요."
+    </div>
+    <div class="pain-quote" style="border-left-color: #4a90d9; background: #f0f6ff;">
+      "워터파크에서 보고 어디서 샀냐고 물어봐서 여럿 소개해줬어요."
+    </div>
+  </div>
+
+  <div class="img-box tall">
+    <span class="img-label">회오리 분사 — 메인 비주얼 (GIF/영상 스틸)</span>
+    <span class="img-desc">회오리 분사 클로즈업 컷<br>물이 퍼지는 순간 / 빛을 받아 반짝이는 물줄기<br>GIF 또는 영상 스틸 — 정지 이미지보다 움직임 우선</span>
+  </div>
+
+  <div class="img-box mid">
+    <span class="img-label">아이 환호 씬</span>
+    <span class="img-desc">물총 쏘는 아이 표정 (환호·집중)<br>공원 / 아파트 물놀이장 / 워터파크 실사용</span>
+  </div>
+
+  <!-- B-2: LED 야간 -->
+  <div class="sec dark-bg">
+    <span class="sec-tag dark-tag highlight">Tier 1 — 경쟁자 어디에도 없습니다</span>
+    <p class="led-claim">낮엔 애 손에,<br>밤엔 엄마 손에</p>
+    <p class="led-sub">가로등 아래에서 물을 발사하면 — 폭죽처럼 퍼집니다.<br>경쟁자 8곳, 전부 확인했습니다. LED 있는 물총은 우리뿐입니다.</p>
+    <p class="led-sub" style="margin-top: 10px;">"밤에 가로등 아래 폭죽처럼 예쁘던데, 한번 밤에도 도전해보려고요." — 구매 리뷰 원문</p>
+    <span class="led-badge">LED 탑재 · 경쟁자 0곳</span>
+  </div>
+
+  <div class="img-box tall dark">
+    <span class="img-label">LED 야간 — 메인 비주얼</span>
+    <span class="img-desc">어두운 배경 + 가로등 아래 야간 분사<br>빛 궤적이 퍼지는 장면 (폭죽 같은 이미지)<br>영상/GIF 스틸 — 이 컷이 핵심</span>
+  </div>
+
+  <div class="sec dark-bg">
+    <p class="led-sub">공원 가로등 아래, 아파트 단지 저녁 산책.<br>아이가 쏘는 물이 빛을 받아 퍼지는 그 장면 — 영상으로 남겨두세요.</p>
+  </div>
+
+  <!-- B-3: 블루+핑크 세트 -->
+  <div class="sec">
+    <span class="sec-tag">Tier 1 — 색 골라 드려요</span>
+    <h2>블루 + 핑크,<br>색 골라 드려요 (랜덤 아님)</h2>
+    <p>2개 세트인데 색이 랜덤이면 — 형제끼리 색 다툼이 시작돼요.<br>저희는 블루 + 핑크 고정입니다. 처음부터 각자 것.</p>
+    <div class="pain-quote" style="border-left-color: #4a90d9; background: #f0f6ff;">
+      "색 랜덤이라 걱정했는데 아니어서 너무 좋았어요. 딸이 핑크 달라고 했는데 딱 맞았어요."
+    </div>
+    <div class="badge-row">
+      <span class="badge" style="color:#1a5cb5; border-color:#1a5cb5;">블루</span>
+      <span class="badge" style="color:#c04080; border-color:#c04080;">핑크</span>
+      <span class="badge">색상 고정 · 랜덤 아님</span>
+    </div>
+  </div>
+
+  <div class="img-box mid">
+    <span class="img-label">누끼컷 — 블루+핑크 2개</span>
+    <span class="img-desc">흰 배경에 블루·핑크 2개 나란히<br>"COLOR FIXED — NOT RANDOM" 텍스트 오버레이<br>각 색상 이름 표기</span>
+  </div>
+
+  <!-- B-4: Tier 2 기능 -->
+  <div class="sec">
+    <span class="sec-tag">더 알아두면 좋은 것들</span>
+    <h2>쓰다 보면 알게 되는<br>진짜 편한 점들</h2>
+
+    <ul class="feature-list">
+      <li>
+        <span class="f-num">01</span>
+        <div>
+          <strong>전동 워터건 막는 물놀이터에서도 OK</strong><br>
+          <span style="color:#666;">수동식 펌프라 전동 제한 구역에서도 사용 가능합니다. "아파트 물놀이장에서 물총은 못 쓰게 하는데 이건 상관 안 하더라고요."</span>
+        </div>
+      </li>
+      <li>
+        <span class="f-num">02</span>
+        <div>
+          <strong>건전지·충전 0 — 5세도 혼자 쏩니다</strong><br>
+          <span style="color:#666;">물만 채우면 끝. 건전지 구하러 편의점 갈 필요 없어요. 5세 아이도 펌프 혼자 당깁니다.</span>
+        </div>
+      </li>
+      <li>
+        <span class="f-num">03</span>
+        <div>
+          <strong>한 번 채우면 한참 — "물 또 넣어줘" 덜 불려다님</strong><br>
+          <span style="color:#666;">대용량 설계. 반복 보충 횟수가 줄어들어 엄마가 덜 불려다닙니다.</span>
+        </div>
+      </li>
+      <li>
+        <span class="f-num">04</span>
+        <div>
+          <strong>어른도 같이 즐깁니다</strong><br>
+          <span style="color:#666;">"처음엔 애 주려고 샀는데 제가 더 신나서 쏘고 있었어요." 주변 전염 빠릅니다.</span>
+        </div>
+      </li>
+      <li>
+        <span class="f-num">05</span>
+        <div>
+          <strong>퍼지는 분사라 맞아도 안 아픔</strong><br>
+          <span style="color:#666;">직선 물총처럼 집중되지 않고 퍼져서 가까이서 맞아도 충격이 없어요. 어린 동생이 맞아도 괜찮습니다.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="img-box mid">
+    <span class="img-label">5세 시연컷</span>
+    <span class="img-desc">5~6세 아이가 혼자 펌프 당기는 장면<br>"5세도 혼자 OK" 텍스트 오버레이</span>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       R — 증거 (리뷰)
+  ══════════════════════════════════════ -->
+
+  <div class="sec">
+    <span class="sec-tag">증거 — 실사용 리뷰</span>
+    <h2>직접 써본 분들의 이야기</h2>
+
+    <div class="review-cards">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="body">"아이들이 엄청 좋아해요. 분수처럼 퍼져서 너무 예쁘고 화려하게 나와요. 둘 다 부서진 곳 없이 잘 놀고 있어요."</p>
+        <p class="meta">5세·7세 아이 엄마 구매</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="body">"풀빌라에서 식사준비 분주한데 아이가 가지고 노느라 엄마를 덜 찾아서 너무너무 만족해요. 물 있는 곳에선 진짜 엄빠들이 쉴 수 있다는 커다란 장점."</p>
+        <p class="meta">6세 아이 엄마 구매</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="body">"워터파크에서 어디서 샀냐고 물어봐서 여럿 소개해줬어요. 회오리처럼 퍼지는 게 진짜 예뻐요."</p>
+        <p class="meta">재구매 고객</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="body">"처음엔 애 주려고 샀는데 제가 더 신나서 쏘고 있었어요 ㅋㅋ 어른도 너무 재밌습니다."</p>
+        <p class="meta">30대 엄마 구매</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="body">"집에 안 쓰는 물총 쌓인 집은 이걸로 종결이에요. 올 여름 내내 잘 썼어요."</p>
+        <p class="meta">5세 아이 엄마 구매</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <div class="img-box mid">
+        <span class="img-label">리뷰 스크린샷 모음</span>
+        <span class="img-desc">실제 쿠팡 리뷰 스크린샷 4~6개 조합<br>★5 장문 리뷰 강조 / 어린이 사진 포함 리뷰 우선<br>엄마의 쉼·아이 환호 언급 리뷰 선별</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       O — 아웃트로 · 구매 제안
+  ══════════════════════════════════════ -->
+
+  <div class="sec" style="background: #fafafa; text-align: center;">
+    <span class="sec-tag">지금 사야 이번 여름에 씁니다</span>
+    <h2 style="margin-top: 8px;">올여름, 아이가 환장하고<br>엄마가 쉬는 그 장면</h2>
+    <p style="margin-top: 10px; color: #555; word-break: keep-all;">5월에 사야 6·7월 물놀이장 시즌에 쓸 수 있어요.<br>로켓배송으로 내일 받고, 이번 주말부터 쓰세요.</p>
+  </div>
+
+  <div class="img-box mid">
+    <span class="img-label">아웃트로 비주얼</span>
+    <span class="img-desc">공원·물놀이장 저녁 씬 (가로등 아래)<br>블루+핑크 2개 + LED 분사 빛 궤적<br>"올여름 제대로" 감성</span>
+  </div>
+
+  <div class="outro-wrap">
+    <h2>에이폼 회오리 분수물총</h2>
+    <p class="outro-sub">블루 + 핑크 2종 세트 · 색상 고정 (랜덤 아님)</p>
+
+    <div class="product-card">
+      <p class="name">에이폼 회오리 분수물총 2종 세트<br>(블루 + 핑크)</p>
+      <p class="price">8,900원 <span>/ 2개 세트 · 개당 4,450원</span></p>
+      <p class="delivery">로켓배송 · 내일 도착</p>
+    </div>
+
+    <ul class="info-list" style="max-width: 340px; margin: 0 auto;">
+      <li>5세 이상 사용 권장 (성인도 OK)</li>
+      <li>ABS 재질 · KC 안전 인증</li>
+      <li>블루 1개 + 핑크 1개 고정 구성 (랜덤 아님)</li>
+      <li>건전지·충전 불필요 (수동 펌프식)</li>
+      <li>첫 사용 전 물 2~3회 채우기·비우기 권장 (공장 잔류 세척)</li>
+      <li>LED 발사 시 빛 궤적 탑재 (장시간 침수 주의)</li>
+      <li>5세 미만 영유아 단독 사용 주의</li>
+    </ul>
+
+    <p style="margin-top: 28px; font-size: 14px; color: #999;">단체·어린이집·생일파티 대량 주문 문의 → 쿠팡 판매자 문의</p>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════ -->
+
+  <div class="sec">
+    <span class="sec-tag">자주 묻는 것들</span>
+    <h2>FAQ</h2>
+    <table class="spec-table" style="margin-top: 24px;">
+      <tr>
+        <th>몇 살부터 쓸 수 있나요?</th>
+        <td>5세 이상 권장합니다. 5세 아이도 펌프 혼자 당깁니다. 3~4세 유아는 부모가 함께 조작해주세요.</td>
+      </tr>
+      <tr>
+        <th>전동 워터건 금지 구역에서도 되나요?</th>
+        <td>네. 수동 펌프식이라 전동 워터건 제한 구역(아파트 물놀이장 등)에서도 사용 가능합니다.</td>
+      </tr>
+      <tr>
+        <th>처음에 기름 냄새 나는 건 왜인가요?</th>
+        <td>공장 출하 시 사용되는 윤활유 잔류입니다. 물을 2~3회 채우고 비우면 해소됩니다. 안전에는 문제없습니다.</td>
+      </tr>
+      <tr>
+        <th>LED는 어떻게 작동하나요?</th>
+        <td>물을 발사하면 함께 빛이 켜집니다. 장시간 완전 침수는 피해주세요. 야외 가로등 아래에서 특히 예쁩니다.</td>
+      </tr>
+      <tr>
+        <th>물 용량이 어느 정도인가요?</th>
+        <td>대용량 설계로 한 번 채우면 한참 놀 수 있습니다. (정확한 ml는 샘플 실측 후 업데이트 예정)</td>
+      </tr>
+      <tr>
+        <th>사거리가 얼마나 되나요?</th>
+        <td>퍼지는 분수형 분사라 직선 전투용 물총보다 사거리가 짧습니다. 물놀이 감성·비주얼용으로 적합합니다.</td>
+      </tr>
+      <tr>
+        <th>부서지면 어떻게 하나요?</th>
+        <td>쿠팡 판매자 문의 또는 고객센터로 연락주세요. CS 정책에 따라 안내해 드립니다.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 브랜드컷 -->
+  <div class="sec" style="text-align:center; background: #f7f7f7;">
+    <div class="img-box short" style="margin-bottom: 20px;">
+      <span class="img-label">브랜드컷 · 에이폼</span>
+      <span class="img-desc">에이폼 로고 + 브랜드 소개 1줄<br>구매 안내 · CS 연락처</span>
+    </div>
+    <p style="font-size: 14px; color: #999; margin-top: 4px;">에이폼(APOM) · 쿠팡 로켓배송 공식 판매</p>
+    <p style="font-size: 13px; color: #bbb; margin-top: 6px; font-family: 'JetBrains Mono', monospace;">2026-05-13 &nbsp;by 차드</p>
+  </div>
+
+</div>
+</body>
+</html>
