@@ -516,12 +516,64 @@ h3 {
 
 /* ─── Responsive ──────────────────────────────────────── */
 @media (max-width: 640px) {
+  /* layout */
+  .page-wrap {
+    padding: var(--sp-md) var(--sp-sm);
+    max-width: 100%;
+  }
+  section {
+    padding-top: var(--sp-xl);
+    margin-top: var(--sp-xl);
+  }
+
+  /* header */
+  .page-header {
+    padding: var(--sp-xl) 0 var(--sp-lg);
+  }
+  .display { font-size: 22px; }
+  .page-header h1 { font-size: 15px; }
+  h2 { font-size: 17px; margin-bottom: var(--sp-md); }
+
+  /* product nature */
   .nature-grid   { grid-template-columns: 1fr; }
+  .nature-pct    { font-size: 24px; }
+
+  /* competitor insight */
+  .insight-box   { flex-direction: column; gap: var(--sp-sm); }
+  .insight-icon  { font-size: 20px; }
+  .insight-point { font-size: 16px; }
+
+  /* review */
   .review-grid   { grid-template-columns: 1fr; }
-  .usp-grid      { grid-template-columns: 1fr; }
+  .review-col    { padding: var(--sp-md); }
+
+  /* persona */
   .persona-wrap  { grid-template-columns: 1fr; }
-  .pasbro-step   { gap: var(--sp-sm); }
+  .persona-card  { padding: var(--sp-md); }
+  .journey-timeline { padding: var(--sp-md); }
+
+  /* usp */
+  .usp-grid      { grid-template-columns: 1fr; }
+  .usp-card      { padding: var(--sp-md); text-align: left; }
+  .usp-icon      { display: inline; margin-right: 4px; font-size: 24px; }
+
+  /* pasbro */
+  .pasbro-step   { gap: var(--sp-xs); }
+  .pasbro-circle {
+    width: 36px; height: 36px;
+    font-size: 14px;
+  }
+  .pasbro-left   { width: 36px; }
+  .pasbro-step:not(:last-child)::after {
+    left: 17px; top: 36px;
+  }
+  .pasbro-content { padding-bottom: var(--sp-lg); }
+  .pasbro-body   { font-size: 13px; padding: var(--sp-sm); }
+  .pasbro-title  { font-size: 14px; }
+
+  /* footer */
   .page-footer   { flex-direction: column; align-items: flex-start; }
+  .page-header-meta { gap: var(--sp-xs); }
 }
 </style>
 </head>
@@ -845,8 +897,8 @@ h3 {
           <div class="pasbro-label">훅 (Hook) — 첫 3초 유입 결정</div>
           <div class="pasbro-title">발견 경로 + 비주얼 + 카피</div>
           <div class="pasbro-body">
-            워터파크 갔는데 친구들이 이걸로 노는 거에요!
-            <div class="pasbro-quote">촤라락 엄청 화려하고 재미나네요 — 물꽃놀이</div>
+            저번에 워터파크 갔는데 친구들이 이걸로 너무 재밋게 노는거에요! 핫한 아이템이구나 싶어서 이번 여름 제대로 즐기기위해 준비했답니다.
+            <div class="pasbro-quote">촤라락 엄청 화려하고 재미나네요ㅎ — 아이들은 물꽃놀이라고 이름붙였네요~~</div>
           </div>
         </div>
       </div>
@@ -860,8 +912,8 @@ h3 {
           <div class="pasbro-label">공감 (Agitate) — 페인 공감 + 작년 실패</div>
           <div class="pasbro-title">내구 실패 → 종결 전환</div>
           <div class="pasbro-body">
-            하루 썼는데 갈라져서 못 씀
-            <div class="pasbro-quote">물총 이걸로 종결</div>
+            별로임 잘부서짐. 하루썻는데 옆에 갈라져서못씀. 택포8천원 버린꼴.
+            <div class="pasbro-quote">집에 물총 많이 쌓아놓고 안쓰시고 계신 아이들집 있으면 이걸로 종결입니다 ㅋㅋㅋ</div>
           </div>
         </div>
       </div>
@@ -875,8 +927,8 @@ h3 {
           <div class="pasbro-label">증폭 (Amplify) — 감정 극대화</div>
           <div class="pasbro-title">엄마 쉼 + 아이 반응</div>
           <div class="pasbro-body">
-            에너지 쭉쭉 빠져서 낮잠까지 푹
-            <div class="pasbro-quote">아이가 이거 아니면 안 씻겠다고 협박</div>
+            아이 집중도 높고, 에너지 쭉쭉 빠져서 낮잠까지 푹! 풀빌라에서 식사준비 분주한데 아이가 가지고 노느라 엄마를 덜 찾아서 너무너무 만족.
+            <div class="pasbro-quote">이 제품아니면 안씻겠다고 협박하심ㅋㅋㅋㅋㅋ 물놀이하자고 샤워 매일 즐겁게 하고있습니다</div>
           </div>
         </div>
       </div>
@@ -890,8 +942,8 @@ h3 {
           <div class="pasbro-label">전환 (Bridge) — 우리 상품 등장</div>
           <div class="pasbro-title">비주얼 + 기능 + 안전</div>
           <div class="pasbro-body">
-            회오리 물꽃놀이
-            <div class="pasbro-quote">건전지 불필요 / 수동식 = 물놀이장 통과</div>
+            일반 물총과는 다른 분사 방식으로 정말 불꽃 아니, 물꽃놀이, 워터밤 분위기가 살아나요. 건전지 없이 물만 채워서 바로 쓸 수 있고, 수동식이라 아파트 물놀이장·놀이터에서도 사용 가능.
+            <div class="pasbro-quote">아파트 물놀이장에서 물총은 사용 못하게 하는데 이건 상관 안하더라구요 / KC 인증까지 완료돼서 안전성도 OK</div>
           </div>
         </div>
       </div>
@@ -903,10 +955,10 @@ h3 {
         </div>
         <div class="pasbro-content">
           <div class="pasbro-label">가치 (Roi) — 경험재 최대화</div>
-          <div class="pasbro-title">장소 + 어른 + 사회</div>
+          <div class="pasbro-title">엄마 쉼 + 아이 인싸 + 사회적 공유</div>
           <div class="pasbro-body">
-            엄빠 쉴 수 있다는 커다란 장점
-            <div class="pasbro-quote">목욕 거부하던 아이도 이젠 먼저 들어가요 — 수영장에서 인싸</div>
+            물있는곳에서 진짜 엄빠들은 쉴수있다는 커다란장점. 수영장 가서 주변에 어디서 샀냐 물어봐서 여럿 소개했네여. 밤엔 가로등 아래서 물을 발사하면 폭죽처럼 예쁜 인생샷도.
+            <div class="pasbro-quote">욕조에 넣어주면 목욕이 놀이시간으로 변신! 분수 뿜뿜~ 회오리 슝슝~ 목욕 거부하던 아이도 이젠 먼저 들어가요 / 수영장에서 인싸 수준이였어요 다른 물총은 처다도 안보더라구요</div>
           </div>
         </div>
       </div>
@@ -918,10 +970,10 @@ h3 {
         </div>
         <div class="pasbro-content">
           <div class="pasbro-label">증거 (cOnfidence) — 신뢰 증명</div>
-          <div class="pasbro-title">반박 + 내구 + 별점 스니펫</div>
+          <div class="pasbro-title">내구 반박 + 안전 + 별점 스니펫</div>
           <div class="pasbro-body">
-            둘 다 부서진 곳 없이 잘 놀고
-            <div class="pasbro-quote">잘 안 망가지고 아이들이 너무 좋아합니다</div>
+            물놀이마다 챙겨갔는데 둘 다 부서진 곳없이 잘 놀고 가지고왔어요. 내년여름에도 유용히 써먹어. 몇 번 떨어뜨려도 금방 흠집 나거나 깨지는 일 없이 잘 버텨주더라고요.
+            <div class="pasbro-quote">잘 안망가지고 아이들이 너무좋아합니다 / 생각보다 잘 망가져요 ㅎㅎ …그래도 하루 신나게 뽀사지게 잘 놀았어요~~ (★3도 인정한 경험재)</div>
           </div>
         </div>
       </div>
@@ -941,7 +993,7 @@ h3 {
               <span class="badge badge-info">2개 세트</span>
               <span class="badge badge-proceed">로켓 다음날 도착</span>
             </div>
-            긴박감(시간재) + 가격 장벽 제거 + 배송 신뢰로 마지막 망설임을 해소한다.
+            솔직히 이 정도 분사력에 이 가격이면 만족스러웠어요! 너무 가격이 좋아서 반신반의로 2개만 시켰는데 10개시켜서 나눠가질걸그랬어요. 긴박감(시간재) + 가격 장벽 제거 + 배송 신뢰로 마지막 망설임을 해소한다.
           </div>
         </div>
       </div>
