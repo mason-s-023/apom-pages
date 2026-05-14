@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>에이폼 회오리 분수물총 블루+핑크 2종 세트</title>
+<!-- 본문 폰트: Pretendard (깔끔) -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<!-- 강조 폰트: Gowun Dodum (부드럽고 사랑스러운 느낌) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* 사랑스러운 파스텔 팔레트 */
+    --rose:       #E8547A;   /* 메인 강조 — 로즈핑크 */
+    --rose-light: #FDE8EE;   /* 로즈 연한 배경 */
+    --peach:      #FDF0E8;   /* 피치 크림 배경 */
+    --lavender:   #F5F0FF;   /* 라벤더 배경 */
+    --mint:       #EDF8F4;   /* 민트 배경 */
+    --deep:       #2A0E20;   /* 깊은 다크 로즈 (LED 섹션용) */
+    --deep2:      #1E0A28;   /* 오퍼 카드용 */
+    --text-dark:  #1A1018;   /* 다크 텍스트 */
+    --text-mid:   #6B5060;   /* 미드 텍스트 */
+    --text-soft:  #9A7888;   /* 소프트 텍스트 */
+    --accent2:    #C47AC0;   /* 라벤더 포인트 */
+  }
+
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    color: var(--text-dark);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 780px; margin: 0 auto; }
+
+  /* ════════════════════════════
+     강조 폰트 — Gowun Dodum
+     h2, .eyebrow 에 적용
+  ════════════════════════════ */
+  h2 {
+    font-family: 'Gowun Dodum', 'Pretendard', sans-serif;
+    font-size: 46px;
+    font-weight: 400;       /* Gowun Dodum은 regular 하나라 weight 변경 무의미 */
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    word-break: keep-all;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+  }
+
+  /* 본문 폰트 — Pretendard (깔끔) */
+  .mid-head {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    word-break: keep-all;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+    max-width: 540px;
+  }
+  .body-text {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.82;
+    word-break: keep-all;
+    color: var(--text-mid);
+    margin-bottom: 0;
+    max-width: 500px;
+  }
+
+  /* 유일한 고객 인용 — 내구성 섹션 */
+  .solo-quote {
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.75;
+    padding: 18px 22px;
+    border-radius: 16px;
+    background: rgba(232,84,122,0.08);
+    color: var(--rose);
+    border-left: 3px solid var(--rose);
+    word-break: keep-all;
+    margin-top: 28px;
+    max-width: 500px;
+  }
+  .solo-quote::before { content: '"'; opacity: 0.5; margin-right: 2px; }
+  .solo-quote::after  { content: '"'; opacity: 0.5; margin-left: 2px; }
+
+  /* 섹션 */
+  .section { padding: 88px 52px; }
+
+  /* 배경 팔레트 */
+  .bg-white    { background: #fff; }
+  .bg-peach    { background: var(--peach); }
+  .bg-rose     { background: var(--rose-light); }
+  .bg-lavender { background: var(--lavender); }
+  .bg-mint     { background: var(--mint); }
+  .bg-deep     { background: var(--deep); }
+
+  /* 다크 섹션 텍스트 */
+  .bg-deep h2        { color: #fdf0f5; font-family: 'Gowun Dodum', sans-serif; }
+  .bg-deep .mid-head { color: rgba(255,220,235,0.65); }
+  .bg-deep .body-text{ color: rgba(255,220,235,0.5); }
+  .bg-deep .eyebrow  { color: #F9A8C8; }
+
+  .centered { text-align: center; }
+  .centered .mid-head,
+  .centered .body-text { margin-left: auto; margin-right: auto; }
+  .centered .solo-quote { margin-left: auto; margin-right: auto; }
+
+  /* eyebrow — Gowun Dodum + 로즈 */
+  .eyebrow {
+    font-family: 'Gowun Dodum', 'Pretendard', sans-serif;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 14px;
+  }
+  .led-eyebrow {
+    font-family: 'Gowun Dodum', 'Pretendard', sans-serif;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: #FFD6E8;
+    margin-bottom: 14px;
+  }
+
+  /* 이미지 플레이스홀더 */
+  .img-full {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 36px 40px;
+  }
+  .img-full.tall  { min-height: 480px; }
+  .img-full.mid   { min-height: 320px; }
+  .img-full.short { min-height: 180px; }
+
+  .img-full.p-hero   { background: linear-gradient(150deg, #b8deff 0%, #ffb8d8 100%); }
+  .img-full.p-child  { background: linear-gradient(150deg, #a8d8ff 0%, #ffd4e8 100%); }
+  .img-full.p-night  { background: linear-gradient(150deg, #1a0428 0%, #0a001a 100%); }
+  .img-full.p-spray  { background: linear-gradient(150deg, #d4eeff 0%, #ffddf0 100%); }
+  .img-full.p-broken { background: linear-gradient(150deg, #f0e8e8 0%, #e8dede 100%); }
+  .img-full.p-mom    { background: linear-gradient(150deg, #fff0e8 0%, #ffe4d4 100%); }
+  .img-full.p-prod   { background: linear-gradient(150deg, #f0e8ff 0%, #ffe4f4 100%); }
+  .img-full.p-led    { background: linear-gradient(150deg, #120020 0%, #060010 100%); }
+  .img-full.p-color  { background: linear-gradient(150deg, #d4e8ff 0%, #ffd4e8 100%); }
+  .img-full.p-pool   { background: linear-gradient(150deg, #d4f4e8 0%, #ffd4f0 100%); }
+  .img-full.p-review { background: linear-gradient(150deg, #fff0e4 0%, #ffe4f0 100%); }
+  .img-full.p-outro  { background: linear-gradient(150deg, #ffdde8 0%, #d4d8ff 100%); }
+
+  .img-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.22);
+    margin-bottom: 4px;
+  }
+  .img-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(0,0,0,0.45);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  .img-prompt-ko {
+    font-size: 12px;
+    color: rgba(0,0,0,0.32);
+    line-height: 1.65;
+    max-width: 480px;
+  }
+  .img-prompt-en {
+    font-size: 10px;
+    font-style: italic;
+    color: rgba(0,0,0,0.17);
+    line-height: 1.6;
+    max-width: 480px;
+    margin-top: 4px;
+  }
+  /* 다크 이미지 위 텍스트 */
+  .img-full.dark-img .img-label     { color: rgba(255,255,255,0.22); }
+  .img-full.dark-img .img-title     { color: rgba(255,255,255,0.48); }
+  .img-full.dark-img .img-prompt-ko { color: rgba(255,255,255,0.3); }
+  .img-full.dark-img .img-prompt-en { color: rgba(255,255,255,0.14); }
+
+  /* 2컬럼 그리드 */
+  .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+
+  /* 배지 */
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+  }
+  .centered .badge-row { justify-content: center; }
+  .badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    background: rgba(232,84,122,0.1);
+    color: var(--rose);
+    border: 1px solid rgba(232,84,122,0.2);
+  }
+  .bg-deep .badge { background: rgba(255,182,210,0.12); color: #FFB6D2; border-color: rgba(255,182,210,0.2); }
+
+  /* 가치 카드 */
+  .val-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .val-card {
+    padding: 28px 24px;
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid rgba(232,84,122,0.12);
+  }
+  .val-card .vc-tag {
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--rose);
+    margin-bottom: 8px;
+  }
+  .val-card .vc-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.35;
+    margin-bottom: 8px;
+    word-break: keep-all;
+  }
+  .val-card .vc-desc {
+    font-size: 14px;
+    color: var(--text-soft);
+    line-height: 1.68;
+    word-break: keep-all;
+  }
+
+  /* 반박 카드 */
+  .rebuttal-card {
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(232,84,122,0.1);
+  }
+  .rebuttal-card:last-child { border-bottom: none; }
+  .rebuttal-card .rc-q {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    line-height: 1.5;
+    word-break: keep-all;
+  }
+  .rebuttal-card .rc-a {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.68;
+    word-break: keep-all;
+  }
+  .rebuttal-card .rc-a::before { content: '→ '; color: var(--rose); font-weight: 600; }
+
+  /* 구매 카드 */
+  .offer-card {
+    background: var(--deep2);
+    border-radius: 20px;
+    padding: 32px 36px;
+    margin-top: 32px;
+    max-width: 420px;
+    border: 1px solid rgba(255,182,210,0.15);
+  }
+  .offer-card .oc-name     { font-size: 14px; color: rgba(255,220,235,0.55); margin-bottom: 12px; word-break: keep-all; line-height: 1.55; }
+  .offer-card .oc-price    { font-family: 'Gowun Dodum', sans-serif; font-size: 52px; color: #fff; letter-spacing: 0.01em; line-height: 1; }
+  .offer-card .oc-unit     { font-size: 14px; color: rgba(255,220,235,0.4); margin-top: 8px; }
+  .offer-card .oc-delivery { font-size: 14px; color: #F9A8C8; font-weight: 600; margin-top: 10px; }
+
+  .info-list {
+    list-style: none;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 420px;
+  }
+  .info-list li {
+    font-size: 14px;
+    color: rgba(255,220,235,0.5);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.65;
+    word-break: keep-all;
+  }
+  .info-list li::before { content: '·'; position: absolute; left: 0; color: rgba(255,182,210,0.3); }
+
+  /* 스펙 테이블 */
+  .spec-table { width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 24px; }
+  .spec-table tr { border-bottom: 1px solid rgba(232,84,122,0.1); }
+  .spec-table th { width: 40%; padding: 16px 16px 16px 0; text-align: left; font-weight: 600; color: var(--text-dark); vertical-align: top; word-break: keep-all; }
+  .spec-table td { padding: 16px 0; color: var(--text-mid); line-height: 1.68; word-break: keep-all; }
+
+  .divider { height: 1px; background: rgba(232,84,122,0.1); }
+
+  .page-footer {
+    padding: 32px 52px;
+    text-align: right;
+    font-size: 11px;
+    color: var(--text-soft);
+    background: #fff;
+    opacity: 0.6;
+  }
+
+  .scene-meta[hidden] { display: none !important; }
+
+  @media (max-width: 600px) {
+    .section { padding: 60px 22px; }
+    h2 { font-size: 34px; }
+    .mid-head { font-size: 18px; }
+    .val-grid { grid-template-columns: 1fr; }
+    .img-full { padding: 22px 20px; }
+    .offer-card { padding: 24px 22px; }
+    .offer-card .oc-price { font-size: 42px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ════ 히어로 이미지 ════ -->
+  <img src="img_01_hero.png" alt="에이폼 회오리 분수물총 블루+핑크 2종 세트 히어로샷" style="width:100%; display:block;">
+
+  <div class="col2">
+    <img src="img_02_child.png" alt="환호하는 아이" style="width:100%; display:block;">
+    <img src="img_03_led_small.png" alt="야간 분사 비주얼" style="width:100%; display:block;">
+  </div>
+
+
+  <!-- ════ P — 훅 ════ -->
+  <div class="section bg-peach centered">
+    <h2>아이들이 스스로<br>'물꽃놀이'라고<br>이름 붙였어요</h2>
+    <p class="mid-head">워터파크에서, 인스타에서, 옆집 아이 손에서<br>— 한 번 보면 멈추게 되는 물총입니다</p>
+    <p class="body-text">
+      노즐에서 물이 동시에 퍼지며 불꽃처럼 사방으로 흩어집니다. 처음 보는 아이들이 자연스럽게 모여드는 이유가 여기 있습니다. 올 여름 SNS와 워터파크에서 가장 많이 목격되는 물총입니다.
+    </p>
+  </div>
+
+  <img src="img_04_nozzle.png" alt="회오리 분사 클로즈업" style="width:100%; display:block;">
+
+  <div class="divider"></div>
+
+  <!-- ════ A — 공감 ════ -->
+  <div class="section bg-rose centered">
+    <h2>매년 사고<br>매번 버리는<br>그 사이클, 아시죠?</h2>
+    <p class="mid-head">아이가 울고 엄마가 미안해지는<br>그 순간이 문제입니다</p>
+    <p class="body-text">
+      여름마다 물총을 사고 버리는 루틴, 이번엔 끊으셔도 됩니다.<br>
+      싸구려 물총의 진짜 문제는 돈이 아닙니다.<br>
+      기대했던 아이 얼굴이 금세 실망으로 바뀌는 그 순간입니다.
+    </p>
+  </div>
+
+  <img src="img_05_broken.png" alt="갈라진 싸구려 물총" style="width:100%; display:block;">
+
+  <div class="divider"></div>
+
+  <!-- ════ S — 증폭 ════ -->
+  <div class="section bg-lavender centered">
+    <span class="eyebrow">엄마의 쉼</span>
+    <h2>이거 하나면<br>엄마를 두 시간은<br>안 찾아요</h2>
+    <p class="mid-head">아이 에너지가 완전히 빠집니다<br>낮잠도 푹 잡니다</p>
+    <p class="body-text">
+      풀빌라 저녁 준비할 때, 놀이터에서 잠깐 앉고 싶을 때, 목욕을 거부하는 아이에게. 이 물총은 아이가 완전히 빠져들어 엄마를 잊게 만드는 몇 안 되는 장난감입니다. 바로바로 채우면 되니까. 혼자서도 잘 놀아요.
+    </p>
+  </div>
+
+  <div class="scene-image">
+    <img src="img_06_1_mom.png" alt="벤치에서 커피를 마시며 쉬는 엄마와 뒤에서 분수물총으로 노는 아이" style="width:100%; display:block;">
+    <div class="scene-meta" hidden>
+      <span class="img-label">이미지 06-① — 엄마의 쉼</span>
+      <p class="img-title">아이는 저기, 엄마는 여기</p>
+      <p class="img-prompt-ko">여름 아파트 물놀이장 또는 공원. 벤치에 앉아 여유롭게 커피를 마시는 30대 엄마. 린넨 와이드 팬츠에 심플한 면 티셔츠 — 깔끔하지만 편안한 캐주얼 룩. 표정에 평화로움과 만족감이 가득. 흐릿한 배경에 아이가 분수물총을 신나게 쏘는 장면이 보임. "아이는 저기, 엄마는 여기" 구도. 따뜻하고 여유로운 여름 오후 햇빛. 자연스러운 라이프스타일 사진.</p>
+      <p class="img-prompt-en">Summer apartment water playground or park. A woman in her 30s sits relaxed on a bench, holding coffee with peaceful expression. Wearing casual summer outfit — linen wide-leg pants and a simple cotton tee, clean but relaxed style. Background (slightly blurred) shows child enthusiastically playing with fountain water gun. "Child there, mom here" framing. Warm afternoon sunlight. Natural lifestyle photography.</p>
+    </div>
+  </div>
+
+  <div class="scene-image">
+    <img src="img_06_2_child.png" alt="아파트 물놀이장에서 분수물총을 쏘며 신나게 노는 아이들" style="width:100%; display:block;">
+    <div class="scene-meta" hidden>
+      <span class="img-label">이미지 06-② — 아파트 워터파크</span>
+      <p class="img-title">다른 아이들이 모여드는 순간</p>
+      <p class="img-prompt-ko">아파트 단지 내 작은 야외 워터파크. 얕은 물에 앉아 분수물총을 신나게 쏘는 5세 아이. 주변에 다른 아이들도 함께 물장난치는 활기찬 장면. 방사형 물줄기가 햇빛에 반짝임. 여름 오후 밝고 생동감 있는 분위기. 자연스러운 어린이 라이프스타일 사진.</p>
+      <p class="img-prompt-en">Small outdoor water park in apartment complex. 5-year-old child sitting in shallow water, energetically shooting fountain water gun. Other children playing together nearby. Radial water spray glistening in sunlight. Bright lively summer afternoon. Candid children lifestyle photography.</p>
+    </div>
+  </div>
+
+  <div class="scene-image">
+    <img src="img_06_3_bath.png" alt="욕조 안에서 분수물총으로 물놀이하는 아이" style="width:100%; display:block;">
+    <div class="scene-meta" hidden>
+      <span class="img-label">이미지 06-③ — 욕실 물놀이</span>
+      <p class="img-title">목욕 거부가 사라지는 순간</p>
+      <p class="img-prompt-ko">적당히 물이 차있는 욕조 안에서 노는 5세 아이. 노란 고무오리와 알록달록한 목욕 장난감들 사이에서 분수물총을 발사하는 순간. 물줄기가 욕실 타일 벽에 부딪혀 퍼짐. 아이 표정은 집중과 즐거움이 가득. 따뜻하고 포근한 욕실 조명.</p>
+      <p class="img-prompt-en">5-year-old playing in bathtub with moderate water level. Surrounded by yellow rubber duck and colorful bath toys, firing fountain water gun. Radial water spray splashing against tiled bathroom wall. Child's expression full of focus and joy. Warm cozy bathroom lighting.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════ B — 전환 ════ -->
+  <div class="section bg-peach centered">
+    <h2>전동 워터건 못 쓰는 곳에서도<br>문제없이 쓸 수 있어요</h2>
+    <p class="mid-head">수동 펌프식이라 제한 구역도 통과<br>실제 리뷰가 짚는 숨은 강점</p>
+    <p class="body-text">
+      아파트 단지 물놀이장 중에는 전동 워터건을 금지하는 곳들이 있습니다. 이 제품은 수동 펌프식이라 그런 규정이 있어도 걸리지 않습니다. 노즐을 물에 담그고 당기기만 하면 즉시 충전 — 5세 아이도 혼자 물 보충이 가능해 엄마 손이 덜 갑니다.
+    </p>
+    <div class="badge-row">
+      <span class="badge">수동 펌프식</span>
+      <span class="badge">전동 금지구역 통과</span>
+      <span class="badge">5세도 혼자 펌프</span>
+      <span class="badge">ABS 재질</span>
+      <span class="badge">KC 인증</span>
+    </div>
+  </div>
+
+  <img src="img_07_product.png" alt="블루+핑크 제품샷" style="width:100%; display:block;">
+
+  <!-- 야간 분사 비주얼 — 다크 섹션 -->
+  <div class="section bg-deep centered">
+    <h2>낮엔 아이 손에<br>밤엔 엄마 인생샷</h2>
+    <p class="mid-head">가로등 아래에서 발사하면<br>폭죽처럼 빛이 퍼집니다</p>
+    <p class="body-text">
+      어두운 배경에서 가로등 빛을 받은 물줄기가 방사형으로 흩어지는 장면 — 유튜브·인스타에서 화제가 된 그 야간 물총 인생샷입니다. 아이는 낮에 신나게, 어른은 밤에 감성 있게.
+    </p>
+  </div>
+
+  <img src="img_08_led_night.png" alt="야간 가로등 분사 핵심컷" style="width:100%; display:block;">
+
+  <div class="divider"></div>
+
+  <div class="section bg-mint centered">
+    <h2>색 골라 드립니다<br>랜덤 아닙니다</h2>
+    <p class="body-text">
+      블루 1개 + 핑크 1개 고정 구성입니다.<br>
+      형제·자매끼리도, 친구끼리도<br>
+      처음부터 '내 것'이 명확합니다.
+    </p>
+    <div class="badge-row">
+      <span class="badge" style="color:#3B82F6; border-color:rgba(59,130,246,0.3); background:rgba(59,130,246,0.08);">블루</span>
+      <span class="badge" style="color:#EC4899; border-color:rgba(236,72,153,0.3); background:rgba(236,72,153,0.08);">핑크</span>
+      <span class="badge">고정 구성</span>
+    </div>
+  </div>
+
+  <img src="img_09_color.png" alt="블루+핑크 2종 세트 누끼" style="width:100%; display:block;">
+
+  <div class="divider"></div>
+
+  <!-- ════ R — 가치 ════ -->
+  <div class="section bg-lavender centered">
+    <h2>작년 그 여름,<br>의자에 못 앉으셨죠</h2>
+    <p class="mid-head">물 채워달라, 봐달라, 도와달라.<br>그 호출이<br>이번엔 멈춥니다.</p>
+    <p class="body-text">
+      작년 물놀이장에서 옆에 붙어 지켜만 보던 그 여름, 기억나시죠.<br>
+      "엄마 물 채워줘" 한 마디에 다시 일어나고,<br>
+      결국 본인이 더 지쳐서 돌아오던 그 패턴.<br>
+      이번엔 의자에 앉아 핸드폰 잠깐 봐도 됩니다.<br>
+      아이가 이 물총에 빠져 있으면, 엄마를 안 부르거든요.
+    </p>
+    <div class="val-grid">
+      <div class="val-card">
+        <p class="vc-tag">장소</p>
+        <p class="vc-title">물만 있으면 꺼내세요</p>
+        <p class="vc-desc">목욕탕·놀이터·수영장·계곡·풀빌라·캠핑 — 어디든 가방에 넣어두세요.</p>
+      </div>
+      <div class="val-card">
+        <p class="vc-tag">아빠도 합류</p>
+        <p class="vc-title">옆에서 남편이 더 쏩니다</p>
+        <p class="vc-desc">아이 주려고 샀는데 어느새 남편이 먼저 들고 있는 그림. 가족 사진 한 장 건지세요.</p>
+      </div>
+      <div class="val-card">
+        <p class="vc-tag">우리 애가 인싸</p>
+        <p class="vc-title">주변 아이들이 모여듭니다</p>
+        <p class="vc-desc">꺼내는 순간 옆 아이들이 부러운 눈으로 몰려와요. 우리 아이가 그날의 인싸가 됩니다.</p>
+      </div>
+      <div class="val-card">
+        <p class="vc-tag">안심</p>
+        <p class="vc-title">가까이 맞아도 안 아파요</p>
+        <p class="vc-desc">직선이 아니라 퍼지는 분수형. 옆 아이와 맞쏴도 안심하실 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <img src="img_10_pool.png" alt="수영장 인싸 씬" style="width:100%; display:block;">
+
+  <div class="divider"></div>
+
+  <!-- ════ O — 증거 ════ -->
+  <div class="section bg-rose centered">
+    <h2>물놀이마다 챙겨갔는데<br>멀쩡하게<br>돌아왔습니다</h2>
+    <p class="body-text">
+      솔직히 이 가격에 이 가벼움이면 "금방 깨지지 않을까" 의심하시는 분 많습니다. 그런데 계곡 바위에 부딪혀도, 모래 위에 떨어뜨려도, 시즌 내내 버텨냈다는 후기가 압도적이에요. 가볍다는 게 약하다는 뜻은 아닙니다.
+    </p>
+    <p class="solo-quote">물놀이마다 챙겨갔는데 둘 다 부서진 곳없이 잘 놀고 가지고왔어요. 내년여름에도 유용히 써먹어야겠어요.</p>
+    <p class="solo-quote">계곡 바위 같은 곳에 살짝 부딪혀도 끄떡없고, 아이가 막 다뤄도 멀쩡합니다.</p>
+    <p class="solo-quote">저렴하고 가볍길래 혹시 금방 망가지면 속상할 거 같았는데 생각보다 튼튼하고, 한 시즌 잘 썼어요.</p>
+  </div>
+
+  <!-- 낮은 별점 반박 -->
+  <div class="section bg-white">
+    <span class="eyebrow">낮은 별점 직접 공개</span>
+    <h2 style="font-size:36px; margin-bottom:8px;">걱정하시는 분들께<br>먼저 답변드립니다</h2>
+    <p class="body-text" style="margin-bottom:28px;">구매 전 걱정하실 수 있는 부분들을 솔직하게 말씀드립니다.</p>
+
+    <div class="rebuttal-card">
+      <p class="rc-q">★☆☆☆☆ "몇 번 안 썼는데 손잡이가 빠졌어요."</p>
+      <p class="rc-a">펌프를 세게 끝까지 당길 때 결합부가 빠지는 사례가 있습니다. 물 채울 때 부드럽게 당기시면 시즌 내내 멀쩡합니다. 동봉 안내 카드에 사용법을 표시했고, 초기 불량은 7일 내 무상 교환됩니다.</p>
+    </div>
+    <div class="rebuttal-card">
+      <p class="rc-q">★★☆☆☆ "처음에 기름 냄새가 나서 당황했어요."</p>
+      <p class="rc-a">공장 출하 시 피스톤 윤활유 잔류입니다. 물을 2~3회 채우고 비우면 해소됩니다.</p>
+    </div>
+    <div class="rebuttal-card">
+      <p class="rc-q">★★★☆☆ "전투용으로 샀는데 물줄기가 퍼져서 아쉬웠어요."</p>
+      <p class="rc-a">이 제품은 물이 '퍼지는' 분수 감성용입니다. 직선 물총 싸움이 목적이라면 맞지 않습니다.</p>
+    </div>
+    <div class="rebuttal-card">
+      <p class="rc-q">★★★☆☆ "3~4살 아이 펌프질이 좀 버거워 보여요."</p>
+      <p class="rc-a">5세 이상 권장 제품입니다. 처음 2~3회 부모님이 도와주시면 이후 대부분 혼자 하게 됩니다.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════ → — 제안 ════ -->
+  <div class="section bg-deep">
+    <span class="eyebrow" style="color:#F9A8C8; font-family:'Gowun Dodum',sans-serif;">올해 마지막 시즌 준비</span>
+    <h2>올여름, 지금 사야<br>이번 여름에 씁니다</h2>
+    <p class="mid-head">5월 구매 → 6·7월 시즌 전체 사용<br>로켓배송으로 내일 받고, 이번 주말부터</p>
+    <p class="body-text" style="margin-bottom: 32px;">
+      여름 물놀이 시즌은 짧습니다.<br>
+      매년 중반이면 재고가 줄어듭니다.<br>
+      미리 준비하시는 쪽이 유리합니다.
+    </p>
+
+    <div class="offer-card">
+      <p class="oc-name">에이폼 회오리 분수물총 2종 세트<br>(블루 + 핑크)</p>
+      <p class="oc-price">한 시즌, 매일</p>
+      <p class="oc-unit">한 번 사면 8월까지 — 시즌 통째로</p>
+      <p class="oc-delivery">로켓배송 · 내일 도착</p>
+    </div>
+
+    <ul class="info-list">
+      <li>블루 1개 + 핑크 1개 고정 구성</li>
+      <li>5세 이상 권장 · ABS 재질 · KC 인증</li>
+      <li>수동 펌프식으로 간편하게</li>
+      <li>첫 사용 전 물 2~3회 채우기·비우기 권장</li>
+      <li>단체·어린이집·생일파티 → 쿠팡 판매자 문의</li>
+    </ul>
+  </div>
+
+  <img src="img_12_outro.png" alt="올여름 제대로" style="width:100%; display:block;">
+
+  <!-- ════ FAQ ════ -->
+  <div class="section bg-peach">
+    <span class="eyebrow">FAQ</span>
+    <h2 style="font-size:36px; margin-bottom:8px;">자주 묻는 것들</h2>
+    <table class="spec-table">
+      <tr><th>몇 살부터 쓸 수 있나요?</th><td>5세 이상 권장. 5세도 혼자 펌프 당깁니다. 3~4세는 처음 몇 번 부모님이 함께하시면 됩니다.</td></tr>
+      <tr><th>전동 금지 물놀이장에서도 되나요?</th><td>됩니다. 수동 펌프식이라 전동 워터건 제한 구역에서도 사용 가능합니다.</td></tr>
+      <tr><th>기름 냄새 나는 건 왜인가요?</th><td>공장 출하 윤활유 잔류입니다. 물을 2~3회 채우고 비우면 해소됩니다.</td></tr>
+      <tr><th>사거리가 얼마나 되나요?</th><td>퍼지는 분수형이라 직선 전투용보다 짧습니다. 물놀이 감성·비주얼용 제품입니다.</td></tr>
+      <tr><th>색상을 고를 수 있나요?</th><td>블루 1개 + 핑크 1개 고정 구성입니다. 랜덤 발송 아닙니다.</td></tr>
+    </table>
+  </div>
+
+  <footer class="page-footer">
+    <span>v6 · 2026-05-13 by 차드 · Gowun Dodum 강조 × Pretendard 본문 · 로즈 파스텔 팔레트 · VoC 671건 기반 · 이미지 프롬프트 GPT Image 2 최적화 (메이슨 2026-05-13)</span>
+  </footer>
+
+</div>
+</body>
+</html>
