@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APOM Reports</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root{--bg:#f7f6f3;--paper:#fff;--ink:#171717;--muted:#66645f;--line:#e7e4dc;--accent:#4f46e5;--shadow:0 12px 34px rgba(23,23,23,.07)}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;background:linear-gradient(180deg,#fbfaf8 0%,var(--bg) 100%);color:var(--ink);padding:24px 14px 52px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere}
+  .wrap{width:min(100%,900px);margin:0 auto}
+  .top{display:grid;gap:10px;margin-bottom:18px}
+  .back{display:inline-flex;align-items:center;justify-content:center;min-height:44px;width:max-content;border:1px solid var(--line);background:#fff;border-radius:999px;padding:0 14px;text-decoration:none;color:var(--muted);font-size:14px;font-weight:800}
+  h1{font-size:clamp(30px,10vw,44px);line-height:1.08;letter-spacing:-.055em;margin:0 0 8px}
+  p{color:var(--muted);margin:0 0 24px;font-size:15.5px}.grid{display:grid;grid-template-columns:1fr;gap:12px}.card{display:block;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none;color:inherit;box-shadow:var(--shadow)}.label{font-size:11px;font-weight:950;color:var(--accent);letter-spacing:.11em;text-transform:uppercase;margin-bottom:8px}.title{font-size:18px;font-weight:900;margin-bottom:6px;letter-spacing:-.025em}.desc{font-size:14px;color:var(--muted)}
+  @media(min-width:640px){body{padding:48px 20px}.grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.card{padding:20px}.top{grid-template-columns:1fr auto;align-items:start}.back{order:2}}
+</style>
+</head>
+<body><div class="wrap">
+  <div class="top"><div><h1>APOM Reports</h1>
+  <p>차드 의사결정용 HTML 보고서 모음. 핸드폰에서 먼저 읽고, PC에서는 넓게 보는 반응형 구조입니다.</p></div><a class="back" href="../">메인으로</a></div>
+  <div class="grid">
+    <a class="card" href="./template/demo.html"><div class="label">Preview</div><div class="title">HTML 보고서 기본 틀 미리보기</div><div class="desc">실제 한국어 예시 문구를 넣어 보여주는 검토용 페이지.</div></a>
+    <a class="card" href="./template/"><div class="label">Template</div><div class="title">복사용 빈 템플릿</div><div class="desc">새 보고서를 만들 때 복사해서 쓰는 표준 레이아웃.</div></a>
+    <a class="card" href="./mason-brain-status.html"><div class="label">Report</div><div class="title">Mason_brain 운영 현황</div><div class="desc">기존 운영 상태 보고서.</div></a>
+  </div>
+</div></body></html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{REPORT_TITLE}} — APOM Report</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root {
+    --bg: #f6f5f2;
+    --paper: #ffffff;
+    --ink: #171717;
+    --muted: #66645f;
+    --soft: #908d86;
+    --line: #e7e4dc;
+    --line-strong: #d6d1c6;
+    --accent: #4f46e5;
+    --accent-2: #111827;
+    --good: #16a34a;
+    --warn: #d97706;
+    --bad: #dc2626;
+    --radius: 18px;
+    --shadow: 0 14px 38px rgba(23, 23, 23, .08);
+    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    color: var(--ink);
+    background: linear-gradient(180deg, #fbfaf8 0%, var(--bg) 70%, #efede7 100%);
+    line-height: 1.6;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+  .page { width: min(100% - 28px, 1120px); margin: 0 auto; padding: 18px 0 52px; }
+  .topbar { display: grid; gap: 10px; margin-bottom: 16px; color: var(--muted); font-size: 12px; }
+  .brand { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 850; letter-spacing: -.01em; color: var(--ink); }
+  .brand-mark { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 7px; background: var(--accent); box-shadow: inset 0 -7px 14px rgba(0,0,0,.16); }
+  .meta { display: flex; gap: 7px; flex-wrap: wrap; }
+  .pill { border: 1px solid var(--line); background: rgba(255,255,255,.78); border-radius: 999px; padding: 5px 9px; }
+  .hero { display: grid; gap: 12px; margin-bottom: 12px; }
+  .hero-main, .decision-card, .card, .toc { background: rgba(255,255,255,.9); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  .hero-main { padding: 22px 18px; min-height: auto; display: grid; gap: 20px; }
+  .eyebrow { font-size: 11px; font-weight: 950; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+  h1 { margin: 0; font-size: clamp(30px, 10vw, 54px); line-height: 1.06; letter-spacing: -.055em; text-wrap: balance; }
+  .subtitle { margin: 14px 0 0; color: var(--muted); font-size: 15.5px; max-width: 720px; }
+  .hero-foot { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-flex; align-items: center; min-height: 32px; padding: 5px 10px; border-radius: 999px; background: #f1f0eb; color: #3d3b36; font-size: 12.5px; font-weight: 750; }
+  .decision-card { padding: 18px; display: grid; gap: 18px; }
+  .label { font-size: 11px; font-weight: 950; color: var(--soft); letter-spacing: .1em; text-transform: uppercase; }
+  .decision { margin-top: 10px; font-size: clamp(22px, 7vw, 30px); font-weight: 950; line-height: 1.18; letter-spacing: -.04em; }
+  .decision-note { color: var(--muted); font-size: 14px; margin: 10px 0 0; }
+  .btn-row { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; border: 1px solid var(--line-strong); background: #fff; border-radius: 13px; padding: 10px 12px; font-size: 14px; font-weight: 850; text-decoration: none; }
+  .btn.primary { background: var(--accent-2); color: white; border-color: var(--accent-2); }
+  .layout { display: grid; gap: 12px; align-items: start; }
+  .toc { position: sticky; top: 0; z-index: 5; width: 100%; border-radius: 0; padding: 10px 0; box-shadow: 0 8px 24px rgba(23,23,23,.06); overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+  .toc::-webkit-scrollbar { display: none; }
+  .toc-title { display: none; }
+  .toc a { display: inline-flex; align-items: center; min-height: 38px; color: var(--muted); text-decoration: none; padding: 0 11px; border: 1px solid #f0eee8; border-radius: 999px; font-size: 13px; margin-right: 6px; background: #fff; }
+  .toc a:hover, .toc a:focus-visible { color: var(--accent); border-color: #dedafc; outline: none; }
+  main { display: flex; flex-direction: column; gap: 12px; }
+  .card { padding: 18px; box-shadow: none; scroll-margin-top: 74px; }
+  h2 { margin: 0 0 12px; font-size: clamp(21px, 6vw, 26px); line-height: 1.22; letter-spacing: -.04em; }
+  h3 { margin: 18px 0 8px; font-size: 16px; letter-spacing: -.02em; }
+  p { margin: 0 0 12px; }
+  .lead { color: var(--muted); font-size: 15px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .metric { border: 1px solid var(--line); background: #fbfaf7; border-radius: 14px; padding: 14px; }
+  .metric-num { font-size: 25px; font-weight: 950; letter-spacing: -.04em; }
+  .metric-label { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .callout { border: 1px solid #dedafc; background: #f4f3ff; border-radius: 14px; padding: 14px; color: #28224d; }
+  .options { display: grid; gap: 10px; }
+  .option { border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: #fff; display: grid; gap: 7px; }
+  .option .code { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 950; }
+  .status { display: inline-flex; align-items: center; gap: 7px; border-radius: 999px; padding: 4px 9px; font-size: 12px; font-weight: 900; }
+  .status.good { background: #dcfce7; color: var(--good); }
+  .status.warn { background: #fef3c7; color: var(--warn); }
+  .status.bad { background: #fee2e2; color: var(--bad); }
+  ul, ol { margin: 8px 0 0 18px; padding: 0; }
+  li { margin: 8px 0; }
+  .table-scroll { margin-inline: -4px; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+  table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; border-bottom: 1px solid var(--line); padding: 11px 10px; vertical-align: top; overflow-wrap: anywhere; }
+  tr:last-child td { border-bottom: 0; }
+  th { color: var(--soft); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; background: #fbfaf7; }
+  code { font-family: var(--mono); font-size: .92em; background: #f1f0eb; border-radius: 6px; padding: 2px 5px; }
+  .footer { color: var(--soft); font-size: 12.5px; text-align: left; margin-top: 16px; }
+  @media (min-width: 560px) {
+    .page { width: min(100% - 40px, 1120px); padding-top: 30px; }
+    .topbar { grid-template-columns: 1fr auto; align-items: center; }
+    .meta { justify-content: flex-end; }
+    .btn-row { grid-template-columns: repeat(2, minmax(0, auto)); justify-content: start; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (min-width: 861px) {
+    body { background: radial-gradient(circle at 12% 0%, rgba(79,70,229,.11), transparent 30%), linear-gradient(180deg, #fbfaf8 0%, var(--bg) 62%, #efede7 100%); }
+    .page { padding: 42px 0 72px; }
+    .topbar { margin-bottom: 28px; font-size: 13px; }
+    .hero { grid-template-columns: minmax(0, 1.15fr) 340px; gap: 22px; margin-bottom: 20px; }
+    .hero-main { padding: 34px; min-height: 300px; align-content: space-between; }
+    .subtitle { font-size: 17px; }
+    .decision-card { padding: 22px; align-content: space-between; }
+    .layout { grid-template-columns: 250px minmax(0, 1fr); gap: 20px; }
+    .toc { position: sticky; top: 18px; margin: 0; border-radius: var(--radius); padding: 18px; overflow: visible; white-space: normal; box-shadow: none; }
+    .toc-title { display: block; font-size: 12px; font-weight: 950; color: var(--soft); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+    .toc a { display: block; min-height: auto; color: var(--muted); padding: 8px 0; border: 0; border-top: 1px solid #f0eee8; border-radius: 0; font-size: 14px; margin: 0; background: transparent; }
+    .card { padding: 26px; scroll-margin-top: 20px; }
+    .option { grid-template-columns: 90px minmax(0, 1fr); gap: 14px; padding: 16px; }
+    .table-scroll { margin-inline: 0; border: 0; border-radius: 0; background: transparent; }
+    table { min-width: 0; }
+    .footer { text-align: right; font-size: 13px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  }
+  @media print {
+    body { background: #fff; }
+    .topbar, .toc, .btn-row { display: none; }
+    .page { width: 100%; padding: 0; }
+    .hero, .layout { display: block; }
+    .card, .hero-main, .decision-card { box-shadow: none; break-inside: avoid; margin-bottom: 12px; }
+    .table-scroll { overflow: visible; border: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark"></span><span>APOM HTML Report</span></div>
+    <div class="meta">
+      <span class="pill">{{PROJECT}}</span>
+      <span class="pill">{{DATE_KST}}</span>
+      <span class="pill">v{{VERSION}}</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-main">
+      <div>
+        <div class="eyebrow">{{REPORT_TYPE}}</div>
+        <h1>{{REPORT_TITLE}}</h1>
+        <p class="subtitle">{{ONE_LINE_SUMMARY}}</p>
+      </div>
+      <div class="hero-foot">
+        <span class="tag">결정 필요: {{DECISION_OWNER}}</span>
+        <span class="tag">상태: {{STATUS}}</span>
+        <span class="tag">근거: {{SOURCE_COUNT}}</span>
+      </div>
+    </div>
+    <aside class="decision-card">
+      <div>
+        <div class="label">차드가 볼 결론</div>
+        <div class="decision">{{PRIMARY_RECOMMENDATION}}</div>
+        <p class="decision-note">{{RECOMMENDATION_REASON}}</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn primary" href="#decision">결정 항목 보기</a>
+        <a class="btn" href="#evidence">근거 보기</a>
+      </div>
+    </aside>
+  </section>
+
+  <div class="layout">
+    <nav class="toc" aria-label="보고서 목차">
+      <div class="toc-title">Contents</div>
+      <a href="#summary">1. 요약</a>
+      <a href="#decision">2. 차드 결정</a>
+      <a href="#evidence">3. 판단 근거</a>
+      <a href="#options">4. 선택지</a>
+      <a href="#risks">5. 리스크</a>
+      <a href="#next">6. 다음 실행</a>
+    </nav>
+
+    <main>
+      <section class="card" id="summary">
+        <h2>1. 요약</h2>
+        <p class="lead">한 화면에서 결론을 먼저 이해하도록 3줄 요약을 둔다.</p>
+        <div class="grid-3">
+          <div class="metric"><div class="metric-num">{{METRIC_1}}</div><div class="metric-label">{{METRIC_1_LABEL}}</div></div>
+          <div class="metric"><div class="metric-num">{{METRIC_2}}</div><div class="metric-label">{{METRIC_2_LABEL}}</div></div>
+          <div class="metric"><div class="metric-num">{{METRIC_3}}</div><div class="metric-label">{{METRIC_3_LABEL}}</div></div>
+        </div>
+      </section>
+
+      <section class="card" id="decision">
+        <h2>2. 차드가 결정할 것</h2>
+        <div class="callout"><strong>{{DECISION_QUESTION}}</strong><br>{{DECISION_CONTEXT}}</div>
+        <ul>
+          <li><strong>추천:</strong> {{RECOMMENDED_OPTION}}</li>
+          <li><strong>보류 조건:</strong> {{HOLD_CONDITION}}</li>
+          <li><strong>결정 후 바로 할 일:</strong> {{AFTER_DECISION_ACTION}}</li>
+        </ul>
+      </section>
+
+      <section class="card" id="evidence">
+        <h2>3. 판단 근거</h2>
+        <div class="table-scroll" role="region" aria-label="판단 근거 표" tabindex="0">
+        <table>
+          <thead><tr><th>근거</th><th>의미</th><th>확신도</th></tr></thead>
+          <tbody>
+            <tr><td>{{EVIDENCE_1}}</td><td>{{EVIDENCE_1_MEANING}}</td><td><span class="status good">높음</span></td></tr>
+            <tr><td>{{EVIDENCE_2}}</td><td>{{EVIDENCE_2_MEANING}}</td><td><span class="status warn">중간</span></td></tr>
+            <tr><td>{{EVIDENCE_3}}</td><td>{{EVIDENCE_3_MEANING}}</td><td><span class="status bad">확인 필요</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section class="card" id="options">
+        <h2>4. 선택지</h2>
+        <div class="options">
+          <div class="option"><div class="code">OPTION A</div><div><strong>{{OPTION_A_TITLE}}</strong><br>{{OPTION_A_DESC}}</div></div>
+          <div class="option"><div class="code">OPTION B</div><div><strong>{{OPTION_B_TITLE}}</strong><br>{{OPTION_B_DESC}}</div></div>
+          <div class="option"><div class="code">OPTION C</div><div><strong>{{OPTION_C_TITLE}}</strong><br>{{OPTION_C_DESC}}</div></div>
+        </div>
+      </section>
+
+      <section class="card" id="risks">
+        <h2>5. 비용 · 리스크 · 보류 조건</h2>
+        <ul>
+          <li><strong>비용:</strong> {{COST}}</li>
+          <li><strong>리스크:</strong> {{RISK}}</li>
+          <li><strong>검증 필요:</strong> {{VERIFY_NEEDED}}</li>
+        </ul>
+      </section>
+
+      <section class="card" id="next">
+        <h2>6. 다음 실행</h2>
+        <ol>
+          <li>{{NEXT_ACTION_1}}</li>
+          <li>{{NEXT_ACTION_2}}</li>
+          <li>{{NEXT_ACTION_3}}</li>
+        </ol>
+      </section>
+
+      <p class="footer">Generated for Chad · APOM / Mason</p>
+    </main>
+  </div>
+</div>
+</body>
+</html>
