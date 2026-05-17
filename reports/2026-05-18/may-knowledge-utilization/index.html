@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>메이 지식 확장·활용 보고서 — APOM Report</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root{
+    --bg:#f6f4ef;--paper:#fffdf8;--ink:#171717;--muted:#67645e;--line:#e7e1d6;
+    --accent:#4f46e5;--accent2:#0f766e;--good:#15803d;--warn:#c2410c;--bad:#b91c1c;
+    --soft:#eef2ff;--greenSoft:#ecfdf5;--amberSoft:#fff7ed;--redSoft:#fef2f2;
+    --shadow:0 14px 40px rgba(30,24,14,.08)
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{margin:0;background:linear-gradient(180deg,#fffaf0 0%,var(--bg) 52%,#f8fafc 100%);color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.58;word-break:keep-all;overflow-wrap:anywhere}
+  a{color:inherit}.page{width:min(100%,1040px);margin:0 auto;padding:16px 14px calc(56px + env(safe-area-inset-bottom))}
+  .hero,.card,.mini,.flow-step{background:rgba(255,253,248,.94);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+  .hero{padding:24px 18px;margin:6px 0 12px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:-80px -80px auto auto;width:190px;height:190px;background:radial-gradient(circle,rgba(79,70,229,.2),rgba(79,70,229,0) 68%);pointer-events:none}
+  .eyebrow{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:12px;font-weight:950;letter-spacing:.08em;text-transform:uppercase}
+  h1{font-size:clamp(28px,9vw,48px);line-height:1.08;letter-spacing:-.06em;margin:10px 0 12px}
+  h2{font-size:22px;line-height:1.2;letter-spacing:-.035em;margin:0 0 12px} h3{font-size:17px;margin:0 0 8px;letter-spacing:-.02em}
+  p{margin:0}.lead{font-size:16px;color:var(--muted);max-width:760px}.updated{margin-top:16px;color:#78716c;font-size:13px}
+  .nav{position:sticky;top:0;z-index:5;margin:0 -14px 14px;padding:10px 14px;background:rgba(246,244,239,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(231,225,214,.8);display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}
+  .nav a{flex:0 0 auto;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 12px;font-size:13px;font-weight:850;color:#44403c;min-height:40px;display:inline-flex;align-items:center}
+  .card{padding:18px;margin:12px 0}.grid{display:grid;grid-template-columns:1fr;gap:10px}.mini{padding:15px}.tag{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900;margin-bottom:9px}.tag.good{background:var(--greenSoft);color:var(--good)}.tag.warn{background:var(--amberSoft);color:var(--warn)}.tag.bad{background:var(--redSoft);color:var(--bad)}.tag.info{background:var(--soft);color:#3730a3}
+  .decision{border-left:5px solid var(--accent);background:#f8fafc;border-radius:16px;padding:15px;font-size:17px;font-weight:900;letter-spacing:-.02em}.muted{color:var(--muted)}
+  .score{display:grid;grid-template-columns:1fr;gap:10px}.score .mini{box-shadow:none}.big{font-size:28px;font-weight:950;letter-spacing:-.05em}.ok{color:var(--good)}.hold{color:var(--warn)}
+  .flow{display:grid;grid-template-columns:1fr;gap:10px}.flow-step{padding:15px;position:relative}.num{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#111827;color:white;font-weight:950;font-size:13px;margin-bottom:8px}
+  .matrix{display:grid;grid-template-columns:1fr;gap:10px}.matrix .mini{border-left:5px solid #d6d3d1}.matrix .red{border-left-color:var(--bad)}.matrix .orange{border-left-color:var(--warn)}.matrix .yellow{border-left-color:#ca8a04}.matrix .green{border-left-color:var(--good)}
+  ul{padding-left:18px;margin:8px 0 0} li{margin:6px 0}.quote{font-size:16px;font-weight:850;background:#fafaf9;border:1px dashed #d6d3d1;border-radius:16px;padding:14px;color:#292524}
+  .sources{font-size:13px;color:#57534e}.footer{padding:24px 2px 0;color:#78716c;font-size:12px;text-align:center}
+  @media(min-width:720px){.page{padding:28px 24px 78px}.hero{padding:38px}.card{padding:24px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.score{grid-template-columns:repeat(3,minmax(0,1fr))}.flow{grid-template-columns:repeat(4,minmax(0,1fr))}.matrix{grid-template-columns:repeat(2,minmax(0,1fr))}.nav{margin:0 0 18px;padding:12px 0;border:0;background:transparent;backdrop-filter:none;top:8px}.nav a{box-shadow:0 8px 24px rgba(30,24,14,.06)}}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <div class="eyebrow">APOM Agent Intelligence Report</div>
+    <h1>메이는 마케팅 전문가가 되었나?</h1>
+    <p class="lead">결론부터 말하면, 메이는 “완성된 범용 마케팅 전문가”가 아니라 <strong>APOM 상품 판단에 필요한 실무형 마케팅 판단자</strong>로 한 단계 올라갔다. 이번 리서치의 가치는 자료 수집 자체가 아니라, 메이가 앞으로 오판을 줄이고 증거 기반으로 멈추거나 진행하도록 만드는 지식 구조에 있다.</p>
+    <p class="updated">작성 기준: 2026-05-18 07:19 KST · 출처: Loop15 메이 3라운드, 제프·안나 통합 갭 패킷, 최신 마케팅 리서치 압축 보고서</p>
+  </section>
+
+  <nav class="nav" aria-label="section navigation">
+    <a href="#answer">판정</a><a href="#knowledge">늘어난 지식</a><a href="#use">활용법</a><a href="#guardrail">오판 방지</a><a href="#next">다음 학습</a>
+  </nav>
+
+  <section id="answer" class="card">
+    <h2>1. 판정: 전문가 “완성”은 아니고, APOM형 판단자로 강화됨</h2>
+    <div class="decision">메이는 이제 “진행해도 된다”를 빨리 말하는 봇이 아니라, <strong>신호 → 원인 → 증거잠금 → 판정</strong> 순서로 생각하는 마케팅 운영 파트너에 가까워졌다.</div>
+    <div class="score" style="margin-top:12px">
+      <div class="mini"><span class="tag good">강화됨</span><div class="big ok">판단 기준</div><p class="muted">CTR/CVR만 보지 않고 환불, CS, 마진, 증거 공백까지 함께 보게 됨.</p></div>
+      <div class="mini"><span class="tag good">강화됨</span><div class="big ok">멈춤 능력</div><p class="muted">raw·KC·내구·순마진이 잠기기 전에는 상향하지 않는 원칙을 획득.</p></div>
+      <div class="mini"><span class="tag warn">아직 부족</span><div class="big hold">실전 데이터</div><p class="muted">환불·CS raw export가 0건이라 실제 SKU 단위 확정 판단은 아직 불가.</p></div>
+    </div>
+  </section>
+
+  <section id="knowledge" class="card">
+    <h2>2. 이번 리서치로 메이의 지식이 늘어난 지점</h2>
+    <div class="grid">
+      <div class="mini"><span class="tag info">상품명</span><h3>정체성 판단</h3><p>상품명은 단순 키워드가 아니라 첫 화면에서 고객이 “이게 뭔지” 바로 이해하는 정체성 장치로 본다.</p></div>
+      <div class="mini"><span class="tag info">상세페이지</span><h3>망설임 해소</h3><p>상세페이지는 예쁜 설명이 아니라 구매차단요인을 닫는 구조다. CVR, 환불, CS, 증거잠금과 연결한다.</p></div>
+      <div class="mini"><span class="tag info">리뷰</span><h3>고객 언어 추출</h3><p>리뷰와 문의에서 반복되는 표현을 고객의 실제 설득 문장과 FAQ 보강 재료로 쓴다.</p></div>
+      <div class="mini"><span class="tag info">광고</span><h3>관심과 약속 일치</h3><p>CTR은 관심 신호다. 광고 문구와 상세페이지 약속이 어긋나면 CVR과 환불·CS로 되돌아온다.</p></div>
+      <div class="mini"><span class="tag info">CS</span><h3>마찰 지도</h3><p>CS 문의율과 문의 유형은 고객이 어디서 멈추는지 보여주는 마찰 지도다.</p></div>
+      <div class="mini"><span class="tag info">raw export</span><h3>증거잠금</h3><p>환불·CS raw는 감으로 말하지 않기 위한 조인 가능한 증거다. 없으면 확정 판단을 금지한다.</p></div>
+    </div>
+  </section>
+
+  <section id="use" class="card">
+    <h2>3. 메이가 앞으로 이 지식을 활용하는 방식</h2>
+    <div class="flow">
+      <div class="flow-step"><div class="num">1</div><h3>신호 읽기</h3><p class="muted">CTR, CVR, 리뷰, 문의, 환불, CS에서 이상 신호를 찾는다.</p></div>
+      <div class="flow-step"><div class="num">2</div><h3>원인 가설</h3><p class="muted">상품명·상세페이지·광고·리뷰·CS 중 어디서 마찰이 생겼는지 나눈다.</p></div>
+      <div class="flow-step"><div class="num">3</div><h3>증거잠금</h3><p class="muted">KC, 내구, 순마진, raw export가 실제 경로와 파일로 잠겼는지 확인한다.</p></div>
+      <div class="flow-step"><div class="num">4</div><h3>판정</h3><p class="muted">보류, 추가조사, 수정 후 진행, 진행 중 하나로만 말한다.</p></div>
+    </div>
+    <div class="quote" style="margin-top:12px">메이 운영 문장: “관리도 신호는 경보로만 읽고, 사업 판정은 증거잠금까지 확인한 뒤 내리겠습니다.”</div>
+  </section>
+
+  <section id="guardrail" class="card">
+    <h2>4. 메이에게 들어가야 할 오판 방지 룰</h2>
+    <div class="matrix">
+      <div class="mini red"><span class="tag bad">Red</span><h3>보류</h3><p>치명 리스크, 안전·KC·내구·마진 중 하나가 깨지면 진행 금지.</p></div>
+      <div class="mini orange"><span class="tag warn">Orange</span><h3>추가조사 / 원인 잠금</h3><p>CVR 하락과 환불·CS 상승이 같이 보이면 원인 잠금 전 상향 금지.</p></div>
+      <div class="mini yellow"><span class="tag warn">Yellow</span><h3>수정 후 진행 후보</h3><p>핵심 증거는 닫혔고 남은 문제가 문구, 배치, FAQ 수준일 때만 가능.</p></div>
+      <div class="mini green"><span class="tag good">Green</span><h3>진행</h3><p>경보 없음, raw 조인, 증거잠금 완료가 함께 충족될 때만 진행.</p></div>
+    </div>
+    <ul>
+      <li><strong>기준선 없는 임계치</strong>는 판정 근거가 아니라 경보 후보다.</li>
+      <li><strong>n_min/MDE 미달</strong>은 실패가 아니라 판단불가/추가조사다.</li>
+      <li><strong>raw export 없음</strong>이면 SKU 단위 환불율·CS 문의율 확정, Green 상향, 순마진 확정은 금지다.</li>
+      <li><strong>2주 파일럿</strong>은 승자 확정이 아니라 탈락 필터다.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>5. 분수물총 v0.4에 적용하면?</h2>
+    <div class="decision">현재 판정은 <strong>추가조사 유지</strong>다. 이유는 마케팅 감각이 부족해서가 아니라, 진행 판단에 필요한 증거가 아직 잠기지 않았기 때문이다.</div>
+    <div class="grid" style="margin-top:12px">
+      <div class="mini"><span class="tag bad">부재</span><h3>KC 원문</h3><p class="muted">우리 SKU 명의 원문 확인 전까지 안전·인증 리스크 닫힘으로 볼 수 없음.</p></div>
+      <div class="mini"><span class="tag bad">부재</span><h3>내구 반복로그</h3><p class="muted">조건, 횟수, 불량률이 기록된 반복 테스트 로그가 필요.</p></div>
+      <div class="mini"><span class="tag warn">부분</span><h3>순마진 확정표</h3><p class="muted">광고비, 환불충당, CS비용까지 반영해 확정해야 함.</p></div>
+      <div class="mini"><span class="tag bad">미확보</span><h3>환불·CS raw</h3><p class="muted">표준 폴더는 있으나 실제 export 파일은 0건. 조인 전 확정 판단 금지.</p></div>
+    </div>
+  </section>
+
+  <section id="next" class="card">
+    <h2>6. 다음에 메이를 더 전문가로 만들려면</h2>
+    <div class="grid">
+      <div class="mini"><span class="tag good">1순위</span><h3>raw export 샘플 확보</h3><p>최근 14일 환불 export 1개와 CS export 1개를 확보해 SKU·주문 단위로 조인한다.</p></div>
+      <div class="mini"><span class="tag good">2순위</span><h3>증거 레지스트리 잠금</h3><p>KC 원문, 내구 반복로그, 순마진 확정표의 owner, captured_at, source_system, file_path를 채운다.</p></div>
+      <div class="mini"><span class="tag good">3순위</span><h3>메이 SOUL/MEMORY 반영</h3><p>“증거잠금 전 판정 상향 금지”, “n_min/MDE 미달은 판단불가”를 메이의 기본 운영 기억으로 고정한다.</p></div>
+      <div class="mini"><span class="tag good">4순위</span><h3>실전 체크리스트화</h3><p>상품명, 상세페이지, 리뷰, 광고, CS별로 메이가 매번 같은 순서로 점검하는 체크리스트를 만든다.</p></div>
+    </div>
+  </section>
+
+  <section class="card sources">
+    <h2>근거 파일</h2>
+    <ul>
+      <li>/home/mason/Mason_brain/projects/marketing/may_loop15_v02_draft_evidence_lock_3round_2026-05-18.md</li>
+      <li>/home/mason/Mason_brain/projects/marketing/research_packet_loop15_integrated_for_may_2026-05-18.md</li>
+      <li>/home/mason/Mason_brain/projects/marketing/research_report_latest.md</li>
+      <li>/home/mason/Mason_brain/projects/marketing/evidence_registry_watergun_v0_4.md</li>
+    </ul>
+  </section>
+
+  <div class="footer">APOM Pages · mobile-first single page report · no desktop table layout</div>
+</main>
+</body>
+</html>
