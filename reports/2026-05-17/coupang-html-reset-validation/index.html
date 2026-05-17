@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>쿠팡 HTML 수집 리셋 검증 보고서 — APOM Report</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root {--bg:#f6f5f2;--paper:#fff;--ink:#171717;--muted:#66645f;--line:#e7e4dc;--accent:#4f46e5;--good:#16a34a;--warn:#d97706;--bad:#dc2626;}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+  .page{max-width:980px;margin:0 auto;padding:20px 14px 56px}
+  .hero,.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(15,23,42,.05)}
+  .hero{padding:24px 18px;margin-bottom:14px}.card{padding:18px;margin:12px 0}
+  .eyebrow{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+  h1{font-size:26px;line-height:1.2;margin:8px 0 10px} h2{font-size:18px;margin:0 0 12px}
+  .summary{font-size:15px;color:var(--muted)} .meta{display:flex;gap:8px;flex-wrap:wrap}
+  .badge{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:700;background:#eef2ff;color:#3730a3}
+  .decision{border-left:5px solid var(--accent);padding:14px;background:#f8fafc;border-radius:12px}
+  .grid{display:grid;grid-template-columns:1fr;gap:10px}.item{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+  .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.kpi .item{padding:10px}
+  .num{font-size:20px;font-weight:800} .muted{color:var(--muted)}
+  .label{font-size:12px;font-weight:700}
+  .status-good{color:var(--good)} .status-warn{color:var(--warn)} .status-bad{color:var(--bad)}
+  table{width:100%;border-collapse:collapse;font-size:13px} th,td{border:1px solid var(--line);padding:8px;vertical-align:top} th{background:#fafafa;text-align:left}
+  ul{margin:8px 0;padding-left:18px}
+  @media (min-width:720px){.page{padding:32px 24px 72px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}h1{font-size:34px}.hero{padding:34px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <div class="eyebrow">APOM Report</div>
+    <h1>쿠팡 HTML 수집 리셋 검증</h1>
+    <p class="summary">"상품조회/수정 > 전체 카드" 클릭이 페이지 목록을 리셋하는지 3개 시나리오로 A/B 검증했다. 결론: <b>차드 가설은 맞다</b>. 매 페이지 클릭 시 중복이 급증한다.</p>
+    <div class="meta">
+      <span class="badge">HTML 수집 검증</span>
+      <span class="badge">2026-05-17</span>
+      <span class="badge">대상: collector_G_html_scraper.py</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>결론</h2>
+    <div class="decision">
+      page2+에서 <b>전체 카드 재클릭</b>은 목록 리셋/중복 누적 신호가 명확했다(중복률 66.7%).<br>
+      반대로 page1만 클릭하면 중복은 없지만 page2+ 로딩 타임아웃이 발생했다.<br>
+      현재 우선순위는 <b>page2+ 대체 트리거(조회 버튼/폼 submit/탭 상태 전환)</b>를 찾는 것이다.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>핵심 수치</h2>
+    <div class="kpi">
+      <div class="item"><div class="label">시나리오 수</div><div class="num">3</div></div>
+      <div class="item"><div class="label">최대 중복률</div><div class="num status-bad">66.7%</div></div>
+      <div class="item"><div class="label">최저 타임아웃</div><div class="num status-good">0회</div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>한 장 비교표</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>시나리오</th>
+          <th>설정</th>
+          <th>총 수집</th>
+          <th>고유 ID</th>
+          <th>중복</th>
+          <th>중복률</th>
+          <th>타임아웃</th>
+          <th>판정</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>page1만 전체 클릭</td>
+          <td>EVERY_PAGE=0<br>TRIGGER=none</td>
+          <td>135</td>
+          <td>135</td>
+          <td>0</td>
+          <td>0.0%</td>
+          <td>4회</td>
+          <td class="status-warn">중복은 없지만 page2+ 실패</td>
+        </tr>
+        <tr>
+          <td>매 페이지 전체 클릭</td>
+          <td>EVERY_PAGE=1</td>
+          <td>405</td>
+          <td>135</td>
+          <td>270</td>
+          <td class="status-bad">66.7%</td>
+          <td>0회</td>
+          <td class="status-bad">리셋/중복 누적 강함</td>
+        </tr>
+        <tr>
+          <td>page2+ 조회버튼 트리거</td>
+          <td>EVERY_PAGE=0<br>TRIGGER=search_button</td>
+          <td>135</td>
+          <td>135</td>
+          <td>0</td>
+          <td>0.0%</td>
+          <td>4회</td>
+          <td class="status-warn">버튼 미발견, 효과 없음</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>근거 로그 포인트</h2>
+    <div class="grid">
+      <div class="item">
+        <h3>리셋 신호</h3>
+        <p class="muted">매 페이지 전체 클릭 시 page1/2/3가 각각 135개로 동일, 총 405개 중 고유 135개만 유지.</p>
+      </div>
+      <div class="item">
+        <h3>로딩 실패 신호</h3>
+        <p class="muted">page1만 클릭 또는 대체트리거 모드에서 page2/3 연속 로딩 타임아웃 발생.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>다음 실행 (차돌 전달용)</h2>
+    <ul>
+      <li>page2+ 트리거 후보 5종(조회/검색/폼 submit/탭 active 전환/키입력) 병렬 A/B</li>
+      <li>페이지별 첫 10개 vendor_item_id fingerprint 로깅으로 즉시 리셋 탐지</li>
+      <li>중복률 30% 초과 시 해당 페이지 폐기 + 재시도 분기 적용</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
