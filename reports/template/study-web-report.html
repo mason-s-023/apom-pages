@@ -3,88 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>스터디 웹보고서 템플릿</title>
+<title>팩트체크 웹보고서 템플릿</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-:root{--bg:#f5f7fb;--paper:#fff;--ink:#111827;--muted:#667085;--line:#e5e7eb;--blue:#2563eb;--green:#16a34a;--amber:#d97706;--red:#dc2626;--violet:#7c3aed;--soft:#eef4ff;--shadow:0 12px 34px rgba(15,23,42,.08)}
-*{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#eef4ff 0,#f8fafc 260px,#f5f7fb 100%);color:var(--ink);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.58}.page{max-width:1040px;margin:0 auto;padding:18px 14px 64px}.hero,.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}.hero{padding:24px 18px;margin:8px 0 14px}.eyebrow{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:999px;background:#dbeafe;color:#1d4ed8;font-size:12px;font-weight:900;letter-spacing:.04em}.title{font-size:28px;line-height:1.16;margin:12px 0 8px}.subtitle{margin:0;color:var(--muted);font-size:15px}.meta{display:grid;grid-template-columns:1fr;gap:8px;margin-top:16px}.meta div{padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:#fafafa;font-size:13px}.meta b{display:block;font-size:12px;color:#475467;margin-bottom:2px}.card{padding:18px;margin:12px 0}h2{font-size:19px;margin:0 0 12px}h3{font-size:15px;margin:0 0 7px}.lead{font-size:16px;font-weight:700}.grid{display:grid;grid-template-columns:1fr;gap:10px}.pill{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;background:#f2f4f7;color:#344054}.pill.blue{background:#dbeafe;color:#1e40af}.pill.green{background:#dcfce7;color:#166534}.pill.amber{background:#fef3c7;color:#92400e}.item{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}.summary{border-left:5px solid var(--blue);background:#f8fbff;border-radius:16px;padding:15px}.question{border-left:5px solid var(--violet);background:#faf5ff}.evidence{display:flex;gap:10px;align-items:flex-start}.num{flex:0 0 30px;height:30px;border-radius:10px;background:#eff6ff;color:#1d4ed8;display:grid;place-items:center;font-weight:900}.quote{margin:8px 0 0;padding:12px;border-radius:14px;background:#f9fafb;color:#475467;border:1px dashed #d0d5dd}.map{display:grid;gap:8px}.row{display:grid;grid-template-columns:96px 1fr;gap:8px;align-items:start;padding:10px;border-radius:14px;background:#fafafa;border:1px solid var(--line);font-size:14px}.row b{color:#344054}.checklist{padding-left:0;list-style:none;margin:0}.checklist li{padding:10px 0;border-bottom:1px solid var(--line)}.checklist li:last-child{border-bottom:0}.checklist li:before{content:"□";color:var(--blue);font-weight:900;margin-right:8px}.footer{color:#667085;font-size:12px;text-align:center;margin-top:28px}@media(min-width:760px){.page{padding:32px 24px 80px}.hero{padding:34px}.title{font-size:40px}.meta{grid-template-columns:repeat(4,1fr)}.grid.two{grid-template-columns:repeat(2,1fr)}.grid.three{grid-template-columns:repeat(3,1fr)}.card{padding:24px}.sticky{position:sticky;top:16px}}
+:root{--bg:#f5f7fb;--paper:#fff;--ink:#101828;--muted:#667085;--line:#e4e7ec;--blue:#2563eb;--green:#16a34a;--amber:#d97706;--red:#dc2626;--violet:#7c3aed;--cyan:#0891b2;--shadow:0 14px 36px rgba(15,23,42,.08)}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#eaf1ff 0,#f8fafc 280px,#f5f7fb 100%);color:var(--ink);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.58}.page{max-width:1080px;margin:0 auto;padding:18px 14px 64px}.hero,.card{background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}.hero{padding:24px 18px;margin:8px 0 14px}.eyebrow{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:999px;background:#dbeafe;color:#1d4ed8;font-size:12px;font-weight:900;letter-spacing:.04em}.title{font-size:28px;line-height:1.14;margin:12px 0 8px}.subtitle{margin:0;color:var(--muted);font-size:15px}.meta{display:grid;grid-template-columns:1fr;gap:8px;margin-top:16px}.meta div{padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:#fafafa;font-size:13px}.meta b{display:block;font-size:12px;color:#475467;margin-bottom:2px}.card{padding:18px;margin:12px 0}h2{font-size:19px;margin:0 0 12px}h3{font-size:15px;margin:0 0 7px}.lead{font-size:16px;font-weight:800}.grid{display:grid;grid-template-columns:1fr;gap:10px}.item{border:1px solid var(--line);border-radius:17px;padding:14px;background:#fff}.verdict{display:inline-flex;align-items:center;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900}.true{background:#dcfce7;color:#166534}.mixed{background:#fef3c7;color:#92400e}.false{background:#fee2e2;color:#991b1b}.unknown{background:#f2f4f7;color:#344054}.summary{border-left:5px solid var(--blue);background:#f8fbff;border-radius:16px;padding:15px}.score{display:grid;gap:8px}.bar{height:14px;border-radius:999px;background:#eef2f7;overflow:hidden}.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--cyan))}.metric{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:#475467}.chart{padding:14px;border-radius:18px;background:#f9fafb;border:1px solid var(--line)}.bars{display:grid;gap:10px}.barrow{display:grid;grid-template-columns:82px 1fr 38px;gap:8px;align-items:center;font-size:13px}.spark{width:100%;height:120px}.donut{width:150px;height:150px;margin:auto;display:block}.source{margin-top:9px;padding:10px;border-radius:13px;background:#f9fafb;color:#475467;border:1px dashed #d0d5dd;font-size:13px}.evidence{display:flex;gap:10px;align-items:flex-start}.num{flex:0 0 30px;height:30px;border-radius:10px;background:#eff6ff;color:#1d4ed8;display:grid;place-items:center;font-weight:900}.table{display:grid;gap:8px}.row{display:grid;grid-template-columns:92px 1fr;gap:8px;align-items:start;padding:10px;border-radius:14px;background:#fafafa;border:1px solid var(--line);font-size:14px}.row b{color:#344054}.checklist{padding-left:0;list-style:none;margin:0}.checklist li{padding:10px 0;border-bottom:1px solid var(--line)}.checklist li:last-child{border-bottom:0}.checklist li:before{content:"→";color:var(--blue);font-weight:900;margin-right:8px}.footer{color:#667085;font-size:12px;text-align:center;margin-top:28px}@media(min-width:760px){.page{padding:32px 24px 80px}.hero{padding:34px}.title{font-size:42px}.meta{grid-template-columns:repeat(4,1fr)}.grid.two{grid-template-columns:repeat(2,1fr)}.grid.three{grid-template-columns:repeat(3,1fr)}.card{padding:24px}.visual-grid{grid-template-columns:1.15fr .85fr}}
 </style>
 </head>
 <body>
 <main class="page">
   <section class="hero">
-    <span class="eyebrow">📚 STUDY WEB REPORT</span>
-    <h1 class="title">스터디 웹보고서 템플릿</h1>
-    <p class="subtitle">데이터를 수집하고 종합해, 누구나 빠르게 이해하고 학습할 수 있도록 정리하는 공개형 웹보고서 형식입니다.</p>
-    <div class="meta">
-      <div><b>주제</b>예: 쿠팡 키워드 구조 / 1688 시장 / 브랜드 사례</div>
-      <div><b>목적</b>학습 · 이해 · 판단</div>
-      <div><b>자료 범위</b>검색, 리뷰, 가격, 사례, 문서</div>
-      <div><b>업데이트</b>2026-05-17</div>
-    </div>
+    <span class="eyebrow">🔎 FACT CHECK WEB REPORT</span>
+    <h1 class="title">팩트체크 웹보고서 템플릿</h1>
+    <p class="subtitle">데이터와 출처를 수집해 핵심 주장, 근거, 시각 자료를 함께 제시하는 공개형 정보 전달 보고서입니다.</p>
+    <div class="meta"><div><b>주제</b>검증할 정보 또는 시장 이슈</div><div><b>목적</b>사실 확인 · 정보 전달</div><div><b>자료 범위</b>공개 자료, 통계, 리뷰, 문서</div><div><b>업데이트</b>2026-05-17</div></div>
   </section>
 
-  <section class="card">
-    <h2>1. 한눈에 보는 결론</h2>
-    <div class="summary">
-      <p class="lead">이 주제에서 먼저 이해해야 할 핵심은 3가지입니다.</p>
-      <div class="grid three">
-        <div class="item"><span class="pill blue">핵심 1</span><h3>큰 구조</h3><p>시장/기술/운영 구조를 한 문단으로 압축합니다.</p></div>
-        <div class="item"><span class="pill green">핵심 2</span><h3>기회</h3><p>독자가 활용할 수 있는 포인트를 정리합니다.</p></div>
-        <div class="item"><span class="pill amber">핵심 3</span><h3>주의점</h3><p>오해하기 쉬운 점, 리스크, 추가 확인이 필요한 부분을 표시합니다.</p></div>
-      </div>
-    </div>
-  </section>
+  <section class="card"><h2>1. 핵심 요약</h2><div class="summary"><p class="lead">먼저 결론을 제시합니다. 독자는 이 영역만 봐도 전체 판단을 빠르게 이해할 수 있어야 합니다.</p><div class="grid three"><div class="item"><span class="verdict true">확인됨</span><h3>검증된 사실</h3><p>복수 출처나 공식 자료로 확인된 내용을 적습니다.</p></div><div class="item"><span class="verdict mixed">부분 확인</span><h3>조건부 사실</h3><p>맥락에 따라 맞거나 추가 설명이 필요한 내용을 적습니다.</p></div><div class="item"><span class="verdict unknown">확인 필요</span><h3>아직 불확실</h3><p>자료가 부족하거나 추정에 가까운 내용을 분리합니다.</p></div></div></div></section>
 
-  <section class="card question">
-    <h2>2. 이번 스터디 질문</h2>
-    <div class="map">
-      <div class="row"><b>질문 A</b><span>독자가 알고 싶어 할 가장 큰 질문을 씁니다.</span></div>
-      <div class="row"><b>질문 B</b><span>데이터로 확인해야 할 보조 질문을 씁니다.</span></div>
-      <div class="row"><b>질문 C</b><span>실행 또는 의사결정으로 이어질 질문을 씁니다.</span></div>
-    </div>
-  </section>
+  <section class="card"><h2>2. 시각 요약</h2><div class="grid two visual-grid"><div class="chart"><h3>자료 신뢰도 예시</h3><div class="score"><div class="metric"><span>공식 자료</span><b>85%</b></div><div class="bar"><span style="width:85%"></span></div><div class="metric"><span>시장 데이터</span><b>68%</b></div><div class="bar"><span style="width:68%"></span></div><div class="metric"><span>사용자 리뷰</span><b>52%</b></div><div class="bar"><span style="width:52%"></span></div></div><div class="source">그래프는 실제 보고서에서 수집 데이터에 맞게 교체합니다.</div></div><div class="chart"><h3>핵심 지표 추세 예시</h3><svg class="spark" viewBox="0 0 320 120" role="img" aria-label="추세 그래프"><polyline points="10,92 60,76 110,82 160,54 210,60 260,38 310,26" fill="none" stroke="#2563eb" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><polyline points="10,104 60,95 110,91 160,84 210,70 260,66 310,52" fill="none" stroke="#16a34a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/><line x1="10" y1="105" x2="310" y2="105" stroke="#d0d5dd"/><text x="12" y="18" font-size="12" fill="#475467">파란색: 주요 지표 / 초록색: 보조 지표</text></svg><div class="source">숫자는 표보다 그래프가 빠릅니다. 가능하면 적극적으로 시각화합니다.</div></div></div></section>
 
-  <section class="card">
-    <h2>3. 수집 데이터 요약</h2>
-    <div class="grid two">
-      <div class="item"><h3>자료 출처</h3><p>검색 결과, 경쟁사 페이지, 리뷰, 가격표, 논문, 내부 문서 등.</p></div>
-      <div class="item"><h3>수집 기준</h3><p>기간, 키워드, 카테고리, 국가, 플랫폼, 샘플 수를 적습니다.</p></div>
-      <div class="item"><h3>숫자 요약</h3><p>가격대, 빈도, 비율, 순위, 리뷰 수 등 핵심 수치를 압축합니다.</p></div>
-      <div class="item"><h3>패턴 요약</h3><p>반복적으로 보이는 특징, 고객 불만, 성공 공식을 정리합니다.</p></div>
-    </div>
-  </section>
+  <section class="card"><h2>3. 검증할 주장</h2><div class="table"><div class="row"><b>주장 A</b><span>가장 많이 퍼져 있거나 독자가 궁금해할 핵심 주장.</span></div><div class="row"><b>주장 B</b><span>수치나 조건을 확인해야 하는 주장.</span></div><div class="row"><b>주장 C</b><span>오해가 생기기 쉬운 주장.</span></div></div></section>
 
-  <section class="card">
-    <h2>4. 핵심 근거</h2>
-    <div class="grid">
-      <div class="item evidence"><div class="num">1</div><div><h3>근거 제목</h3><p>근거 내용을 짧게 설명합니다.</p><div class="quote">출처/링크/인용/수치가 들어가는 자리입니다.</div></div></div>
-      <div class="item evidence"><div class="num">2</div><div><h3>근거 제목</h3><p>상반된 자료가 있으면 같이 적고, 어느 쪽을 더 믿을지 표시합니다.</p><div class="quote">검증 필요 / 신뢰도 높음 / 참고용 등을 표시합니다.</div></div></div>
-      <div class="item evidence"><div class="num">3</div><div><h3>근거 제목</h3><p>실제 활용으로 연결되는 해석을 붙입니다.</p><div class="quote">적용 가능성, 비용, 리스크를 적습니다.</div></div></div>
-    </div>
-  </section>
+  <section class="card"><h2>4. 근거와 판정</h2><div class="grid"><div class="item evidence"><div class="num">1</div><div><span class="verdict true">사실</span><h3>근거 제목</h3><p>출처가 무엇을 말하는지, 어떤 부분이 확인됐는지 씁니다.</p><div class="source">출처명 · 발행일 · 링크 · 신뢰도</div></div></div><div class="item evidence"><div class="num">2</div><div><span class="verdict mixed">맥락 필요</span><h3>근거 제목</h3><p>일부는 맞지만 조건이나 범위가 제한되는 경우를 설명합니다.</p><div class="source">비교 자료 · 반대 사례 · 표본 한계</div></div></div><div class="item evidence"><div class="num">3</div><div><span class="verdict unknown">추가 확인</span><h3>근거 제목</h3><p>확실히 말하기 어려운 정보는 명확히 분리합니다.</p><div class="source">추가로 필요한 데이터</div></div></div></div></section>
 
-  <section class="card">
-    <h2>5. 이해와 활용</h2>
-    <div class="grid two">
-      <div class="item"><h3>배운 것</h3><p>이번 조사로 새로 이해한 원리나 구조.</p></div>
-      <div class="item"><h3>사업에 연결되는 것</h3><p>상품기획, 소싱, 상세페이지, 광고, CS에 어떻게 써먹을지.</p></div>
-      <div class="item"><h3>아직 모르는 것</h3><p>데이터 부족, 확인 안 된 가정, 추가 조사 필요 지점.</p></div>
-      <div class="item"><h3>다음 질문</h3><p>다음 스터디나 실험으로 넘길 질문.</p></div>
-    </div>
-  </section>
+  <section class="card"><h2>5. 독자가 바로 이해해야 할 포인트</h2><div class="grid two"><div class="item"><h3>무엇이 사실인가</h3><p>검증된 정보만 짧게 정리합니다.</p></div><div class="item"><h3>무엇을 조심해야 하나</h3><p>과장, 누락, 잘못된 비교, 표본 오류를 표시합니다.</p></div><div class="item"><h3>어디에 써먹을 수 있나</h3><p>실생활, 업무, 구매 판단, 학습에 연결되는 활용법을 씁니다.</p></div><div class="item"><h3>아직 모르는 것은 무엇인가</h3><p>불확실성과 다음 확인 과제를 남깁니다.</p></div></div></section>
 
-  <section class="card">
-    <h2>6. 실행 메모</h2>
-    <ul class="checklist">
-      <li>바로 적용할 것 1개</li>
-      <li>추가 조사할 것 1개</li>
-      <li>독자가 판단하거나 적용할 것 1개</li>
-    </ul>
-  </section>
-
-  <p class="footer">Study Web Report · mobile-first HTML template</p>
+  <section class="card"><h2>6. 최종 정리</h2><ul class="checklist"><li>검증된 사실 3개</li><li>오해하기 쉬운 점 2개</li><li>추가 확인이 필요한 데이터 1개</li></ul></section>
+  <p class="footer">Fact Check Web Report · visual-first · public information template</p>
 </main>
 </body>
 </html>
